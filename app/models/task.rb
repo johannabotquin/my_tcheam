@@ -10,7 +10,7 @@ class Task < ApplicationRecord
   validates :points, numericality: { only_integer: true }
   validates :name, length: { maximum: 100 }
   validates :category, inclusion: { in: CATEGORIES }
-  validates :deadline, timeliness: { on_or_after: -> { Time.current }, type: :datetime }
+  validates :deadline
   validates :reccurence, inclusion: { in: [true, false] }
   validates :achieved, inclusion: { in: [true, false] }
 end
