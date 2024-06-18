@@ -15,11 +15,12 @@ Rails.application.routes.draw do
     resources :rewards
   end
 
-  resources :lists
 
   resources :chatrooms, only: %i[new create show] do
     resources :messages, only: :create
   end
 
-  resources :users, only: :show
+  resources :users, only: :show do
+    resources :lists
+  end
 end

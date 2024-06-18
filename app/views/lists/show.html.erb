@@ -1,0 +1,10 @@
+<div>
+  <h1>
+    <%= @list.name %>
+  </h1>
+  <div>
+    <%= @list.content %>
+  </div>
+</div>
+
+<%= link_to "Delete", user_list_path(current_user, @list), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}%>
