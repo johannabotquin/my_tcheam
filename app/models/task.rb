@@ -6,11 +6,11 @@ class Task < ApplicationRecord
   belongs_to :user
   has_many :users, through: :task_managers
 
-  validates :name, :category, :points, :deadline, :reccurence, :achieved, presence: true
-  validates :points, numericality: { only_integer: true }
-  validates :name, length: { maximum: 100 }
-  validates :category, inclusion: { in: CATEGORIES }
-  validates :deadline, presence: true
-  validates :reccurence, inclusion: { in: [true, false] }
-  validates :achieved, inclusion: { in: [true, false] }
+  # validates :name, :category, :points, :deadline, :reccurence, :achieved, presence: true
+  # validates :points, numericality: { only_integer: true }
+  # validates :name, length: { maximum: 100 }
+  # validates :category, inclusion: { in: CATEGORIES }
+  # validates :deadline, presence: true
+  # validates :reccurence, inclusion: { in: [true, false] }
+  # validates :achieved, inclusion: { in: [true, false] }
 end
