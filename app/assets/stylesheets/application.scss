@@ -22,6 +22,7 @@ h3 {
 
 a {
   text-decoration: none;
+  color: $dark-black;
 }
 
 h1,h2,h3,p {
@@ -30,4 +31,8 @@ h1,h2,h3,p {
 
 .container {
   width: 95%;
+}
+
+.row {
+  margin: 2rem 0 2rem;
 }
