@@ -48,25 +48,13 @@ puts "creating tasks..."
 Task.create(
   name: "Compléter le rapport de projet",
   description: "Terminer le rapport final pour le soumettre à Laura.",
-  category: "Tu crains dégun mais tu dois en prendre soin",
+  category: "Fais tes papiers avant que ce soit le oaï !",
   reccurence: false,
   points: 50,
   deadline: "2024-07-01",
   achieved: false,
   priority_tag: 1,
   user_id: User.first.id
-)
-
-Task.create(
-  name: "Compléter le rapport de projet",
-  description: "Terminer le rapport final pour le soumettre à Laura.",
-  category: "Tu crains dégun mais tu dois en prendre soin",
-  reccurence: false,
-  points: 50,
-  deadline: "2024-07-01",
-  achieved: false,
-  priority_tag: 1,
-  user_id: User.last.id
 )
 
 Task.create(
@@ -81,17 +69,6 @@ Task.create(
     user_id:  User.first.id
 )
 
-Task.create(
-  name: "Réunion d'équipe",
-  description: "Assister à la réunion d'équipe hebdomadaire et discuter des mises à jour du projet.",
-  category: "Tu crains dégun mais tu dois en prendre soin",
-  reccurence: true,
-  points: 20,
-  deadline: "2024-06-21",
-  achieved: false,
-  priority_tag: 3,
-  user_id: User.last.id
-)
 Task.create(
   name: "Rendez-vous chez le médecin",
   description: "Bilan annuel avec le Dr. Zac à la clinique.",
