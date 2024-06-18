@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :rewards
   end
 
+  resources :memories
 
   resources :chatrooms, only: %i[new create show] do
     resources :messages, only: :create
