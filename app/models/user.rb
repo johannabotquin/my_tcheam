@@ -9,7 +9,8 @@ class User < ApplicationRecord
   has_many :chatrooms, through: :messages
   has_many :lists, through: :list_managers
   has_many :rewards
+  belongs_to :team
 
-  validates :first_name, :last_name, presence: true
+  validates :first_name, :last_name, :avatar, presence: true
   validates :pseudo, presence: true, uniqueness: true
 end
