@@ -10,15 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_17_134925) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_18_084609) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "chatrooms", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "list_managers", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -32,7 +26,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_17_134925) do
   create_table "lists", force: :cascade do |t|
     t.string "name"
     t.text "content"
-    t.text "members", default: [], array: true
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -46,17 +39,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_17_134925) do
     t.bigint "reward_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo"
     t.index ["reward_id"], name: "index_memories_on_reward_id"
-  end
-
-  create_table "messsages", force: :cascade do |t|
-    t.text "content"
-    t.bigint "chatroom_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["chatroom_id"], name: "index_messsages_on_chatroom_id"
-    t.index ["user_id"], name: "index_messsages_on_user_id"
   end
 
   create_table "rewards", force: :cascade do |t|
@@ -87,7 +71,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_17_134925) do
     t.integer "points"
     t.date "deadline"
     t.boolean "achieved"
-    t.text "members", default: [], array: true
     t.integer "priority_tag"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -100,6 +83,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_17_134925) do
     t.integer "score", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "photo"
   end
 
   create_table "users", force: :cascade do |t|
@@ -114,6 +98,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_17_134925) do
     t.string "last_name"
     t.string "pseudo"
     t.bigint "team_id", null: false
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["team_id"], name: "index_users_on_team_id"
@@ -123,8 +108,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_17_134925) do
   add_foreign_key "list_managers", "users"
   add_foreign_key "lists", "users"
   add_foreign_key "memories", "rewards"
-  add_foreign_key "messsages", "chatrooms"
-  add_foreign_key "messsages", "users"
   add_foreign_key "rewards", "teams"
   add_foreign_key "rewards", "users"
   add_foreign_key "task_managers", "tasks"
