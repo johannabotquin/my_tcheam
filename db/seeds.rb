@@ -148,14 +148,12 @@ puts "creating memories..."
 
 Memorie.create(
   name: "Anniversaire de mariage",
-  content: "Dîner romantique au restaurant Le Petit Prince",
-  reward_id: Reward.last.id
+  content: "Dîner romantique au restaurant Le Petit Prince"
 )
 
 Memorie.create(
   name: "Week-end à la campagne",
-  content: "Balade en forêt, cueillette de champignons",
-  reward_id: Reward.first.id
+  content: "Balade en forêt, cueillette de champignons"
 )
 
 puts "end memories"
