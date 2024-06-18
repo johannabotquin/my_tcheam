@@ -12,6 +12,7 @@ Task.destroy_all
 User.destroy_all
 Team.destroy_all
 List.destroy_all
+Reward.destroy_all
 
 puts "creating teams..."
 
@@ -103,6 +104,20 @@ Task.create(
   deadline: "2024-06-27",
   achieved: false,
   priority_tag: 2,
+  user_id: User.first.id
+)
+
+Reward.create(
+  name: "voyage a disney land",
+  goal: "100",
+  team_id: team.id,
+  user_id: User.first.id
+)
+
+Reward.create(
+  name: "voyage au parc Asterix",
+  goal: "80",
+  team_id: team.id,
   user_id: User.first.id
 )
 

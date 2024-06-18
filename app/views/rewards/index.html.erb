@@ -1,0 +1,11 @@
+<h1>Rewards for <%= @team.name %></h1>
+<%= link_to 'New Reward', new_team_reward_path(@team), class: 'btn btn-primary' %>
+<ul>
+  <% @rewards.each do |reward| %>
+    <li>
+      <%= link_to reward.name, team_reward_path(@team, reward) %>
+      (<%= link_to 'Edit', edit_team_reward_path(@team, reward) %>,
+      <%= link_to 'Destroy', team_reward_path(@team, reward), method: :delete, data: { confirm: 'Are you sure?' } %>)
+    </li>
+  <% end %>
+</ul>
