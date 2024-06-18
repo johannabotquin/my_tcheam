@@ -1,0 +1,32 @@
+.carousel {
+  margin: 1rem 0;
+}
+
+.carousel-inner {
+  padding-bottom: 5px;
+}
+
+.carousel-control-prev-icon {
+  color: #030002;
+}
+
+.prev-icon {
+  background-image: image-url('chevron-left-solid.png');
+}
+
+.next-icon {
+  background-image: image-url('chevron-right-solid.png');
+}
+
+.prev-icon, .next-icon {
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center
+}
+
+
+.carousel-control-prev, .carousel-control-next {
+  width: 20px;
+}

@@ -10,3 +10,29 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+
+body {
+  color: $dark-black;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+a {
+  text-decoration: none;
+  color: $dark-black;
+}
+
+h1,h2,h3,p {
+  margin:0;
+}
+
+.container {
+  width: 95%;
+}
+
+.row {
+  margin: 2rem 0 2rem;
+}
