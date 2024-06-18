@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_18_095641) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_18_150801) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -69,11 +69,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_18_095641) do
     t.string "name"
     t.text "content"
     t.date "date"
-    t.bigint "reward_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo"
-    t.index ["reward_id"], name: "index_memories_on_reward_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -152,7 +150,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_18_095641) do
   add_foreign_key "list_managers", "lists"
   add_foreign_key "list_managers", "users"
   add_foreign_key "lists", "users"
-  add_foreign_key "memories", "rewards"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "rewards", "teams"

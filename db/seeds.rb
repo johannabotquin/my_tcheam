@@ -8,10 +8,12 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+Memorie.destroy_all
+Reward.destroy_all
 Task.destroy_all
+List.destroy_all
 User.destroy_all
 Team.destroy_all
-List.destroy_all
 
 puts "creating teams..."
 
@@ -123,3 +125,37 @@ List.create(
 )
 
 puts "end lists"
+
+puts "creating rewards..."
+
+Reward.create(
+  name: "Week-end à la campagne",
+  goal: 100,
+  user_id: User.first.id,
+  team_id: team.id
+)
+
+Reward.create(
+  name: "Dîner romantique",
+  goal: 50,
+  user_id: User.last.id,
+  team_id: team.id
+)
+
+puts "end rewards"
+
+puts "creating memories..."
+
+Memorie.create(
+  name: "Anniversaire de mariage",
+  content: "Dîner romantique au restaurant Le Petit Prince",
+  reward_id: Reward.last.id
+)
+
+Memorie.create(
+  name: "Week-end à la campagne",
+  content: "Balade en forêt, cueillette de champignons",
+  reward_id: Reward.first.id
+)
+
+puts "end memories"
