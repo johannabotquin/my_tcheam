@@ -1,0 +1,51 @@
+.cards-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+  margin: 1rem 0;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.card {
+  color: $dark-black;
+  box-shadow: 0 5px;
+  border: 1px solid $dark-black;
+  border-radius: 5px;
+  padding: 1rem;
+  h3 {
+    margin-bottom: .5rem;
+  }
+
+}
+
+.card-task {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .deadline {
+    font-weight: 800;
+  }
+}
+
+.card-health {
+  background-color: $light-pink;
+}
+
+.card-admin {
+  background-color: $coral;
+}
+
+.card-home-duty {
+  background-color: $light-blue;
+}
+
+
+.card-list {
+  background-color: $light-green;
+  width: 85%;
+  margin: 0 auto;
+}
