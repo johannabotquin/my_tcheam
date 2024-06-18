@@ -3,3 +3,4 @@
     <h1><%= link_to list.name, user_list_path(current_user, list) %></h1>
   <% end %>
 </div>
+<%= link_to 'Add New List', new_user_list_path(current_user) %>
