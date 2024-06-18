@@ -8,9 +8,10 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+Task.destroy_all
 User.destroy_all
 Team.destroy_all
-Task.destroy_all
+List.destroy_all
 
 puts "creating teams..."
 
@@ -106,3 +107,19 @@ Task.create(
 )
 
 puts "end tasks"
+
+puts "creating lists..."
+
+List.create(
+  name: "Courses",
+  content: "Fruits, légumes, produits laitiers",
+  user_id: User.first.id
+)
+
+List.create(
+  name: "Cadeau d'anniversaire Maman",
+  content: "Fleurs, chocolats, carte",
+  user_id: User.first.id
+)
+
+puts "end lists"

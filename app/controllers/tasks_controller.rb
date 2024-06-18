@@ -15,8 +15,9 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.user = current_user
     if @task.save
-      redirect_to task_path(@task), status: see_other
+      redirect_to task_path(@task)
     else
       render :new, status: :unprocessable_entity
     end

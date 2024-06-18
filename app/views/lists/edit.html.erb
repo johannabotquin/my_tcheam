@@ -1,0 +1,5 @@
+<%= simple_form_for [current_user, @list] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :content, as: :text %>
+  <%= f.button :submit %>
+<% end %>
