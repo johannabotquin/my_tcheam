@@ -6,6 +6,7 @@ class Task < ApplicationRecord
   PRIORITY = [1, 2, 3]
 
   belongs_to :user
+  has_many :task_managers
   has_many :users, through: :task_managers
 
   # validates :name, :category, :points, :deadline, :reccurence, :achieved, presence: true
@@ -17,12 +18,4 @@ class Task < ApplicationRecord
   # validates :reccurence, inclusion: { in: [true, false] }
   # validates :achieved, inclusion: { in: [true, false] }
   # validates :deadline, default: Date.today
-
-  validate :deadline_not_in_past
-
-  private
-
-  def deadline_not_in_past
-    errors.add(:deadline, "la date ne peut pas être passée") if deadline < Date.today
-  end
 end

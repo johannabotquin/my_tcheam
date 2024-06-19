@@ -5,6 +5,17 @@
     <%= f.input :category, label: "Sa catégorie", collection: Task::CATEGORIES %>
     <%= f.input :reccurence, label: "Réccurence ?", as: :boolean %>
     <%= f.input :points, label: "Ses points attribués" %>
+    <h3>Assign Users</h3>
+    <div data-controller="member-selection">
+      <% @members.each do |member| %>
+        <div class="member-photo" data-member-selection-target="photo" data-member-id="<%= member.id %>">
+          <%= image_tag(member.avatar, alt: member.first_name, style: "width:100px") %>
+          <%= f.simple_fields_for :task_managers, @task.task_managers.build do |tm| %>
+            <%= tm.hidden_field :user_id, value: member.id, data: { member_selection_target: "checkbox" } %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
     <%= f.input :deadline,
                 :label => "Sa date",
                 as: :string,
