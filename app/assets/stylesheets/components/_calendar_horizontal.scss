@@ -1,0 +1,29 @@
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  grid-gap: 10px;
+}
+
+.tag-item {
+  position: relative;
+}
+
+.tag-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.tag-date {
+  display: block;
+  font-size: 0.9rem;
+  border-radius: 0.4rem;
+  padding: 1.1rem;
+  background-color: $light-blue;
+  cursor: pointer;
+}
+
+.tag-selector:checked + .tag-date {
+  background-color: $light-blue;
+  border: 1px solid $dark-black;
+  box-shadow: 0 5px;
+}
