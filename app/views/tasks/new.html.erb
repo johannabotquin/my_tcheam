@@ -1,12 +1,42 @@
-<%= simple_form_for @task do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :category, collection: Task::CATEGORIES %>
-  <%= f.input :reccurence, as: :boolean %>
-  <%= f.input :points %>
-  <%= f.input :deadline %>
-  <%= f.input :achieved %>
-  <%= f.input :priority_tag, collection: Task::PRIORITY %>
-
-  <%= f.button :submit %>
-<% end %>
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-6 col-md-4">
+        <div class="form-container" id="task-card">
+          <div class="card-header text-center" id="card-title">
+            <h1>New Task</h1>
+          </div>
+          <div class="card form-input" id="task-form">
+            <%= simple_form_for @task do |f| %>
+              <div class="form-group">
+                <%= f.input :name, input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
+              </div>
+              <div class="form-group">
+                <%= f.input :description, input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
+              </div>
+              <div class="form-group">
+                <%= f.input :category, collection: Task::CATEGORIES, input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
+              </div>
+              <div class="form-group">
+                <%= f.input :reccurence, as: :boolean, input_html: { class: 'form-check-input' }, label_html: { class: 'form-check-label' } %>
+              </div>
+              <div class="form-group">
+                <%= f.input :points, input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
+              </div>
+              <div class="form-group">
+                <%= f.input :deadline, as: :date, input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
+              </div>
+              <div class="form-group">
+                <%= f.input :achieved, as: :boolean, input_html: { class: 'form-check-input' }, label_html: { class: 'form-check-label' } %>
+              </div>
+             <div class="form-group">
+                <%= f.input :priority_tag, collection: Task::PRIORITY, input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
+              </div>
+              <div class="form-group">
+                <%= f.button :submit, class: 'btn btn-purple' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
