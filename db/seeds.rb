@@ -32,7 +32,7 @@ user1 = User.create!(
   email: "johanna@gmail.com",
   password: "angryjojo",
   avatar: "https://pictory.ai/wp-content/uploads/2022/03/pictory_500.png",
-  team_id: team.id
+  team_id: team.id,
 )
 
 user2 = User.create!(
@@ -42,7 +42,7 @@ user2 = User.create!(
   email: "ragheed.sleimani@gmail.com",
   password: "zenragheed",
   avatar: "https://pictory.ai/wp-content/uploads/2022/03/pictory_500.png",
-  team_id: team.id
+  team_id: team.id,
 )
 puts "Users created."
 
@@ -121,21 +121,8 @@ rescue ActiveRecord::RecordInvalid => e
   raise ActiveRecord::Rollback
 end
 
-puts "Creating lists..."
-List.create!(
-  name: "Courses",
-  content: "Fruits, légumes, produits laitiers",
-  user_id: user1.id
-)
-
-List.create!(
-  name: "Cadeau d'anniversaire Maman",
-  content: "Fleurs, chocolats, carte",
-  user_id: user1.id
-)
-puts "Lists created."
-
 puts "Creating rewards..."
+
 Reward.create!(
   name: "Week-end à la campagne",
   goal: 100,
@@ -149,6 +136,36 @@ Reward.create!(
   user_id: user2.id,
   team_id: team.id
 )
-puts "Rewards created."
+
+Reward.create(
+  name: "voyage a disney land",
+  goal: "100",
+  team_id: team.id,
+  user_id: User.first.id
+)
+
+Reward.create(
+  name: "voyage au parc Asterix",
+  goal: "80",
+  team_id: team.id,
+  user_id: User.first.id
+)
+
+puts "Rewards created"
+
+puts "creating lists..."
+
+List.create(
+  name: "Courses",
+  content: "Fruits, légumes, produits laitiers",
+  user_id: user1.id
+)
+
+List.create!(
+  name: "Cadeau d'anniversaire Maman",
+  content: "Fleurs, chocolats, carte",
+  user_id: user1.id
+)
+puts "Lists created."
 
 puts "Seed data successfully created."

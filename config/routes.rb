@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  # devise_scope :user do
-  #   root to: "devise/sessions#new"
-  # end
+  root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root to: 'pages#home'
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -14,7 +12,7 @@ Rails.application.routes.draw do
   resources :tasks
 
   resources :teams, only: %i[new create show] do
-    resources :rewards
+    resources :rewards, except: %i[show]
   end
 
   resources :memories
