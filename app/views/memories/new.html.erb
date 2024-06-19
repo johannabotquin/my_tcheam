@@ -1,10 +1,24 @@
-<div>
-  <h1>New memory</h1>
-
-  <%= simple_form_for @memorie do |f| %>
-    <%= f.input :name %>
-    <%= f.input :content %>
-    <%= f.button :submit %>
-  <% end %>
-
-</div>
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-6 col-md-4">
+        <div class="form-container" id="memory-card">
+          <div class="card-header text-center" id="card-title">
+            <h1>New Memory</h1>
+          </div>
+          <div class="card form-input" id="memory-form">
+            <%= simple_form_for @memorie do |f| %>
+              <div class="form-group">
+                <%= f.input :name, input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
+              </div>
+              <div class="form-group">
+                <%= f.input :content, input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
+              </div>
+              <div class="form-group">
+                <%= f.button :submit, class: 'btn btn-team' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
