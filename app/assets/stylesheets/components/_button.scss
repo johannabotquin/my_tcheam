@@ -92,13 +92,6 @@
   }
 }
 
-.btn-red {
-  background-color: $red;
-  &:hover {
-    background-color:$light-red;
-  }
-}
-
 .btn-pink {
   background-color: $deep-pink;
   &:hover {
@@ -112,3 +105,12 @@
     background-color:$light-green;
   }
 }
+
+
+.btn-delete {
+  background-color: $red;
+  &:hover {
+    background-color: $light-red;
+  }
+}
+

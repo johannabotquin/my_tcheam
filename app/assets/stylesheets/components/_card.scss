@@ -14,19 +14,24 @@
   }
 
 
-  .cards-progression {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 1rem;
-    margin-top: 1rem;
-
-    @media (min-width: 768px) {
-      grid-template-columns: 1fr;
-      margin-top: 0;
-    }
-  }
 }
 
+.cards-progression {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  margin-top: 1rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr;
+    margin-top: 0;
+  }
+
+  span {
+    font-family: 'Titan one', sans-serif;
+    font-size: 2.4rem;
+  }
+}
 
 .cards-tasks-list {
   display: grid;
@@ -55,11 +60,23 @@
 }
 
 .card-octopus {
+
+  .progression-content {
+    display: flex;
+  }
+
   p {
-    text-align: center;
-    font-family: 'Titan one';
+    font-family: 'Open sans', sans-serif;
+    padding-left: 1rem;
+  }
+
+  span {
+    font-family: 'Titan one', sans-serif;
+    font-size: 3rem;
   }
 }
+
+
 
 .card-task {
   display: flex;
