@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background-color: $light-purple;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +9,74 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+
+.nav-item.dropdown {
+
+    @media (max-width: 768px) {
+      display: grid;
+      grid-template-columns: 1fr 6fr;
+    }
+
+    .dropdown-menu {
+      font-family: 'Open sans', sans-serif;
+
+      @media (max-width: 768px) {
+        background-color: $light-purple;
+        border: none;
+        border-radius: 0;
+        padding: 0;
+        margin-top: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    .dropdown-item {
+      color: $dark-black;
+
+      &:hover {
+        background-color: transparent;
+        color: $dark-purple
+      }
+
+      @media (max-width: 768px) {
+        color: $gray;
+        padding: 0;
+      }
+    }
+}
+
+.navbar-nav {
+  font-family: 'Titan One', sans-serif;
+  --bs-nav-link-color: $dark-gray;
+
+  @media (max-width: 768px) {
+    margin-top: 2rem;
+    line-height: 2.6rem;
+    font-size: 1.4rem;
+  }
+}
+
+.navbar-nav li:last-child {
+  @media (max-width: 768px) {
+    margin-top: 6rem;
+  }
+}
+
+.navbar-lewagon .navbar-collapse {
+  @media (max-width: 768px) {
+    min-height: 100vh;
+  }
 }
