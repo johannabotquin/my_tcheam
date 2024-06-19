@@ -1,12 +1,17 @@
-<%= simple_form_for @task do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :category, collection: Task::CATEGORIES %>
-  <%= f.input :reccurence, as: :boolean %>
-  <%= f.input :points %>
-  <%= f.input :deadline %>
-  <%= f.input :achieved %>
-  <%= f.input :priority_tag, collection: Task::PRIORITY %>
+<div class="container">
+  <%= simple_form_for @task do |f| %>
+    <%= f.input :name, label: "Son nom" %>
+    <%= f.input :description, label: "+ en détails" %>
+    <%= f.input :category, label: "Sa catégorie", collection: Task::CATEGORIES %>
+    <%= f.input :reccurence, label: "Réccurence ?", as: :boolean %>
+    <%= f.input :points, label: "Ses points attribués" %>
+    <%= f.input :deadline,
+                :label => "Sa date",
+                as: :string,
+                input_html: { data: { controller: "datepicker" } } %>
+    <%= f.input :achieved, label: "Effectuée ?" %>
+    <%= f.input :priority_tag, label: "Son niveau de priorité", collection: Task::PRIORITY %>
 
-  <%= f.button :submit %>
-<% end %>
+    <%= f.button :submit, label: "Ajoute la !" %>
+  <% end %>
+</div>
