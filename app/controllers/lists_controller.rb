@@ -12,6 +12,8 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
+    @list.user = current_user
+    @members = @list.user.team.users
   end
 
   def create

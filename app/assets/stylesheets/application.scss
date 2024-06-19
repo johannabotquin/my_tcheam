@@ -14,6 +14,11 @@
 
 body {
   color: $dark-black;
+  background-color: $light-gray;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 p {
@@ -29,8 +34,9 @@ a {
   color: $dark-black;
 }
 
-h1,h2,h3,p {
-  margin:0;
+h1,h2,h3,p,.col {
+  margin: 0;
+  padding: 0;
 }
 
 .container {
@@ -39,4 +45,9 @@ h1,h2,h3,p {
 
 .row {
   margin: 2rem 0 2rem;
+}
+
+
+.form-control {
+  color: $dark-black !important
 }

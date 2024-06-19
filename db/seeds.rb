@@ -31,7 +31,7 @@ User.create(
   email: "johanna@gmail.com",
   password: "angryjojo",
   avatar: "https://pictory.ai/wp-content/uploads/2022/03/pictory_500.png",
-  team_id: team.id
+  team_id: team.id,
 )
 
 User.create(
@@ -41,7 +41,7 @@ User.create(
   email: "ragheed.sleimani@gmail.com",
   password: "zenragheed",
   avatar: "https://pictory.ai/wp-content/uploads/2022/03/pictory_500.png",
-  team_id: team.id
+  team_id: team.id,
 )
 
 puts "end users"

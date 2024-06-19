@@ -6,34 +6,48 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body>
-
   <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-    <div class="container-fluid">
+    <div class="container container-fluid">
       <a class="navbar-brand" href="#">
-        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" />
+        <%= image_tag ("logo-deep-purple.svg") %>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <%= image_tag ("burger-menu.svg") %>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home</a>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Ma team</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Messages</a>
+              <a class="nav-link" href="#">Faire tourner la roue</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">+ Tâche</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">+ Liste</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">+ Récompense</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Nos souvenirs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Le challenge des minots</a>
             </li>
             <li class="nav-item dropdown">
-              <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
+              <%= image_tag "avatar-poulpe.jpg", class: "avatar dropdown-toggle avatar-bordered", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" } %>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Profile</a>
                 <a class="dropdown-item" data-turbo-method="delete" href="#">Log out</a>
               </div>
             </li>
@@ -47,16 +61,19 @@
 
     <%= yield %>
 
+
     <div class="footer">
 
       <div class="footer-links">
-        <a href="#"><i class="fab fa-github" style="color: #EBC1F1"></i></a>
-        <a href="#"><i class="fab fa-instagram" style="color: #EBC1F1"></i></a>
-        <a href="#"><i class="fab fa-facebook" style="color: #EBC1F1"></i></a>
-        <a href="#"><i class="fab fa-twitter" style="color: #EBC1F1"></i></a>
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
       </div>
 
-      <div></div>
+      <div>
+        <p>© 2024 La Team. Tous droits réservés.</p>
+      </div>
     </div>
 
   </body>

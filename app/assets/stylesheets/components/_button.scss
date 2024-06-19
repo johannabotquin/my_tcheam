@@ -4,11 +4,57 @@
   box-shadow: 0 5px;
   font-family: $link-font;
   color: $dark-black;
+  margin: .5rem 0;
 }
 
+<<<<<<< HEAD
+=======
+.btn-orange {
+  background-color: $deep-orange;
+  &:hover {
+    background-color:$coral;
+  }
+}
+
+>>>>>>> 4f86a6117a7379ff6e6251b114e0c54f2c23dd02
 .btn-purple {
   background-color: $electric-purple;
   &:hover {
     background-color:$light-purple;
+  }
+}
+
+.btn-blue {
+  background-color: $deep-blue;
+  &:hover {
+    background-color:$light-blue;
+  }
+}
+
+.btn-yellow {
+  background-color: $deep-yellow;
+  &:hover {
+    background-color:$light-yellow;
+  }
+}
+
+.btn-red {
+  background-color: $red;
+  &:hover {
+    background-color:$light-red;
+  }
+}
+
+.btn-pink {
+  background-color: $deep-pink;
+  &:hover {
+    background-color:$light-pink;
+  }
+}
+
+.btn-green {
+  background-color: $dark-green;
+  &:hover {
+    background-color:$light-green;
   }
 }
