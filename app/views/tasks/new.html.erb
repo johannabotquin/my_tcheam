@@ -1,12 +1,27 @@
-<%= simple_form_for @task do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :category, collection: Task::CATEGORIES %>
-  <%= f.input :reccurence, as: :boolean %>
-  <%= f.input :points %>
-  <%= f.input :deadline %>
-  <%= f.input :achieved %>
-  <%= f.input :priority_tag, collection: Task::PRIORITY %>
+<div class="container">
+  <%= simple_form_for @task do |f| %>
+    <%= f.input :name, label: "Son nom" %>
+    <%= f.input :description, label: "+ en détails" %>
+    <%= f.input :category, label: "Sa catégorie", collection: Task::CATEGORIES %>
+    <%= f.input :reccurence, label: "Réccurence ?", as: :boolean %>
+    <%= f.input :points, label: "Ses points attribués" %>
+    <h3>Choisis les membres</h3>
+    <div data-controller="member-selection">
+      <% @members.each do |member| %>
+        <div class="member-photo" data-member-selection-target="photo" data-member-id="<%= member.id %>">
+          <%= image_tag(member.avatar, alt: member.first_name, style: "width:100px") %>
+          <%= f.simple_fields_for :task_managers, @task.task_managers.build do |tm| %>
+            <%= tm.hidden_field :user_id, value: member.id, data: { member_selection_target: "checkbox" } %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <%= f.input :deadline,
+                :label => "Sa date",
+                as: :string,
+                input_html: { data: { controller: "datepicker" } } %>
+    <%= f.input :priority_tag, label: "Son niveau de priorité", collection: Task::PRIORITY %>
 
-  <%= f.button :submit %>
-<% end %>
+    <%= f.submit 'Ajoute la', class: 'btn btn-purple' %>
+  <% end %>
+</div>
