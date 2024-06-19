@@ -6,3 +6,10 @@
   font-family: $link-font;
   color: $dark-black;
 }
+
+#memory-card .btn-team {
+  background-color: $electric-purple;
+  &:hover {
+    background-color:$light-purple;
+  }
+}
