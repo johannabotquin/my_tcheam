@@ -1,0 +1,17 @@
+.form-container {
+  border: 1px solid $dark-black;
+  border-radius: 5px;
+  background-color: $light-purple;
+  padding: 1rem;
+  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+$light-purple: #C499E1;
+$deep-purple: #9B06D1;
+
+.card.form-input {
+  background-color: $dark-purple;
+  margin-top: 1rem;
+}

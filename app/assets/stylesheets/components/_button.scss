@@ -1,10 +1,10 @@
-.btn-team {
+.btn {
   border: 1px solid $dark-black;
   border-radius: 5px;
-  background-color: $deep-orange;
   box-shadow: 0 5px;
   font-family: $link-font;
   color: $dark-black;
+
   &:hover {
     background-color: $deep-blue;
     color: $dark-black;
@@ -60,5 +60,55 @@
     border: 1px solid $dark-black;
     border-radius: 5px;
     font-family: $link-font;
+=======
+  margin: .5rem 0;
+}
+
+.btn-orange {
+  background-color: $deep-orange;
+  &:hover {
+    background-color:$coral;
+  }
+}
+
+.btn-purple {
+  background-color: $electric-purple;
+  &:hover {
+    background-color:$light-purple;
+  }
+}
+
+.btn-blue {
+  background-color: $deep-blue;
+  &:hover {
+    background-color:$light-blue;
+  }
+}
+
+.btn-yellow {
+  background-color: $deep-yellow;
+  &:hover {
+    background-color:$light-yellow;
+  }
+}
+
+.btn-red {
+  background-color: $red;
+  &:hover {
+    background-color:$light-red;
+  }
+}
+
+.btn-pink {
+  background-color: $deep-pink;
+  &:hover {
+    background-color:$light-pink;
+  }
+}
+
+.btn-green {
+  background-color: $dark-green;
+  &:hover {
+    background-color:$light-green;
   }
 }

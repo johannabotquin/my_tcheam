@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -13,7 +12,7 @@ Rails.application.routes.draw do
   resources :tasks
 
   resources :teams, only: %i[new create show] do
-    resources :rewards, except: [:show]
+    resources :rewards, except: %i[show]
   end
 
   resources :memories
