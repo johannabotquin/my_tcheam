@@ -14,7 +14,7 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find(current_user.team_id)
+    @team = current_user.team
   end
 
   private

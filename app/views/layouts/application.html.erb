@@ -22,38 +22,40 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <%= link_to "Ma team", team_path(current_user), class:"nav-link" %>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Faire tourner la roue</a>
-            </li>
-            <li class="nav-item">
-              <%= link_to "+ Tâche", new_task_path, class:"nav-link" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "+ Liste", new_user_list_path(current_user), class:"nav-link" %>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">+ Récompense</a>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Nos souvenirs", memories_path, class:"nav-link" %>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Le challenge des minots</a>
-            </li>
-            <li class="nav-item dropdown">
-              <%= image_tag "avatar-poulpe.jpg", class: "avatar dropdown-toggle avatar-bordered", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" } %>
-              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Profile</a>
-                <a class="dropdown-item" data-turbo-method="delete" href="#">Log out</a>
-              </div>
-            </li>
-            <!--li class="nav-item"-->
-            <!--/li-->
-        </ul>
+        <% if (current_user) %>
+          <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <%= link_to "Ma team", team_path(current_user.team), class:"nav-link" %>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Faire tourner la roue</a>
+              </li>
+              <li class="nav-item">
+                <%= link_to "+ Tâche", new_task_path, class:"nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "+ Liste", new_user_list_path(current_user), class:"nav-link" %>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">+ Récompense</a>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Nos souvenirs", memories_path, class:"nav-link" %>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Le challenge des minots</a>
+              </li>
+              <li class="nav-item dropdown">
+                <%= image_tag "avatar-poulpe.jpg", class: "avatar dropdown-toggle avatar-bordered", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false" } %>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Profile</a>
+                  <a class="dropdown-item" data-turbo-method="delete" href="#">Log out</a>
+                </div>
+              </li>
+              <!--li class="nav-item"-->
+              <!--/li-->
+          </ul>
+        <% end %>
       </div>
     </div>
   </div>
