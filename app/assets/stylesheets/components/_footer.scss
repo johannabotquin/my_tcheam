@@ -1,7 +1,14 @@
 .footer {
-  img {
-    width: 4rem;
-    display: block;
-    margin: 0 auto;
+  min-height: 60px;
+  background-color: $deep-pink;
+  border-top: 2px solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+
+  a {
+    color: $dark-black;
   }
 }
