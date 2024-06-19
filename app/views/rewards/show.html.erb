@@ -1,0 +1,7 @@
+<h1>Détails de la Récompense <%= @reward.name %> pour l'équipe <%= @team.name %></h1>
+
+<p><strong>Nom:</strong> <%= @reward.name %></p>
+<p><strong>Objectif:</strong> <%= @reward.goal %></p>
+
+<%= link_to 'Modifier', edit_team_reward_path(@team, @reward) %> |
+<%= link_to 'Retour', team_rewards_path(@team) %>
