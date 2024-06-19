@@ -1,10 +1,34 @@
-<h1>Nouvelle Récompense pour l'équipe <%= @team.name %></h1>
+<div class="container text-center">
+  <% if @reward.new_record? %>
+    <h1>Nouvelle Reward pour l'équipe <span style="color: red;"><%= @team.name %></span></h1>
+  <% else %>
+    <h1>Modifier les Rewards pour l'équipe <span style="color: red;"><%= @team.name %></span></h1>
+  <% end %>
+  <br>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <%= simple_form_for [@team, @reward], html: { class: 'form' } do |f| %>
+            <div class="form-inputs">
+              <h3><%= f.input :name, label: "Nom de la récompense" %></h3>
+              <h3><%= f.input :goal, label: "Objectif" %></h3>
+            </div>
 
-<%= simple_form_for [@team, @reward] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :goal %>
+            <div class="form-actions text-center">
+              <% if @reward.new_record? %>
+                <%= f.button :submit, 'Créer Récompense', class: 'btn btn-team' %>
+              <% else %>
+                <%= f.button :submit, 'Modifier la Reward', class: 'btn btn-team' %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <%= f.button :submit, 'Créer Récompense' %>
-<% end %>
-
-<%= link_to 'Retour', team_rewards_path(@team) %>
+  <div class="text-center mt-3">
+    <%= link_to 'Retour', team_rewards_path(@team), class: 'btn btn-back' %>
+  </div>
+</div>
