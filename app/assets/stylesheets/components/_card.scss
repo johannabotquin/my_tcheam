@@ -54,6 +54,13 @@
   background-color: $deep-orange;
 }
 
+.card-octopus {
+  p {
+    text-align: center;
+    font-family: 'Titan one';
+  }
+}
+
 .card-task {
   display: flex;
   flex-direction: row;

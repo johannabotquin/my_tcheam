@@ -31,7 +31,7 @@ User.create(
   email: "johanna@gmail.com",
   password: "angryjojo",
   avatar: "https://pictory.ai/wp-content/uploads/2022/03/pictory_500.png",
-  team_id: team.id
+  team_id: team.id,
 )
 
 User.create(
@@ -41,7 +41,7 @@ User.create(
   email: "ragheed.sleimani@gmail.com",
   password: "zenragheed",
   avatar: "https://pictory.ai/wp-content/uploads/2022/03/pictory_500.png",
-  team_id: team.id
+  team_id: team.id,
 )
 
 puts "end users"
@@ -105,6 +105,20 @@ Task.create(
   deadline: "2024-06-27",
   achieved: false,
   priority_tag: 2,
+  user_id: User.first.id
+)
+
+Reward.create(
+  name: "voyage a disney land",
+  goal: "100",
+  team_id: team.id,
+  user_id: User.first.id
+)
+
+Reward.create(
+  name: "voyage au parc Asterix",
+  goal: "80",
+  team_id: team.id,
   user_id: User.first.id
 )
 

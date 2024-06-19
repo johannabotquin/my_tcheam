@@ -1,0 +1,18 @@
+.member-photo {
+  cursor: pointer;
+  border: 2px solid transparent;
+  display: inline-block;
+  margin: 5px;
+}
+
+.member-photo img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.member-photo.selected {
+  border-color: green;
+  border-radius: 50%;
+}
