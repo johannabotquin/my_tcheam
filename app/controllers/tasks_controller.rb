@@ -3,7 +3,17 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy]
 
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks
+
+    if params[:filter] && params[:filter][:date].present?
+      selected_date = Date.parse(params[:filter][:date])
+      @tasks = @tasks.where(deadline: selected_date)
+    end
+
+    respond_to do |format|
+      format.html
+      format.text { render 'tasks/index', locals: { tasks: @tasks }, formats: [:html]}
+    end
   end
 
   def show

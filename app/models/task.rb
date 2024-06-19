@@ -3,7 +3,7 @@ class Task < ApplicationRecord
                 "La maison elle va pas se gérer seule, figure de poulpe !",
                 "Fais tes papiers avant que ce soit le oaï !"]
   PRIORITY = [1, 2, 3]
-  
+
   belongs_to :user
   has_many :users, through: :task_managers
 

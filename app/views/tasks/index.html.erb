@@ -1,10 +1,35 @@
-<div>
-  <h1>Tasks</h1>
-  <ul>
-    <% @tasks.each do |task| %>
-      <li><%= task.name %></li>
-    <% end %>
-  </ul>
-</div>
+<div class="container" data-controller="tasks-filter">
+  <h1 class="mb-3">Tâches à venir</h1>
 
-<%= link_to "New Task", new_task_path %>
+  <%= simple_form_for :filter, url: tasks_path, method: :get, html: { data: { controller: 'tasks-filter', target: 'form' } } do |f| %>
+    <div class="calendar">
+      <% (Date.today - 2..Date.today + 2).each do |date| %>
+        <div class="tag-item">
+          <%= f.radio_button :date, date, id: "date_#{date}", class: "tag-selector visually-hidden" %>
+          <%= f.label :date, for: "date_#{date}", class: "tag-date text-center" do %>
+            <%= content_tag :span, date.strftime('%a'), class: "d-block text-center" %>
+            <%= content_tag :span, date.strftime('%e'), class: "d-block text-center fs-2 fw-2" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <%= f.submit "Filter Tasks", class: "btn btn-primary", style: "display: none;" %>
+  <% end %>
+
+  <div data-tasks-target="results" class="mt-4">
+    <% @tasks.each do |task| %>
+      <%= link_to task_path(task), class: "card card-task card-health mb-3" do %>
+        <div class="card-content">
+            <h3><%= task.name %></h3>
+            <p><%= task.description %></p>
+            <div class="deadline">
+              <p>Deadline : vendredi</p>
+            </div>
+          </div>
+          <div class="card-checkboxe">
+            <%= image_tag ("checkboxe") %>
+          </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
