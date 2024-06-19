@@ -47,7 +47,7 @@ class RewardsController < ApplicationController
     @team = Team.find(params[:team_id])
     @reward = @team.rewards.find(params[:id])
     @reward.destroy
-    redirect_to team_rewards_path(@team), notice: 'La recompense est supprimée.'
+    redirect_to team_rewards_path(@team), status: :see_other
   end
 
   private

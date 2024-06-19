@@ -1,2 +1,6 @@
-<h1>Teams#show</h1>
-<p>Find me in app/views/teams/show.html.erb</p>
+<h1>Détails de l'Équipe <%= @team.name %></h1>
+
+<p><strong>Nom:</strong> <%= @team.name %></p>
+<p><strong>Score:</strong> <%= @team.score %></p>
+
+<%= link_to 'Retour', teams_path %>

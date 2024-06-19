@@ -1,11 +1,27 @@
-<h1>Rewards for <%= @team.name %></h1>
-<%= link_to 'New Reward', new_team_reward_path(@team), class: 'btn btn-primary' %>
-<ul>
-  <% @rewards.each do |reward| %>
-    <li>
-      <%= link_to reward.name, team_reward_path(@team, reward) %>
-      (<%= link_to 'Edit', edit_team_reward_path(@team, reward) %>,
-      <%= link_to 'Destroy', team_reward_path(@team, reward), method: :delete, data: { confirm: 'Are you sure?' } %>)
-    </li>
-  <% end %>
-</ul>
+<h1>Index des Récompenses de l'équipe <%= @team.name %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Objectif</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @rewards.each do |reward| %>
+      <tr>
+        <td><%= reward.name %></td>
+        <td><%= reward.goal %></td>
+        <td>
+          <%= link_to 'Voir', team_reward_path(@team, reward) %> |
+          <%= link_to 'Modifier', edit_team_reward_path(@team, reward) %> |
+          <%= link_to 'Supprimer', team_reward_path(@team, reward), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Nouvelle Récompense', new_team_reward_path(@team) %>

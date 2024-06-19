@@ -1,2 +1,10 @@
-<h1>Teams#new</h1>
-<p>Find me in app/views/teams/new.html.erb</p>
+<h1>Nouvelle Équipe</h1>
+
+<%= simple_form_for @team do |f| %>
+  <%= f.input :name %>
+  <%= f.input :score %>
+
+  <%= f.button :submit, 'Créer Équipe' %>
+<% end %>
+
+<%= link_to 'Retour', teams_path %>

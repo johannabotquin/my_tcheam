@@ -1,3 +1,10 @@
-<h1>New Reward for <%= @team.name %></h1>
-<%= render 'form' %>
-<%= link_to 'Back', team_rewards_path(@team) %>
+<h1>Nouvelle Récompense pour l'équipe <%= @team.name %></h1>
+
+<%= simple_form_for [@team, @reward] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :goal %>
+
+  <%= f.button :submit, 'Créer Récompense' %>
+<% end %>
+
+<%= link_to 'Retour', team_rewards_path(@team) %>
