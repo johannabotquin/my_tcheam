@@ -1,0 +1,84 @@
+.dashboard-progression {
+  border: 1px solid $dark-black;
+  border-radius: 5px;
+  background-color: $coral;
+  padding: 1rem;
+  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: 1fr;
+
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+  }
+
+
+  .cards-progression {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    margin-top: 1rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr;
+      margin-top: 0;
+    }
+  }
+}
+
+
+.cards-tasks-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+  margin: 1rem 0 2rem;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.card {
+  color: $dark-black;
+  box-shadow: 0 5px;
+  border: 1px solid $dark-black;
+  border-radius: 5px;
+  padding: 1rem;
+  h3 {
+    margin-bottom: .5rem;
+  }
+}
+
+.card-octopus, .card-achieved-tasks, .card-pending-tasks {
+  background-color: $deep-orange;
+}
+
+.card-task {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .deadline {
+    font-weight: 800;
+  }
+}
+
+.card-health {
+  background-color: $light-pink;
+}
+
+.card-admin {
+  background-color: $coral;
+}
+
+.card-home-duty {
+  background-color: $light-blue;
+}
+
+
+.card-list {
+  background-color: $light-green;
+  width: 85%;
+  margin: 0 auto;
+}

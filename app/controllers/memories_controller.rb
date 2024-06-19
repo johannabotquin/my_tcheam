@@ -15,7 +15,7 @@ class MemoriesController < ApplicationController
   def create
     @memorie = Memorie.new(memorie_params)
     if @memorie.save
-      redirect_to memorie_path(@memorie)
+      redirect_to memory_path(@memorie)
     else
       render :new, status: :unprocessable_entity
     end

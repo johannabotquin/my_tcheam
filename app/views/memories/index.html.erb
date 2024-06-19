@@ -1,0 +1,7 @@
+<div>
+<h1>Memories</h1>
+
+  <% @memories.each do |memorie| %>
+    <%= link_to memorie.name, memory_path(memorie) %>
+  <% end %>
+</div>
