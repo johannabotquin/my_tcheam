@@ -23,11 +23,6 @@ class RewardsController < ApplicationController
     end
   end
 
-  def show
-    @team = Team.find(params[:team_id])
-    @reward = @team.rewards.find(params[:id])
-  end
-
   def edit
     @team = Team.find(params[:team_id])
     @reward = @team.rewards.find(params[:id])

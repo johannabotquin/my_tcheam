@@ -4,6 +4,63 @@
   box-shadow: 0 5px;
   font-family: $link-font;
   color: $dark-black;
+
+  &:hover {
+    background-color: $deep-blue;
+    color: $dark-black;
+    box-shadow: 0 5px;
+    border: 1px solid $dark-black;
+    border-radius: 5px;
+    font-family: $link-font;
+  }
+}
+.btn-delete {
+  border: 1px solid $dark-black;
+  border-radius: 5px;
+  background-color: $red;
+  box-shadow: 0 5px;
+  font-family: $link-font;
+  color: $dark-black;
+  &:hover {
+    background-color: $deep-blue;
+    color: $dark-black;
+    box-shadow: 0 5px;
+    border: 1px solid $dark-black;
+    border-radius: 5px;
+    font-family: $link-font;
+  }
+}
+.btn-edit {
+  border: 1px solid $dark-black;
+  border-radius: 5px;
+  background-color: $coral;
+  box-shadow: 0 5px;
+  font-family: $link-font;
+  color: $dark-black;
+  &:hover {
+    background-color: $deep-blue;
+    color: $dark-black;
+    box-shadow: 0 5px;
+    border: 1px solid $dark-black;
+    border-radius: 5px;
+    font-family: $link-font;
+  }
+}
+.btn-back {
+  border: 1px solid $dark-black;
+  border-radius: 5px;
+  background-color: $light-pink;
+  box-shadow: 0 5px;
+  font-family: $link-font;
+  color: $dark-black;
+  &:hover {
+    background-color: $deep-blue;
+    color: $dark-black;
+    box-shadow: 0 5px;
+    border: 1px solid $dark-black;
+    border-radius: 5px;
+    font-family: $link-font;
+=======
   margin: .5rem 0;
 }
 
