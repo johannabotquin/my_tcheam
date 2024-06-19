@@ -14,12 +14,12 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.where(user_id: current_user.id)
+    @team = Team.find(current_user.team_id)
   end
 
   private
 
   def team_params
-    params.require(:team).permit(:name, :score, :photo)
+    params.require(:team).permit(:name, :photo)
   end
 end
