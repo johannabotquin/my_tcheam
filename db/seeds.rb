@@ -108,6 +108,20 @@ Task.create(
   user_id: User.first.id
 )
 
+Reward.create(
+  name: "voyage a disney land",
+  goal: "100",
+  team_id: team.id,
+  user_id: User.first.id
+)
+
+Reward.create(
+  name: "voyage au parc Asterix",
+  goal: "80",
+  team_id: team.id,
+  user_id: User.first.id
+)
+
 puts "end tasks"
 
 puts "creating lists..."
