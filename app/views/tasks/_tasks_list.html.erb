@@ -1,34 +1,74 @@
 <!-- app/views/tasks/_tasks_list.html.erb -->
 <% tasks.each do |task| %>
     <% if task.category == Task::CATEGORIES[0] %>  <!-- CATEGORIES[0] = "Santé" -->
-      <%= link_to task_path(task), class: "card card-task card-health mb-4 ", data: { aos: "flip-up" } do %>
+      <%= link_to task_path(task), class: "card card-task card-health mb-4 ", data: { aos: "flip-up", bs_toggle: "modal", bs_target: "#exampleModal" } do %>
         <div class="card-content">
           <h3><%= task.name %></h3>
           <p><%= task.description %></p>
         </div>
         <div class="card-checkboxe">
-          <%= image_tag "checkboxe" %>
+          <% if task.achieved %>
+            <%= image_tag "checkboxe-checked" %>
+          <% else %>
+            <%= image_tag "checkboxe" %>
+          <% end %>
         </div>
       <% end %>
     <% elsif task.category == Task::CATEGORIES[1] %>  <!-- CATEGORIES[1] = "Gestion du foyer" -->
-      <%= link_to task_path(task), class: "card card-task card-home-duty mb-4", data: { aos: "flip-up" } do %>
+      <%= link_to task_path(task), class: "card card-task card-home-duty mb-4", data: { aos: "flip-up", bs_toggle: "modal", bs_target: "#exampleModal" } do %>
         <div class="card-content">
           <h3><%= task.name %></h3>
           <p><%= task.description %></p>
         </div>
         <div class="card-checkboxe">
-          <%= image_tag "checkboxe" %>
+          <% if task.achieved %>
+            <%= image_tag "checkboxe-checked" %>
+          <% else %>
+            <%= image_tag "checkboxe" %>
+          <% end %>
         </div>
       <% end %>
     <% elsif task.category == Task::CATEGORIES[2] %>  <!-- CATEGORIES[2] = "Administratif" -->
-      <%= link_to task_path(task), class: "card card-task card-admin mb-4", data: { aos: "flip-up" } do %>
+      <%= link_to task_path(task), class: "card card-task card-admin mb-4", data: { aos: "flip-up", bs_toggle: "modal", bs_target: "#exampleModal" } do %>
         <div class="card-content">
           <h3><%= task.name %></h3>
           <p><%= task.description %></p>
         </div>
         <div class="card-checkboxe">
-          <%= image_tag "checkboxe" %>
+          <% if task.achieved %>
+            <%= image_tag "checkboxe-checked" %>
+          <% else %>
+            <%= image_tag "checkboxe" %>
+          <% end %>
         </div>
       <% end %>
   <% end %>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"><%= task.name %></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for task do |f| %>
+          <%= f.input :name %>
+          <%= f.input :description %>
+          <%= f.input :category, collection: Task::CATEGORIES %>
+          <%= f.input :reccurence, as: :boolean %>
+          <%= f.input :points %>
+          <%= f.input :deadline %>
+          <%= f.input :achieved %>
+          <%= f.input :priority, collection: Task::PRIORITY %>
+
+          <div class="modal-footer">
+            <%= f.button :submit, 'Save changes', class: "btn btn-orange" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <% end %>
