@@ -23,7 +23,7 @@
                 <%= link_to "+ Liste", new_user_list_path(current_user), class:"nav-link" %>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">+ Récompense</a>
+                <%= link_to "+ Récompense", new_team_reward_path(current_user.team), class:"nav-link" %>
               </li>
               <li class="nav-item">
                 <%= link_to "Nos souvenirs", memories_path, class:"nav-link" %>
