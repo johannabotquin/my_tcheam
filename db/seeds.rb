@@ -57,7 +57,7 @@ begin
       points: 50,
       deadline: "2024-06-19",
       achieved: false,
-      priority_tag: 1,
+      priority: 1,
       user: user1
     )
     TaskManager.create!(user: user1, task: project)
@@ -70,7 +70,7 @@ begin
       points: 10,
       deadline: "2024-06-19",
       achieved: true,
-      priority_tag: 2,
+      priority: 2,
       user: user1
     )
     TaskManager.create!(user: user1, task: courses)
@@ -83,7 +83,7 @@ begin
       points: 30,
       deadline: "2024-06-20",
       achieved: true,
-      priority_tag: 1,
+      priority: 1,
       user: user1
     )
     TaskManager.create!(user: user1, task: medecin)
@@ -96,7 +96,7 @@ begin
       points: 15,
       deadline: "2024-06-20",
       achieved: false,
-      priority_tag: 2,
+      priority: 2,
       user: user1
     )
     TaskManager.create!(user: user1, task: factures)
@@ -109,7 +109,7 @@ begin
       points: 25,
       deadline: "2024-06-21",
       achieved: false,
-      priority_tag: 2,
+      priority: 2,
       user: user1
     )
     TaskManager.create!(user: user1, task: carte)
@@ -127,28 +127,32 @@ Reward.create!(
   name: "Week-end à la campagne",
   goal: 100,
   user_id: user1.id,
-  team_id: team.id
+  team_id: team.id,
+  selected: true
 )
 
 Reward.create!(
   name: "Dîner romantique",
   goal: 50,
   user_id: user2.id,
-  team_id: team.id
+  team_id: team.id,
+  selected: false
 )
 
 Reward.create(
   name: "voyage a disney land",
   goal: "100",
   team_id: team.id,
-  user_id: User.first.id
+  user_id: User.first.id,
+  selected: false
 )
 
 Reward.create(
   name: "voyage au parc Asterix",
   goal: "80",
   team_id: team.id,
-  user_id: User.first.id
+  user_id: User.first.id,
+  selected: false
 )
 
 puts "Rewards created"
