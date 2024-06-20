@@ -1,8 +1,6 @@
 <div class="container text-center pt-4">
-  <h1>Les Rewards de l'équipe <span style="color: red;"><%= @team.name %></span></h1>
-<br>
-<%= link_to 'Nouvelle Récompense', new_team_reward_path(@team), class: 'btn btn-orange' %>
-<br>
+  <h1>Pour quelle récompense souhaites-tu jouer ?</h1>
+
   <div class="row">
     <% @rewards.each do |reward| %>
       <div class="col-md-4 mb-4">
@@ -30,5 +28,9 @@
         <% end %>
       </div>
     <% end %>
+
+  <div>
+    <%= link_to 'Nouvelle Récompense', new_team_reward_path(@team), class: 'btn btn-orange' %>
+  </div>
   </div>
 </div>
