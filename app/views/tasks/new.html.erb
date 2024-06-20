@@ -5,7 +5,7 @@
           <div class="container-header text-center">
             <h1>Nouvelle tâche</h1>
           </div>
-          <div class="card form-input" id="task-form">
+          <div class="card form-input">
             <%= simple_form_for @task do |f| %>
               <div class="form-group">
                 <%= f.input :name, label: "Nom", input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
@@ -15,22 +15,24 @@
               </div>
 
               <%= f.input :category,
+                  label: "Catégorie",
                   as: :radio_buttons,
                   collection_wrapper_tag: 'div',
                   collection_wrapper_class: 'category-wrapper',
                   item_wrapper_class: 'category-item',
                   input_html: {class: 'category-selector'},
-                  collection: Task::CATEGORIES %>
+                  collection: Task::CATEGORIES,
+                  label_html: { class: 'form-label' } %>
 
               <div class="form-group">
                 <%= f.input :reccurence, label: "Réccurente", as: :boolean, input_html: { class: 'form-check-input' }, label_html: { class: 'form-check-label' } %>
               </div>
               <div class="form-group">
-                <%= f.input :points, label: "Ses points attribués", input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
+                <%= f.input :points, label: "Points", input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
               </div>
-                   <h3>Choisis les membres</h3>
-              <div data-controller="member-selection">
-                <%= f.label :members, "Membres" %>
+
+              <p class="form-label">Qui doit réaliser cette tâche ?</p>
+              <div class="d-flex" data-controller="member-selection">
                 <% @members.each do |member| %>
                   <div class="form-check">
                     <%= check_box_tag 'task[members][]', member.id, false, id: "member_#{member.id}", class: 'form-check-input', style: 'display:none;', data: { member_selection_target: "checkbox" } %>
@@ -41,22 +43,24 @@
                 <% end %>
               </div>
                 <%= f.input :deadline,
-                            :label => "Sa date",
+                            :label => "Deadline",
                             as: :string,
                             input_html: { data: { controller: "datepicker" }, class: 'form-control' },
                             label_html: { class: 'form-label' } %>
 
              <div class="form-group">
                 <%= f.input :priority,
+                  label: "Priorité",
                   as: :check_boxes,
                   collection_wrapper_tag: 'div',
                   collection_wrapper_class: 'd-flex flex-wrap',
                   input_html: { class: "tag-selector" },
-                  item_wrapper_class: 'tag-item',
-                  collection: Task::PRIORITY %>
+                  item_wrapper_class: 'tag-item  mb-3',
+                  collection: Task::PRIORITY,
+                  label_html: { class: 'form-label' } %>
 
               </div>
-            <div class="form-actions text-center my-4">
+            <div class="form-actions text-center mt-5 my-4">
                 <%= f.submit 'Ajoute la', class: 'btn btn-orange' %>
               </div>
             <% end %>
