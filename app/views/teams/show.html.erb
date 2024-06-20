@@ -1,6 +1,39 @@
 <h1><%= @team.name %></h1>
 
-<p><strong>Nom:</strong> <%= @team.name %></p>
+<div class="team-members">
+    <% @team.users.each do |user| %>
+      <%= image_tag(user.avatar, alt: user.first_name, style: "width:100px") %>
+    <% end %>
+</div>
+
+
+
+
 <p><strong>Score:</strong> <%= @team.score %></p>
 
 <%= link_to 'Retour', user_path(current_user) %>
+
+
+<div class="container" data-controller="tasks">
+  <h1 class="mb-3">Tâches à venir</h1>
+
+  <%= simple_form_for :filter, url: tasks_path, method: :get do |f| %>
+    <div class="calendar mb-4">
+        <% (Date.today - 7..Date.today + 7).each do |date| %>
+          <div class="tag-item">
+            <%= f.radio_button :date, date, id: "date_#{date}", class: "tag-selector visually-hidden", data: { action: "tasks#filterTasks", tasks_target: "date" } %>
+            <%= f.label :date, for: "date_#{date}", class: "tag-date text-center" do %>
+              <%= content_tag :span, date.strftime('%a'), class: "d-block text-center" %>
+              <%= content_tag :span, date.strftime('%e'), class: "d-block text-center tag-day" %>
+            <% end %>
+          </div>
+        <% end %>
+    </div>
+
+    <%= f.submit "Filter Tasks", class: "btn btn-primary", style: "display:none;" %>
+  <% end %>
+
+  <div id="tasks-list">
+    <%= render partial: "tasks/tasks_list", locals: { tasks: @tasks }, layout: false %>
+  </div>
+</div>

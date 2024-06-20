@@ -114,6 +114,19 @@ begin
     )
     TaskManager.create!(user: user1, task: carte)
 
+    spectacle = Task.create!(
+      name: "Kermesse école",
+      description: "",
+      category: "La maison elle va pas se gérer seule, figure de poulpe !",
+      reccurence: false,
+      points: 25,
+      deadline: "2024-08-21",
+      achieved: false,
+      priority: 2,
+      user: user1
+    )
+    TaskManager.create!(user: user1, task: spectacle)
+
     puts "Tasks created."
   end
 rescue ActiveRecord::RecordInvalid => e
