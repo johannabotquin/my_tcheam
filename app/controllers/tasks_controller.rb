@@ -59,7 +59,7 @@ class TasksController < ApplicationController
 
   def update
     @task.update(task_params)
-    redirect_to task_path(@task)
+    redirect_back fallback_location: root_path, notice: "Task updated"
   end
 
   def destroy
@@ -70,7 +70,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :description, :category, :reccurence, :points, :deadline, :achieved, :priority_tag)
+    params.require(:task).permit(:name, :description, :category, :reccurence, :points, :deadline, :achieved, :priority)
   end
 
   def set_task

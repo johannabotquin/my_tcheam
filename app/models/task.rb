@@ -8,7 +8,7 @@ class Task < ApplicationRecord
               "Ça urge fada !"]
 
   belongs_to :user
-  has_many :task_managers
+  has_many :task_managers, dependent: :destroy
   has_many :users, through: :task_managers
 
   # validates :name, :category, :points, :deadline, :reccurence, :achieved, presence: true
