@@ -1,7 +1,7 @@
 .dashboard-progression {
   border: 1px solid $dark-black;
   border-radius: 5px;
-  background-color: $coral;
+  background-color: $deep-pink;
   padding: 1rem;
   margin: 1rem 0;
   display: grid;
@@ -12,7 +12,6 @@
     grid-template-columns: 1fr 1fr;
     grid-gap: 1rem;
   }
-
 
 }
 
@@ -27,7 +26,7 @@
     margin-top: 0;
   }
 
-  span {
+  h3 {
     font-family: 'Titan one', sans-serif;
     font-size: 2.4rem;
   }
@@ -56,23 +55,28 @@
 }
 
 .card-octopus, .card-achieved-tasks, .card-pending-tasks {
-  background-color: $deep-orange;
+  background-color: $light-pink;
 }
 
 .card-octopus {
 
   .progression-content {
     display: flex;
+    gap: 1.2rem;
   }
 
   p {
     font-family: 'Open sans', sans-serif;
-    padding-left: 1rem;
   }
 
-  span {
+  h3 {
     font-family: 'Titan one', sans-serif;
-    font-size: 3rem;
+    font-size: 4rem;
+    line-height: 1;
+  }
+
+  &__image {
+    padding: 10px;
   }
 }
 
