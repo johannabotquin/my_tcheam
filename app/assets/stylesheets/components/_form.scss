@@ -111,9 +111,9 @@
   transform: scale(0);
 }
 
-#task_priority_tag_tranquille + label,
-#task_priority_tag_passe_la_seconde_ + label,
-#task_priority_tag_ça_urge_fada_ + label {
+#task_priority_tranquille + label,
+#task_priority_passe_la_seconde_ + label,
+#task_priority_ça_urge_fada_ + label {
   cursor: pointer;
   display: inline;
   font-size: 0.7rem;
@@ -126,9 +126,9 @@
   margin-bottom: 0.4rem;
 }
 
-#task_priority_tag_tranquille:checked + label,
-#task_priority_tag_passe_la_seconde_:checked + label,
-#task_priority_tag_ça_urge_fada_:checked + label {
+#task_priority_tranquille:checked + label,
+#task_priority_passe_la_seconde_:checked + label,
+#task_priority_ça_urge_fada_:checked + label {
   background-color: $dark-purple;
   color: white;
 }
