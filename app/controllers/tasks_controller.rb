@@ -59,7 +59,7 @@ class TasksController < ApplicationController
 
   def update
     @task.update(task_params)
-    redirect_to tasks_path
+    redirect_back fallback_location: root_path, notice: "Task updated"
   end
 
   def destroy
