@@ -21,7 +21,7 @@
 }
 
 
-.form-label {
+.form-label, .col-form-label {
   font-weight: 800;
   font-family: 'Open sans', sans-serif;
 }
@@ -116,7 +116,7 @@
 #task_priority_ça_urge_fada_ + label {
   cursor: pointer;
   display: inline;
-  font-size: 0.7rem;
+  font-size: 1rem;
   border-radius: 50rem;
   padding: 0.1rem 0.5rem;
   background-color: #fff;
