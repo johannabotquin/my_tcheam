@@ -8,10 +8,121 @@
   grid-template-columns: 1fr;
 }
 
-$light-purple: #C499E1;
-$deep-purple: #9B06D1;
-
 .card.form-input {
-  background-color: $dark-purple;
+  background-color: $cream;
   margin-top: 1rem;
+}
+
+
+.form-control {
+  background-color: #fff;
+  border: 1px solid $dark-black;
+  border-radius: 5px
+}
+
+.form-label {
+  font-weight: 800;
+}
+
+.category-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.category-item {
+  flex: 0 0 30%;
+}
+
+.category-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.category-selector + label {
+  display: block;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 12px;
+  text-align: left;
+  padding: 10px 10px 30px 10px;
+  border: 1px solid #EAEAEA;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.category-selector:checked + label {
+  color: white !important;
+}
+
+
+#task_category_tu_crains_dégun_mais_tu_dois_en_prendre_soin___ + label {
+  background-color: $light-pink;
+  border-color: $light-pink;
+}
+
+#task_category_tu_crains_dégun_mais_tu_dois_en_prendre_soin___:checked + label {
+  background-color: $deep-pink;
+  border-color: $deep-pink;
+}
+
+
+#task_category_la_maison_elle_va_pas_se_gérer_seule_figure_de_poulpe_ + label {
+  background-color: $light-blue;
+  border-color: $light-blue;
+}
+
+#task_category_la_maison_elle_va_pas_se_gérer_seule_figure_de_poulpe_:checked + label {
+  background-color: $deep-blue;
+  border-color: $deep-blue;
+}
+
+
+#task_category_fais_tes_papiers_avant_que_ce_soit_le_oaï_ + label {
+  background-color: $coral;
+  border-color: $coral;}
+
+#task_category_fais_tes_papiers_avant_que_ce_soit_le_oaï_:checked + label {
+  background-color: $deep-orange;
+  border-color: $deep-orange;
+}
+
+
+.category-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+}
+
+.category-item {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.tag-item {
+  display: inline-block;
+}
+
+.tag-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+#task_priority_tag_2 + label {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.7rem;
+  border-radius: 50rem;
+  padding: 0.1rem 0.5rem;
+  background-color: #ECEAFF;
+  color: #7E73FF;
+  border: 1px solid #7E73FF;
+  margin-right: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.tag-selector:checked + label {
+  background-color: #7E73FF;
+  color: white;
 }

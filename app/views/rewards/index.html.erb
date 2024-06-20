@@ -1,7 +1,7 @@
-<div class="container text-center">
+<div class="container text-center pt-4">
   <h1>Les Rewards de l'équipe <span style="color: red;"><%= @team.name %></span></h1>
 <br>
-<%= link_to 'Nouvelle Récompense', new_team_reward_path(@team), class: 'btn btn-team' %>
+<%= link_to 'Nouvelle Récompense', new_team_reward_path(@team), class: 'btn btn-orange' %>
 <br>
   <div class="row">
     <% @rewards.each do |reward| %>
@@ -21,7 +21,7 @@
               </div>
                 <div class="row justify-content-center">
                   <div class="col text-center">
-                    <%= link_to 'Modifier', edit_team_reward_path(@team, reward), class: 'btn btn-edit' %>
+                    <%= link_to 'Modifier', edit_team_reward_path(@team, reward), class: 'btn btn-yellow' %>
                     <%= link_to 'Supprimer', team_reward_path(@team, reward), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-delete' %>
                   </div>
                 </div>

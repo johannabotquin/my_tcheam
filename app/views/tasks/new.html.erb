@@ -1,28 +1,34 @@
 <div class="container">
     <div class="row justify-content-center">
-      <div class="col-12 col-sm-6 col-md-4">
+      <div class="col">
         <div class="form-container" id="task-card">
           <div class="card-header text-center" id="card-title">
-            <h1>New Task</h1>
+            <h1>Nouvelle tâche</h1>
           </div>
           <div class="card form-input" id="task-form">
             <%= simple_form_for @task do |f| %>
               <div class="form-group">
-                <%= f.input :name, label: "Son nom", input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
+                <%= f.input :name, label: "Nom", input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
               </div>
               <div class="form-group">
-                <%= f.input :description, label: "+ en détails", input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
+                <%= f.input :description, label: "Détails", input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
+              </div>
+
+              <%= f.input :category,
+                  as: :radio_buttons,
+                  collection_wrapper_tag: 'div',
+                  collection_wrapper_class: 'category-wrapper',
+                  item_wrapper_class: 'category-item',
+                  input_html: {class: 'category-selector'},
+                  collection: Task::CATEGORIES %>
+
+              <div class="form-group">
+                <%= f.input :reccurence, label: "Réccurente", as: :boolean, input_html: { class: 'form-check-input' }, label_html: { class: 'form-check-label' } %>
               </div>
               <div class="form-group">
-                <%= f.input :category, label: "Sa catégorie", collection: Task::CATEGORIES, input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
+                <%= f.input :points, label: "Points", input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
               </div>
-              <div class="form-group">
-                <%= f.input :reccurence, label: "Réccurence ?", as: :boolean, input_html: { class: 'form-check-input' }, label_html: { class: 'form-check-label' } %>
-              </div>
-              <div class="form-group">
-                <%= f.input :points, label: "Ses points attribués", input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
-              </div>
-              <h3>Choisis les membres</h3>
+              <p class="form-label">Membres</p>
               <div data-controller="member-selection">
                 <% @members.each do |member| %>
                   <div class="member-photo" data-member-selection-target="photo" data-member-id="<%= member.id %>">
@@ -42,9 +48,16 @@
               </div>
 
              <div class="form-group">
-                <%= f.input :priority_tag,  label: "Son niveau de priorité", collection: Task::PRIORITY, input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
+                <%= f.input :priority_tag,
+                  as: :check_boxes,
+                  collection_wrapper_tag: 'div',
+                  collection_wrapper_class: 'd-flex',
+                  input_html: { class: "tag-selector" },
+                  item_wrapper_class: 'tag-item',
+                  collection: Task::PRIORITY %>
+
               </div>
-              <div class="form-group">
+              <div class="form-group d-flex justify-content-center">
                 <%= f.submit 'Ajoute la', class: 'btn btn-purple' %>
               </div>
             <% end %>
