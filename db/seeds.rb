@@ -32,7 +32,7 @@ user1 = User.create!(
   email: "johanna@gmail.com",
   password: "angryjojo",
   avatar: "https://pictory.ai/wp-content/uploads/2022/03/pictory_500.png",
-  team_id: team.id,
+  team_id: team.id
 )
 
 user2 = User.create!(
@@ -42,7 +42,7 @@ user2 = User.create!(
   email: "ragheed.sleimani@gmail.com",
   password: "zenragheed",
   avatar: "https://pictory.ai/wp-content/uploads/2022/03/pictory_500.png",
-  team_id: team.id,
+  team_id: team.id
 )
 puts "Users created."
 
@@ -57,7 +57,7 @@ begin
       points: 50,
       deadline: "2024-06-19",
       achieved: false,
-      priority_tag: 1,
+      priority: 1,
       user: user1
     )
     TaskManager.create!(user: user1, task: project)
@@ -69,8 +69,8 @@ begin
       reccurence: true,
       points: 10,
       deadline: "2024-06-19",
-      achieved: false,
-      priority_tag: 2,
+      achieved: true,
+      priority: 2,
       user: user1
     )
     TaskManager.create!(user: user1, task: courses)
@@ -82,8 +82,8 @@ begin
       reccurence: false,
       points: 30,
       deadline: "2024-06-20",
-      achieved: false,
-      priority_tag: 1,
+      achieved: true,
+      priority: 1,
       user: user1
     )
     TaskManager.create!(user: user1, task: medecin)
@@ -96,7 +96,7 @@ begin
       points: 15,
       deadline: "2024-06-20",
       achieved: false,
-      priority_tag: 2,
+      priority: 2,
       user: user1
     )
     TaskManager.create!(user: user1, task: factures)
@@ -109,7 +109,7 @@ begin
       points: 25,
       deadline: "2024-06-21",
       achieved: false,
-      priority_tag: 2,
+      priority: 2,
       user: user1
     )
     TaskManager.create!(user: user1, task: carte)
@@ -127,28 +127,32 @@ Reward.create!(
   name: "Week-end à la campagne",
   goal: 100,
   user_id: user1.id,
-  team_id: team.id
+  team_id: team.id,
+  selected: true
 )
 
 Reward.create!(
   name: "Dîner romantique",
   goal: 50,
   user_id: user2.id,
-  team_id: team.id
+  team_id: team.id,
+  selected: false
 )
 
 Reward.create(
   name: "voyage a disney land",
   goal: "100",
   team_id: team.id,
-  user_id: User.first.id
+  user_id: User.first.id,
+  selected: false
 )
 
 Reward.create(
   name: "voyage au parc Asterix",
   goal: "80",
   team_id: team.id,
-  user_id: User.first.id
+  user_id: User.first.id,
+  selected: false
 )
 
 puts "Rewards created"

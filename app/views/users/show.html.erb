@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="score">
+    <% @team.users.each do |user|%>
+      <% user.tasks.each do |task| %>
+        <% if task.achieved %>
+          <% @team.score += task.points %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <p>Team score : <%= @team.score %></p>
+  </div>
+
+  <div class="reste">
+    <p>Il reste <%= @reward.goal - @team.score %> points avant la récompense</p>
+  </div>
+</div>
+
+<div class="task-achieved">
+  <h3>Tâche(s) réalisée(s)</h3>
+    <% task_count = 0 %>
+    <% @team.users.each do |user|%>
+      <% user.tasks.each do |task|%>
+        <% if task.achieved %>
+          <% task_count += 1 %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% if task_count == 0 %>
+      <p>Aucune tâche réalisée</p>
+    <% else %>
+      <p><%= task_count %></p>
+    <% end %>
+</div>
+
+<div class="remaining-task">
+  <h3>Tâche(s) restante(s)</h3>
+    <% task_count = 0 %>
+    <% @team.users.each do |user|%>
+      <% user.tasks.each do |task|%>
+        <% if !task.achieved %>
+          <% task_count += 1 %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% if task_count == 0 %>
+      <p>Aucune tâche restante</p>
+    <% else %>
+      <p><%= task_count %></p>
+    <% end %>
+</div>
