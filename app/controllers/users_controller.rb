@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     @tasks = @user.tasks
+    @team = @user.team
   end
 
   private
