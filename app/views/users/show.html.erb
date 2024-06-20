@@ -1,50 +1,105 @@
 <div class="container">
-  <div class="score">
-    <% @team.users.each do |user|%>
-      <% user.tasks.each do |task| %>
-        <% if task.achieved %>
-          <% @team.score += task.points %>
-        <% end %>
-      <% end %>
-    <% end %>
-    <p>Team score : <%= @team.score %></p>
+
+  <div class="dashboard-progression mb-5">
+    <div class="card card-octopus">
+      <div class="card-octopus__image">
+        <%= image_tag ("happy-octopus.png"), width: 250 %>
+      </div>
+      <div class="progression-content">
+        <div>
+          <div>Score:</div>
+          <h3><%= @team.score %></h3>
+        </div>
+        <div class="d-flex flex-column justify-content-center">
+          <p>Il reste <strong><%= @remaining_points %></strong> points avant <%= @reward.name %></p>
+        </div>
+      </div>
+    </div>
+    <div class="cards-progression">
+      <div class="card card-achieved-tasks">
+        <h3><%= @tasks_completed %></h3>
+        <p>Tâches réalisées</p>
+      </div>
+      <div class="card card-pending-tasks">
+        <h3><%= @tasks_remaining %></h3>
+        <p>Tâches en cours</p>
+      </div>
+    </div>
   </div>
 
-  <div class="reste">
-    <p>Il reste <%= @reward.goal - @team.score %> points avant la récompense</p>
+  <div class="mb-5" data-controller="tasks">
+    <h1 class="mb-3">Tâches à venir</h1>
+
+    <%= simple_form_for :filter, url: tasks_path, method: :get, html: { data: { controller: "tasks" } } do |f| %>
+    <div class="calendar mb-4">
+      <% (Date.today - 2..Date.today + 2).each do |date| %>
+        <div class="tag-item">
+          <%= f.radio_button :date, date, id: "date_#{date}", class: "tag-selector visually-hidden", data: { action: "tasks#filterTasks", tasks_target: "date" }, checked: date == Date.today %>
+          <%= f.label :date, for: "date_#{date}", class: "tag-date text-center" do %>
+            <%= content_tag :span, date.strftime('%a'), class: "d-block text-center" %>
+            <%= content_tag :span, date.strftime('%e'), class: "d-block text-center tag-day" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <%= f.submit "Filter Tasks", class: "btn btn-primary", style: "display:none;" %>
+    <% end %>
+
+    <div id="tasks-list">
+      <%= render partial: "tasks/tasks_list", locals: { tasks: @tasks }, layout: false %>
+    </div>
   </div>
-</div>
 
-<div class="task-achieved">
-  <h3>Tâche(s) réalisée(s)</h3>
-    <% task_count = 0 %>
-    <% @team.users.each do |user|%>
-      <% user.tasks.each do |task|%>
-        <% if task.achieved %>
-          <% task_count += 1 %>
-        <% end %>
-      <% end %>
-    <% end %>
-    <% if task_count == 0 %>
-      <p>Aucune tâche réalisée</p>
-    <% else %>
-      <p><%= task_count %></p>
-    <% end %>
-</div>
+  <h1 class="mb-3">Mes listes</h1>
 
-<div class="remaining-task">
-  <h3>Tâche(s) restante(s)</h3>
-    <% task_count = 0 %>
-    <% @team.users.each do |user|%>
-      <% user.tasks.each do |task|%>
-        <% if !task.achieved %>
-          <% task_count += 1 %>
-        <% end %>
-      <% end %>
-    <% end %>
-    <% if task_count == 0 %>
-      <p>Aucune tâche restante</p>
-    <% else %>
-      <p><%= task_count %></p>
-    <% end %>
+  <div id="carouselExampleControls" class="carousel slide mb-5" data-interval="false" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="card card-list">
+          <h3>Idées cadeaux de noël enfants</h3>
+          <span
+            class="input"
+            role="textbox"
+            contenteditable>
+              Commence à taper tes idées ici...
+          </span>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="card card-list">
+          <h3>Idées camping vacances été</h3>
+          <span
+            class="input"
+            role="textbox"
+            contenteditable>
+              Commence à taper tes idées ici...
+          </span>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="card card-list">
+          <h3>Idées camping vacances été</h3>
+          <span
+            class="input"
+            role="textbox"
+            contenteditable>
+              Commence à taper tes idées ici...
+          </span>
+        </div>
+      </div>
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
 </div>

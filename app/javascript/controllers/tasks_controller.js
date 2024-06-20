@@ -7,6 +7,7 @@ export default class extends Controller {
 
   connect() {
     console.log("Tasks controller connected");
+    this.filterDefaultDate();
   }
 
   filterTasks(event) {
@@ -23,6 +24,13 @@ export default class extends Controller {
     .then(response => response.text())
     .then(html => {
       document.querySelector("#tasks-list").innerHTML = html;
-    })
+    });
+  }
+
+  filterDefaultDate() {
+    const defaultRadioButton = this.dateTargets.find(radio => radio.checked);
+    if (defaultRadioButton) {
+      this.filterTasks({ target: defaultRadioButton });
+    }
   }
 }
