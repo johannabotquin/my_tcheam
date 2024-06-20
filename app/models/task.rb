@@ -1,9 +1,11 @@
 class Task < ApplicationRecord
-  CATEGORIES = ["Tu crains dégun mais tu dois en prendre soin... (Santé)",
-                "La maison elle va pas se gérer seule, figure de poulpe ! (Gestion du foyer)",
-                "Fais tes papiers avant que ce soit le oaï ! (Administratif)"]
+  CATEGORIES = ["Tu crains dégun mais tu dois en prendre soin...",
+                "La maison elle va pas se gérer seule, figure de poulpe !",
+                "Fais tes papiers avant que ce soit le oaï !"]
 
-  PRIORITY = [1, 2, 3]
+  PRIORITY = ["Tranquille",
+              "Passe la seconde !",
+              "Ça urge fada !"]
 
   belongs_to :user
   has_many :task_managers
