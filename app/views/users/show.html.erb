@@ -1,14 +1,16 @@
-<div class="score">
-  <% @team.users.each do |user|%>
-    <% user.tasks.each do |task| %>
-      <% if task.achieved %>
-        <% @team.score += task.points %>
+<div class="container">
+  <div class="score">
+    <% @team.users.each do |user|%>
+      <% user.tasks.each do |task| %>
+        <% if task.achieved %>
+          <% @team.score += task.points %>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
-  <p>Team score : <%= @team.score %></p>
-</div>
+    <p>Team score : <%= @team.score %></p>
+  </div>
 
-<div class="reste">
-  <p>Il reste <%= @reward.goal - @team.score %> points avant la récompense</p>
+  <div class="reste">
+    <p>Il reste <%= @reward.goal - @team.score %> points avant la récompense</p>
+  </div>
 </div>
