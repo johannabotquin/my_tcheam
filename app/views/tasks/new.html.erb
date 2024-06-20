@@ -1,8 +1,8 @@
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row">
       <div class="col">
-        <div class="form-container" id="task-card">
-          <div class="card-header text-center" id="card-title">
+        <div class="form-container">
+          <div class="container-header text-center">
             <h1>Nouvelle tâche</h1>
           </div>
           <div class="card form-input" id="task-form">
@@ -49,14 +49,14 @@
                 <%= f.input :priority_tag,
                   as: :check_boxes,
                   collection_wrapper_tag: 'div',
-                  collection_wrapper_class: 'd-flex',
+                  collection_wrapper_class: 'd-flex flex-wrap',
                   input_html: { class: "tag-selector" },
                   item_wrapper_class: 'tag-item',
                   collection: Task::PRIORITY %>
 
               </div>
               <div class="form-group d-flex justify-content-center">
-                <%= f.submit 'Ajoute la', class: 'btn btn-purple' %>
+                <%= f.submit 'Ajoute la', class: 'btn btn-orange' %>
               </div>
             <% end %>
           </div>

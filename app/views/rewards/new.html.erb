@@ -1,34 +1,25 @@
-<div class="container text-center">
-  <% if @reward.new_record? %>
-    <h1>Nouvelle Reward pour l'équipe <span style="color: red;"><%= @team.name %></span></h1>
-  <% else %>
-    <h1>Modifier les Rewards pour l'équipe <span style="color: red;"><%= @team.name %></span></h1>
-  <% end %>
-  <br>
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-body">
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="form-container">
+        <div class="container-header text-center">
+          <h1>Nouvelle récompense pour l'équipe <span style="color: red;"><%= @team.name %></span></h1>
+        </div>
+
+        <div class="card form-input">
           <%= simple_form_for [@team, @reward], html: { class: 'form' } do |f| %>
             <div class="form-inputs">
-              <h3><%= f.input :name, label: "Nom de la récompense" %></h3>
-              <h3><%= f.input :goal, label: "Objectif" %></h3>
+              <%= f.input :name, label: "Nom de la récompense" %>
+              <%= f.input :goal, label: "Objectif" %>
             </div>
 
             <div class="form-actions text-center">
-              <% if @reward.new_record? %>
-                <%= f.button :submit, 'Créer Récompense', class: 'btn btn-team' %>
-              <% else %>
-                <%= f.button :submit, 'Modifier la Reward', class: 'btn btn-team' %>
-              <% end %>
+              <%= f.button :submit, 'Créer Récompense', class: 'btn btn-orange' %>
             </div>
           <% end %>
         </div>
+
       </div>
     </div>
-  </div>
-
-  <div class="text-center mt-3">
-    <%= link_to 'Retour', team_rewards_path(@team), class: 'btn btn-back' %>
   </div>
 </div>
