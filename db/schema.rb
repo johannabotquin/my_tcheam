@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2024_06_20_095207) do
+  
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,10 +69,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_20_095207) do
   create_table "memories", force: :cascade do |t|
     t.string "name"
     t.text "content"
-    t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo"
+    t.string "date"
+    t.bigint "team_id", null: false
+    t.index ["team_id"], name: "index_memories_on_team_id"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -91,6 +94,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_20_095207) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "selected"
     t.index ["team_id"], name: "index_rewards_on_team_id"
     t.index ["user_id"], name: "index_rewards_on_user_id"
   end
@@ -150,6 +154,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_20_095207) do
   add_foreign_key "list_managers", "lists"
   add_foreign_key "list_managers", "users"
   add_foreign_key "lists", "users"
+  add_foreign_key "memories", "teams"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "rewards", "teams"
