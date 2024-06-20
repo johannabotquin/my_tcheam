@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @user = current_user
     @team = @user.team
     @tasks = @user.tasks
-    @reward = @team.rewards.select { |reward| reward.selected == true }
+    @reward = @team.rewards.find { |reward| reward.selected == true }
   end
 
   private
