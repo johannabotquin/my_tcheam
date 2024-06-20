@@ -8,3 +8,7 @@
   <% end %>
   <p>Team score : <%= @team.score %></p>
 </div>
+
+<div class="reste">
+  <p>Il reste <%= @reward.goal - @team.score %> points avant la récompense</p>
+</div>
