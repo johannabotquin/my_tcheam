@@ -3,7 +3,9 @@ class Task < ApplicationRecord
                 "La maison elle va pas se gérer seule, figure de poulpe !",
                 "Fais tes papiers avant que ce soit le oaï !"]
 
-  PRIORITY = [1, 2, 3]
+  PRIORITY = ["Tranquille",
+              "Passe la seconde !",
+              "Ça urge fada !"]
 
   belongs_to :user
   has_many :task_managers

@@ -18,12 +18,17 @@
   font-size: 0.9rem;
   border-radius: 0.4rem;
   padding: 1.1rem;
-  background-color: $light-blue;
+  background-color: $deep-yellow;
   cursor: pointer;
 }
 
+.tag-day {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
 .tag-selector:checked + .tag-date {
-  background-color: $light-blue;
+  background-color: $deep-yellow;
   border: 1px solid $dark-black;
   box-shadow: 0 5px;
 }
