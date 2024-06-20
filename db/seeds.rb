@@ -32,7 +32,7 @@ user1 = User.create!(
   email: "johanna@gmail.com",
   password: "angryjojo",
   avatar: "https://pictory.ai/wp-content/uploads/2022/03/pictory_500.png",
-  team_id: team.id,
+  team_id: team.id
 )
 
 user2 = User.create!(
@@ -42,7 +42,7 @@ user2 = User.create!(
   email: "ragheed.sleimani@gmail.com",
   password: "zenragheed",
   avatar: "https://pictory.ai/wp-content/uploads/2022/03/pictory_500.png",
-  team_id: team.id,
+  team_id: team.id
 )
 puts "Users created."
 
@@ -69,7 +69,7 @@ begin
       reccurence: true,
       points: 10,
       deadline: "2024-06-19",
-      achieved: false,
+      achieved: true,
       priority_tag: 2,
       user: user1
     )
@@ -82,7 +82,7 @@ begin
       reccurence: false,
       points: 30,
       deadline: "2024-06-20",
-      achieved: false,
+      achieved: true,
       priority_tag: 1,
       user: user1
     )
