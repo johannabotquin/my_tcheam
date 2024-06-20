@@ -40,9 +40,14 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.user = current_user
-    # manager_ids = params[:task][:manager_ids].reject(&:empty?)
-    # user.task_managers << TaskManager.create(task: @task, user_id: user.id)
+
     if @task.save
+      member_ids = params[:task][:members]
+      ids = member_ids.map { |member| member[:user_id] }
+      ids.each do |id|
+        user = User.find(id)
+        user.task_managers << TaskManager.create(task: @task, user: user)
+      end
       redirect_to task_path(@task)
     else
       render :new, status: :unprocessable_entity
