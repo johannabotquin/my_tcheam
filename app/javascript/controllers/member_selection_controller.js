@@ -4,6 +4,7 @@ export default class extends Controller {
   static targets = ["photo", "checkbox"]
 
   connect() {
+    console.log('MemberSelectionController connected');
     this.photoTargets.forEach(photo => {
       photo.addEventListener('click', this.toggleSelection.bind(this))
     })
@@ -11,8 +12,11 @@ export default class extends Controller {
 
   toggleSelection(event) {
     const photo = event.currentTarget
+    console.log('Photo :', photo);
     const userId = photo.dataset.memberId
+    console.log('User ID :', userId);
     const checkbox = this.checkboxTargets.find(checkbox => checkbox.value === userId)
+    console.log('Checkbox :', checkbox);
 
     if (checkbox) {
       if (photo.classList.contains('selected')) {
@@ -22,7 +26,7 @@ export default class extends Controller {
       } else {
         photo.classList.add('selected')
         checkbox.disabled = false
-        checkbox.setAttribute('name', 'task[task_managers_attributes][][user_id]')
+        checkbox.setAttribute('name', 'task[members][][user_id]')
       }
     }
   }

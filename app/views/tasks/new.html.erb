@@ -22,14 +22,15 @@
               <div class="form-group">
                 <%= f.input :points, label: "Ses points attribués", input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
               </div>
-              <h3>Choisis les membres</h3>
+                   <h3>Choisis les membres</h3>
               <div data-controller="member-selection">
+                <%= f.label :members, "Membres" %>
                 <% @members.each do |member| %>
-                  <div class="member-photo" data-member-selection-target="photo" data-member-id="<%= member.id %>">
-                    <%= image_tag(member.avatar, alt: member.first_name, style: "width:100px") %>
-                    <%= f.simple_fields_for :task_managers, @task.task_managers.build do |tm| %>
-                      <%= tm.hidden_field :user_id, value: member.id, data: { member_selection_target: "checkbox" } %>
-                    <% end %>
+                  <div class="form-check">
+                    <%= check_box_tag 'task[members][]', member.id, false, id: "member_#{member.id}", class: 'form-check-input', style: 'display:none;', data: { member_selection_target: "checkbox" } %>
+                    <div class="member-photo" data-member-selection-target="photo" data-member-id="<%= member.id %>" onclick="document.getElementById('member_<%= member.id %>').click()">
+                      <%= image_tag(member.avatar, alt: member.first_name, style: "width:100px; cursor: pointer;") %>
+                    </div>
                   </div>
                 <% end %>
               </div>
