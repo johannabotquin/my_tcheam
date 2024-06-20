@@ -1,7 +1,9 @@
 <div class="score">
-  <% @tasks.each do |task| %>
-    <% if task.achieved %>
-      <% @team.score += task.points %>
+  <% @team.users.each do |user|%>
+    <% user.tasks.each do |task| %>
+      <% if task.achieved %>
+        <% @team.score += task.points %>
+      <% end %>
     <% end %>
   <% end %>
   <p>Team score : <%= @team.score %></p>
