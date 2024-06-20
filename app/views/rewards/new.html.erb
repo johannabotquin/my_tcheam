@@ -1,19 +1,19 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
       <div class="form-container">
         <div class="container-header text-center">
           <h1>Nouvelle récompense pour l'équipe <span style="color: red;"><%= @team.name %></span></h1>
         </div>
 
-        <div class="card form-input">
+        <div class="card form-input mb-5">
           <%= simple_form_for [@team, @reward], html: { class: 'form' } do |f| %>
             <div class="form-inputs">
               <%= f.input :name, label: "Nom de la récompense" %>
               <%= f.input :goal, label: "Objectif" %>
             </div>
 
-            <div class="form-actions text-center">
+            <div class="form-actions text-center my-4">
               <%= f.button :submit, 'Créer Récompense', class: 'btn btn-orange' %>
             </div>
           <% end %>
