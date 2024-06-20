@@ -3,7 +3,10 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy]
 
   def index
-    @tasks = current_user.tasks
+
+    @my_tasks_ids = current_user.task_managers.map { |tm| tm.task_id }
+    @tasks = Task.where(id: @my_tasks_ids)
+
 
     if params[:filter] && params[:filter][:date].present?
       selected_date = Date.parse(params[:filter][:date])
@@ -11,10 +14,19 @@ class TasksController < ApplicationController
     end
 
     respond_to do |format|
-      format.html
-      format.text { render 'tasks/index', locals: { tasks: @tasks }, formats: [:html]}
+      format.html do
+        if request.xhr?
+          render partial: "tasks/tasks_list", locals: { tasks: @tasks }, layout: false
+        end
+      end
+      format.text do
+        if request.xhr?
+          render partial: "tasks/tasks_list", locals: { tasks: @tasks }, layout: false
+        end
+      end
     end
   end
+
 
   def show
   end
@@ -26,9 +38,10 @@ class TasksController < ApplicationController
   end
 
   def create
-    # raise
     @task = Task.new(task_params)
     @task.user = current_user
+    # manager_ids = params[:task][:manager_ids].reject(&:empty?)
+    # user.task_managers << TaskManager.create(task: @task, user_id: user.id)
     if @task.save
       redirect_to task_path(@task)
     else
