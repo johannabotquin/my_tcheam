@@ -5,7 +5,7 @@
           <div class="container-header text-center">
             <h1>Nouvelle tâche</h1>
           </div>
-          <div class="card form-input" id="task-form">
+          <div class="card form-input">
             <%= simple_form_for @task do |f| %>
               <div class="form-group">
                 <%= f.input :name, label: "Nom", input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
