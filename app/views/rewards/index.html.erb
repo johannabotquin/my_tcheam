@@ -1,27 +1,36 @@
-<h1>Index des Récompenses de l'équipe <%= @team.name %></h1>
+<div class="container text-center pt-4">
+  <h1>Pour quelle récompense souhaites-tu jouer ?</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nom</th>
-      <th>Objectif</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
+  <div class="row">
     <% @rewards.each do |reward| %>
-      <tr>
-        <td><%= reward.name %></td>
-        <td><%= reward.goal %></td>
-        <td>
-          <%= link_to 'Voir', team_reward_path(@team, reward) %> |
-          <%= link_to 'Modifier', edit_team_reward_path(@team, reward) %> |
-          <%= link_to 'Supprimer', team_reward_path(@team, reward), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-
-        </td>
-      </tr>
+      <div class="col-md-4 mb-4">
+        <%= link_to team_path(@team), class: 'text-decoration-none' do %>
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="row mb-3">
+                <div class="col">
+                  <h3 class="text-dark"><%= reward.name %></h3>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col">
+                  <h3 class="text-dark"><strong>Objectif:</strong> <%= reward.goal %></h3>
+                </div>
+              </div>
+                <div class="row justify-content-center">
+                  <div class="col text-center">
+                    <%= link_to 'Modifier', edit_team_reward_path(@team, reward), class: 'btn btn-yellow' %>
+                    <%= link_to 'Supprimer', team_reward_path(@team, reward), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-delete' %>
+                  </div>
+                </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
     <% end %>
-  </tbody>
-</table>
 
-<%= link_to 'Nouvelle Récompense', new_team_reward_path(@team) %>
+  <div>
+    <%= link_to 'Nouvelle Récompense', new_team_reward_path(@team), class: 'btn btn-orange' %>
+  </div>
+  </div>
+</div>

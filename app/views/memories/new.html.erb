@@ -1,24 +1,23 @@
 <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12 col-sm-6 col-md-4">
-        <div class="form-container" id="memory-card">
-          <div class="card-header text-center" id="card-title">
-            <h1>New Memory</h1>
-          </div>
-          <div class="card form-input" id="memory-form">
-            <%= simple_form_for @memorie do |f| %>
-              <div class="form-group">
-                <%= f.input :name, input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
-              </div>
-              <div class="form-group">
-                <%= f.input :content, input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
-              </div>
-              <div class="form-group">
-                <%= f.button :submit, class: 'btn btn-purple' %>
-              </div>
-            <% end %>
-          </div>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="form-container">
+        <div class="container-header text-center">
+          <h1>New Memory</h1>
+        </div>
+        <div class="card form-input">
+          <%= simple_form_for @memorie do |f| %>
+            <div class="form-inputs mb-5">
+              <%= f.input :name, input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
+              <%= f.input :content, input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
+              <%= f.input :date, input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
+              <%= f.input :photo, input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
+              <%= link_to "retour", memories_path(@memorie), class: "btn mx-2" %>
+              <%= f.button :submit, class: 'btn btn-purple' %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
+</div>

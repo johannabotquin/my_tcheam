@@ -1,3 +1,10 @@
+.form-control {
+  color: $dark-black !important;
+  background-color: #fff;
+  border: 1px solid $dark-black;
+  border-radius: 5px
+}
+
 .form-container {
   border: 1px solid $dark-black;
   border-radius: 5px;
@@ -12,6 +19,119 @@ $deep-purple: #9B06D1;
 $light-purple: #C4A3FF;
 
 .card.form-input {
-  background-color: $dark-purple;
+  background-color: $cream;
   margin-top: 1rem;
+}
+
+
+.form-label, .col-form-label {
+  font-weight: 800;
+  font-family: 'Open sans', sans-serif;
+}
+
+.category-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.category-item {
+  flex: 0 0 30%;
+}
+
+.category-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.category-selector + label {
+  display: block;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 12px;
+  text-align: left;
+  padding: 10px 10px 30px 10px;
+  border: 1px solid #EAEAEA;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.category-selector:checked + label {
+  color: white !important;
+}
+
+
+#task_category_tu_crains_dégun_mais_tu_dois_en_prendre_soin___ + label {
+  background-color: $light-pink;
+  border-color: $light-pink;
+}
+
+#task_category_tu_crains_dégun_mais_tu_dois_en_prendre_soin___:checked + label {
+  background-color: $deep-pink;
+  border-color: $deep-pink;
+}
+
+
+#task_category_la_maison_elle_va_pas_se_gérer_seule_figure_de_poulpe_ + label {
+  background-color: $light-blue;
+  border-color: $light-blue;
+}
+
+#task_category_la_maison_elle_va_pas_se_gérer_seule_figure_de_poulpe_:checked + label {
+  background-color: $deep-blue;
+  border-color: $deep-blue;
+}
+
+
+#task_category_fais_tes_papiers_avant_que_ce_soit_le_oaï_ + label {
+  background-color: $coral;
+  border-color: $coral;}
+
+#task_category_fais_tes_papiers_avant_que_ce_soit_le_oaï_:checked + label {
+  background-color: $deep-orange;
+  border-color: $deep-orange;
+}
+
+
+.category-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+}
+
+.category-item {
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.tag-item {
+  display: inline-block;
+}
+
+.tag-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+#task_priority_tranquille + label,
+#task_priority_passe_la_seconde_ + label,
+#task_priority_ça_urge_fada_ + label {
+  cursor: pointer;
+  display: inline;
+  font-size: 1rem;
+  border-radius: 50rem;
+  padding: 0.1rem 0.5rem;
+  background-color: #fff;
+  color: $dark-purple;
+  border: 1px solid $dark-purple;
+  margin-right: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+#task_priority_tranquille:checked + label,
+#task_priority_passe_la_seconde_:checked + label,
+#task_priority_ça_urge_fada_:checked + label {
+  background-color: $dark-purple;
+  color: white;
 }

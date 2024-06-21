@@ -1,10 +1,24 @@
-<h1>Modifier Récompense pour l'équipe <%= @team.name %></h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="form-container">
+        <div class="container-header text-center">
+          <h1>Modifier la récompense</h1>
+        </div>
+        <div class="card form-input">
+          <%= simple_form_for [@team, @reward], html: { class: 'form' } do |f| %>
+            <div class="form-inputs mb-5">
+              <%= f.input :name, label: "Nom de la récompense" %>
+              <%= f.input :goal, label: "Objectif" %>
+            </div>
 
-<%= simple_form_for [@team, @reward] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :goal %>
+            <div class="form-actions text-center my-4">
+              <%= f.button :submit, 'Modifier la Reward', class: 'btn btn-yellow' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <%= f.button :submit, 'Modifier Récompense' %>
-<% end %>
-
-<%= link_to 'Retour', team_rewards_path(@team) %>
+</div>

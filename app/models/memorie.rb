@@ -1,3 +1,7 @@
 class Memorie < ApplicationRecord
-  # validates :name, :content, :date, presence: true
+  belongs_to :team
+
+  validates :name, presence: true
+  validates :content, presence: true
+  validates :date, presence: true
 end

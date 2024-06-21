@@ -10,9 +10,10 @@
   height: 100px;
   object-fit: cover;
   border-radius: 50%;
+  filter: opacity(0.20);
+
 }
 
-.member-photo.selected {
-  border-color: green;
-  border-radius: 50%;
+.member-photo.selected img {
+  filter: none;
 }

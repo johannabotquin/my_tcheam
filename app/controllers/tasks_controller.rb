@@ -3,8 +3,30 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy]
 
   def index
-    @tasks = Task.all
+
+    @my_tasks_ids = current_user.task_managers.map { |tm| tm.task_id }
+    @tasks = Task.where(id: @my_tasks_ids)
+
+
+    if params[:filter] && params[:filter][:date].present?
+      selected_date = Date.parse(params[:filter][:date])
+      @tasks = @tasks.where(deadline: selected_date)
+    end
+
+    respond_to do |format|
+      format.html do
+        if request.xhr?
+          render partial: "tasks/tasks_list", locals: { tasks: @tasks }, layout: false
+        end
+      end
+      format.text do
+        if request.xhr?
+          render partial: "tasks/tasks_list", locals: { tasks: @tasks }, layout: false
+        end
+      end
+    end
   end
+
 
   def show
   end
@@ -16,10 +38,16 @@ class TasksController < ApplicationController
   end
 
   def create
-    # raise
     @task = Task.new(task_params)
     @task.user = current_user
+
     if @task.save
+      member_ids = params[:task][:members]
+      ids = member_ids.map { |member| member[:user_id] }
+      ids.each do |id|
+        user = User.find(id)
+        user.task_managers << TaskManager.create(task: @task, user: user)
+      end
       redirect_to task_path(@task)
     else
       render :new, status: :unprocessable_entity
@@ -31,7 +59,7 @@ class TasksController < ApplicationController
 
   def update
     @task.update(task_params)
-    redirect_to task_path(@task)
+    redirect_back fallback_location: root_path, notice: "Task updated"
   end
 
   def destroy
@@ -42,7 +70,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :description, :category, :reccurence, :points, :deadline, :achieved, :priority_tag)
+    params.require(:task).permit(:name, :description, :category, :reccurence, :points, :deadline, :achieved, :priority)
   end
 
   def set_task

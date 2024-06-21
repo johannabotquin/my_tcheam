@@ -1,5 +1,4 @@
 class RewardsController < ApplicationController
-
   def index
     @team = Team.find(params[:team_id])
     @rewards = @team.rewards
@@ -8,24 +7,18 @@ class RewardsController < ApplicationController
   def new
     @team = Team.find(params[:team_id])
     @reward = Reward.new
-    @reward.team = @team
   end
 
   def create
     @team = Team.find(params[:team_id])
     @reward = Reward.new(reward_params)
-    @reward.team = @team
-    @reward.user = current_user
+    @reward.team_id = current_user.team_id
+    @reward.user_id = current_user.id
     if @reward.save
-      redirect_to team_rewards_path(@team, @reward), notice: 'La recompense est créée.'
+      redirect_to team_rewards_path(@team), notice: 'La recompense est créée.'
     else
       render :new
     end
-  end
-
-  def show
-    @team = Team.find(params[:team_id])
-    @reward = @team.rewards.find(params[:id])
   end
 
   def edit
