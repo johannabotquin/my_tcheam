@@ -1,4 +1,9 @@
-<h1><%= @team.name %></h1>
+<div class="d-flex justify-content-between">
+  <h1><%= @team.name %></h1>
+  <p><strong>Score:</strong> <%= @team.score %></p>
+</div>
+
+
 
 <div class="team-members">
     <% @team.users.each do |user| %>
@@ -6,7 +11,7 @@
     <% end %>
 </div>
 
-<p><strong>Score:</strong> <%= @team.score %></p>
+
 
 <div class="container" data-controller="tasks">
   <h1 class="mb-3">Tâches à venir</h1>
