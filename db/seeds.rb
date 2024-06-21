@@ -16,7 +16,6 @@ Task.destroy_all
 List.destroy_all
 User.destroy_all
 Team.destroy_all
-Memorie.destroy_all
 
 puts "Creating teams..."
 team = Team.create!(
