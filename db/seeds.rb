@@ -79,7 +79,7 @@ begin
     medecin = Task.create!(
       name: "Rendez-vous chez le médecin",
       description: "Bilan annuel avec le Dr. Zac à la clinique.",
-      category: "Tu crains dégun mais tu dois en prendre soin",
+      category: "Tu crains dégun mais tu dois en prendre soin...",
       reccurence: false,
       points: 30,
       deadline: "2024-06-20",
