@@ -10,7 +10,8 @@ class UsersController < ApplicationController
       user.tasks.where(achieved: true).sum(:points)
     end
     @remaining_points = @reward.goal - @team.score
-    @tasks_completed = @team.users.joins(:tasks).where(tasks: { achieved: true }).count
+    # @tasks_completed = @team.users.joins(:tasks).where(tasks: { achieved: true }).count
+    @tasks_completed = current_user.tasks.where(achieved: true).count
     @tasks_remaining = @team.users.joins(:tasks).where(tasks: { achieved: false }).count
   end
 

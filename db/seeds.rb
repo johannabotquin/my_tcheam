@@ -58,7 +58,7 @@ begin
       deadline: "2024-06-19",
       achieved: false,
       priority: 1,
-      user: user1
+      user: user2
     )
     TaskManager.create!(user: user1, task: project)
 
@@ -71,7 +71,7 @@ begin
       deadline: "2024-06-19",
       achieved: true,
       priority: 2,
-      user: user1
+      user: user2
     )
     TaskManager.create!(user: user1, task: courses)
 
