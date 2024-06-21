@@ -11,13 +11,10 @@ class Task < ApplicationRecord
   has_many :task_managers, dependent: :destroy
   has_many :users, through: :task_managers
 
-  # validates :name, :category, :points, :deadline, :reccurence, :achieved, presence: true
-  # validates :points, numericality: { only_integer: true }
-  # validates :name, length: { maximum: 100 }
-  # validates :category, inclusion: { in: CATEGORIES }
-  # # validates :deadline, presence: true
-  # validates :deadline, presence: true
+  validates :name, :category, :points, :deadline, presence: true
+  validates :points, numericality: { only_integer: true }
+  validates :name, length: { maximum: 100 }
+  validates :category, inclusion: { in: CATEGORIES }
   # validates :reccurence, inclusion: { in: [true, false] }
   # validates :achieved, inclusion: { in: [true, false] }
-  # validates :deadline, default: Date.today
 end

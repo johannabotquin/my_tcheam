@@ -1,35 +1,31 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 <div class="container mt-5">
   <div class="row">
-    <div class="col-md-8 offset-md-2">
+    <div class="col-12 col-md-8 offset-md-2">
       <div class="form-container">
-          <div class="card-body">
-                <div class="text-center mb-3">
-                <h5>Le "<%= @memorie.date %>"</h5>
-                </div>
-            <h1 class="card-title text-center mb-3"><%= @memorie.name %></h1>
-
-                <div class="text-center mb-3">
-                  <p>"<%= @memorie.content %>..."</p>
-                </div>
-
-                <div class="card">
-                    <div class="d-flex justify-content-center">
-                      <%= link_to "retour", memories_path(@memorie), class: "btn mx-2" %>
-                      <%= link_to "modifier le souvenir", edit_memory_path, class: "btn btn-purple mx-2" %>
-                      <%= link_to "Supprimer", memory_path(@memorie), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-delete mx-2' %>
-                    </div>
-
-                    <hr>
-
-                    <% if @memorie.photo.present? %>
-                    <div class="text-center mb-4">
-                        <%= image_tag @memorie.photo, class: 'img-fluid', alt: 'Memory Photo' %>
-                    </div>
-                    <% end %>
-                </div>
+        <div class="card-body">
+          <div class="text-center mb-3">
+            <h5>Le "<%= @memorie.date %>"</h5>
           </div>
-      </div>
+          <h1 class="card-title text-center mb-3"><%= @memorie.name %></h1>
+          <div class="text-center mb-3">
+            <p>"<%= @memorie.content %>..."</p>
           </div>
+          <div class="card">
+            <% if @memorie.photo.present? %>
+            <div class="text-center mb-4">
+              <%= image_tag @memorie.photo, class: 'img-fluid', alt: 'Memory Photo' %>
+            </div>
+            <% end %>
+            <hr>
+            <div class="d-flex justify-content-center flex-wrap">
+              <%= link_to "modifier", edit_memory_path, class: "btn btn-orange mx-2 mb-2" %>
+              <%= link_to "Supprimer", memory_path(@memorie), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-delete mx-2 mb-2' %>
+            </div>
+
+          </div>
+        </div>
       </div>
     </div>
   </div>
