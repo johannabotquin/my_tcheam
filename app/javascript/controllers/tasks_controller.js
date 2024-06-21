@@ -10,6 +10,13 @@ export default class extends Controller {
     this.filterDefaultDate();
   }
 
+  filterDefaultDate() {
+    const defaultRadioButton = this.dateTargets.find(radio => radio.checked);
+    if (defaultRadioButton) {
+      this.filterTasks({ target: defaultRadioButton });
+    }
+  }
+
   filterTasks(event) {
     const date = event.target.value;
     const url = `/tasks?filter[date]=${date}`;
@@ -24,13 +31,8 @@ export default class extends Controller {
     .then(response => response.text())
     .then(html => {
       document.querySelector("#tasks-list").innerHTML = html;
-    });
+    })
+    .catch(error => console.error('Error fetching tasks:', error));
   }
 
-  filterDefaultDate() {
-    const defaultRadioButton = this.dateTargets.find(radio => radio.checked);
-    if (defaultRadioButton) {
-      this.filterTasks({ target: defaultRadioButton });
-    }
-  }
 }

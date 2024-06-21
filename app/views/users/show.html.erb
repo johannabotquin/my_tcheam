@@ -7,12 +7,11 @@
       </div>
       <div class="progression-content">
         <div>
-          <div>Score:</div>
           <h3><%= @team.score %></h3>
         </div>
         <div class="d-flex flex-column justify-content-center">
           <% if @team.score < @reward.goal %>
-            <p>Il reste <strong><%= @remaining_points %></strong> points avant <%= @reward.name %></p>
+            <p>Il reste <strong><%= @remaining_points %></strong> points à <strong><%= @team.name %></strong> pour remporter : <strong><%= @reward.name %></strong></p>
           <% else %>
             <p>Bravo, tu as remporté <%= @reward.name %> !</p>
           <% end %>
@@ -22,17 +21,17 @@
     <div class="cards-progression">
       <div class="card card-achieved-tasks">
         <h3><%= @tasks_completed %></h3>
-        <p>Tâches réalisées</p>
+        <p>Mes tâches réalisées</p>
       </div>
       <div class="card card-pending-tasks">
         <h3><%= @tasks_remaining %></h3>
-        <p>Tâches en cours</p>
+        <p>Mes tâches en cours</p>
       </div>
     </div>
   </div>
 
   <div class="mb-5" data-controller="tasks">
-    <h1 class="mb-3">Tâches à venir</h1>
+    <h1 class="mb-3">Mes tâches à venir</h1>
 
     <%= simple_form_for :filter, url: tasks_path, method: :get, html: { data: { controller: "tasks" } } do |f| %>
     <div class="calendar mb-4">
