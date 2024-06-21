@@ -82,12 +82,12 @@ begin
       category: "Tu crains dégun mais tu dois en prendre soin...",
       reccurence: false,
       points: 30,
-      deadline: "2024-06-20",
+      deadline: "2024-06-21",
       achieved: true,
       priority: 1,
-      user: user1
+      user: user2
     )
-    TaskManager.create!(user: user1, task: medecin)
+    TaskManager.create!(user: user2, task: medecin)
 
     factures = Task.create!(
       name: "Payer les factures de services publics",
@@ -95,7 +95,7 @@ begin
       category: "Fais tes papiers avant que ce soit le oaï !",
       reccurence: true,
       points: 15,
-      deadline: "2024-06-20",
+      deadline: "2024-06-21",
       achieved: false,
       priority: 2,
       user: user1
@@ -114,6 +114,19 @@ begin
       user: user1
     )
     TaskManager.create!(user: user1, task: carte)
+
+    ophtalmo = Task.create!(
+      name: "Aller chez l'ophtalmologue",
+      description: "Aller chez l'ophtalmologue pour un bilan annuel.",
+      category: "Tu crains dégun mais tu dois en prendre soin",
+      reccurence: false,
+      points: 25,
+      deadline: "2024-06-22",
+      achieved: false,
+      priority: 2,
+      user: user1
+    )
+    TaskManager.create!(user: user2, task: ophtalmo)
 
     demoday = Task.create!(
       name: "Finir projet demoday",

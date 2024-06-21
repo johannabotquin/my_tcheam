@@ -40,7 +40,6 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.user = current_user
-
     if @task.save
       member_ids = params[:task][:members]
       if params[:task][:reccurence] == "0"

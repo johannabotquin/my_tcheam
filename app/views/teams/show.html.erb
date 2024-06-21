@@ -14,25 +14,83 @@
 
 
 <div class="container" data-controller="tasks">
-  <h1 class="mb-3">Tâches à venir</h1>
+  <h1 class="mb-3">Mon Olympique</h1>
 
-  <%= simple_form_for :filter, url: tasks_path, method: :get do |f| %>
-    <div class="calendar mb-4">
-        <% (Date.today - 2..Date.today + 2).each do |date| %>
-          <div class="tag-item">
-            <%= f.radio_button :date, date, id: "date_#{date}", class: "tag-selector visually-hidden", data: { action: "tasks#filterTasks", tasks_target: "date" } %>
-            <%= f.label :date, for: "date_#{date}", class: "tag-date text-center" do %>
-              <%= content_tag :span, date.strftime('%a'), class: "d-block text-center" %>
-              <%= content_tag :span, date.strftime('%e'), class: "d-block text-center tag-day" %>
-            <% end %>
-          </div>
-        <% end %>
-    </div>
-
-    <%= f.submit "Filter Tasks", class: "btn btn-primary", style: "display:none;" %>
-  <% end %>
-
-  <div id="tasks-list">
-    <%= render partial: "tasks/tasks_list", locals: { tasks: @tasks }, layout: false %>
+<%= simple_form_for :filter, url: tasks_path, method: :get do |f| %>
+    <% todays_date_index = Date.today.yday - 1 %>
+<div id="date-carousel" class="splide mb-4" data-today-index="<%= todays_date_index %>">
+  <div class="splide__track">
+    <ul class="splide__list">
+      <% (Date.new(Date.today.year, 1, 1)..Date.new(Date.today.year, 12, 31)).each_with_index do |date, index| %>
+        <li class="splide__slide tag-item" data-date="<%= date.strftime('%Y-%m-%d') %>">
+          <%= f.radio_button :date, date.strftime('%Y-%m-%d'), id: "date_#{date}", class: "tag-selector visually-hidden", data: { action: "tasks#filterTasks", tasks_target: "date" }, checked: date == Date.today %>
+          <%= f.label :date, for: "date_#{date}", class: "tag-date text-center" do %>
+            <%= content_tag :span, date.strftime('%a'), class: "d-block text-center" %>
+            <%= content_tag :span, date.strftime('%e'), class: "d-block text-center tag-day" %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 </div>
+
+<%= f.submit "Filter Tasks", class: "btn btn-primary", style: "display:none;" %>
+<% end %>
+
+<% @team.users.each do |user| %>
+  <h2><%= user.first_name %></h2>
+  <div data-tasks-target = "usertasks">
+    <%= render partial: "tasks/tasks_list", locals: { tasks: user.tasks }, layout: false %>
+  </div>
+<% end %>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.0.9/dist/js/splide.min.js"></script>
+<script>
+ document.addEventListener('DOMContentLoaded', function () {
+  console.log('DOM fully loaded and parsed'); // Confirm DOMContentLoaded event fires
+
+  const splideElement = document.getElementById('date-carousel');
+  if (splideElement) {
+    const todayIndex = parseInt(splideElement.getAttribute('data-today-index'), 10);
+    console.log('Today index:', todayIndex); // Confirm todayIndex is read correctly
+
+    const splide = new Splide(splideElement, {
+      type: 'slide',
+      perPage: 7,
+      height: 110,
+      gap: '1rem',
+      pagination: false,
+      breakpoints: {
+        600: {
+          perPage: 3,
+        },
+        480: {
+          perPage: 5,
+        },
+      },
+      rewind: true,
+      rewindSpeed: 600,
+      drag: true,
+      arrows: false,
+    });
+
+    splide.on('mounted', function () {
+      console.log('Splide mounted'); // Confirm Splide is mounted
+      if (!isNaN(todayIndex)) {
+        console.log('Navigating to todayIndex:', todayIndex); // Log the navigation action
+        splide.go(todayIndex);
+      } else {
+        console.error('Invalid todayIndex:', todayIndex); // Error if todayIndex is invalid
+      }
+    });
+
+    splide.mount();
+  } else {
+    console.error('Splide element not found'); // Error if Splide element is not found
+  }
+});
+
+</script>
