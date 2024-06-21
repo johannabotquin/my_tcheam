@@ -16,11 +16,11 @@ Task.destroy_all
 List.destroy_all
 User.destroy_all
 Team.destroy_all
-Memorie.destroy_all
 
 puts "Creating teams..."
 team = Team.create!(
-  name: "The Avengers",
+
+  name: "Mon olympique",
   score: 0
 )
 puts "Teams created."
@@ -62,7 +62,7 @@ begin
       team_id: team.id,
       user: user1
     )
-    TaskManager.create!(user: user1, task: project)
+    TaskManager.create!(user: user2, task: project)
 
     courses = Task.create!(
       name: "Faire les courses",
@@ -74,9 +74,9 @@ begin
       achieved: true,
       priority: 2,
       user: user1,
-      team_id: team.id
+      team_id: team.id,
     )
-    TaskManager.create!(user: user1, task: courses)
+    TaskManager.create!(user: user2, task: courses)
 
     medecin = Task.create!(
       name: "Rendez-vous chez le médecin",
@@ -117,6 +117,32 @@ begin
       user: user1
     )
     TaskManager.create!(user: user1, task: carte)
+
+    demoday = Task.create!(
+      name: "Finir projet demoday",
+      description: "",
+      category: "Fais tes papiers avant que ce soit le oaï !",
+      reccurence: false,
+      points: 25,
+      deadline: "2024-06-23",
+      achieved: true,
+      priority: 2,
+      user: user1
+    )
+    TaskManager.create!(user: user1, task: demoday)
+
+    seed = Task.create!(
+      name: "Faire les seeds",
+      description: "",
+      category: "Fais tes papiers avant que ce soit le oaï !",
+      reccurence: false,
+      points: 25,
+      deadline: "2024-06-24",
+      achieved: false,
+      priority: 2,
+      user: user2
+    )
+    TaskManager.create!(user: user2, task: seed)
 
     puts "Tasks created."
   end

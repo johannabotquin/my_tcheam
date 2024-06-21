@@ -43,14 +43,16 @@ class TasksController < ApplicationController
 
     if @task.save
       member_ids = params[:task][:members]
-      ids = member_ids.map { |member| member[:user_id] }
-      ids.each do |id|
-        user = User.find(id)
-        user.task_managers << TaskManager.create(task: @task, user: user)
+      if params[:task][:reccurence] == "0"
+        ids = member_ids.map { |member| member[:user_id] }
+        ids.each do |id|
+          user = User.find(id)
+          user.task_managers << TaskManager.create(task: @task, user: user)
+        end
+      else
+        @task.save
       end
       redirect_to task_path(@task)
-    else
-      render :new, status: :unprocessable_entity
     end
   end
 

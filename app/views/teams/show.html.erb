@@ -1,4 +1,9 @@
-<h1><%= @team.name %></h1>
+<div class="d-flex justify-content-between">
+  <h1><%= @team.name %></h1>
+  <p><strong>Score:</strong> <%= @team.score %></p>
+</div>
+
+
 
 <div class="team-members">
     <% @team.users.each do |user| %>
@@ -6,9 +11,6 @@
     <% end %>
 </div>
 
-<p><strong>Score:</strong> <%= @team.score %></p>
-
-<%= link_to 'Retour', user_path(current_user) %>
 
 
 <div class="container" data-controller="tasks">
