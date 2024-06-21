@@ -8,5 +8,10 @@ class Team < ApplicationRecord
   validates :name, presence: true
 
   def run_wheel
+    tasks = Task.where(team_id: self.id)
+    tasks.each do |task|
+      TaskManager.create(task: task, user: self.users.sample)
+
+    end
   end
 end
