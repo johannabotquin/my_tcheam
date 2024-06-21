@@ -19,7 +19,7 @@ Team.destroy_all
 
 puts "Creating teams..."
 team = Team.create!(
-  name: "The Avengers",
+  name: "Mon olympique",
   score: 0
 )
 puts "Teams created."
