@@ -19,7 +19,6 @@ Team.destroy_all
 
 puts "Creating teams..."
 team = Team.create!(
-
   name: "Mon olympique",
   score: 0
 )
@@ -27,159 +26,153 @@ puts "Teams created."
 
 puts "Creating users..."
 user1 = User.create!(
-  first_name: "Johanna",
-  last_name: "Botquin",
-  pseudo: "Jojo",
-  email: "johanna@gmail.com",
-  password: "angryjojo",
+  first_name: "Laura",
+  last_name: "Cabos",
+  pseudo: "Lolo",
+  email: "laura@gmail.com",
+  password: "angrylolo",
   avatar: "avatar-mama.svg",
   team_id: team.id
 )
 
 user2 = User.create!(
-  first_name: "Ragheed",
-  last_name: "Sleimani",
-  pseudo: "Rara",
-  email: "ragheed.sleimani@gmail.com",
-  password: "zenragheed",
+  first_name: "Emerick",
+  last_name: "Cabos",
+  pseudo: "Rickou",
+  email: "Emerick@gmail.com",
+  password: "zenemerick",
   avatar: "avatar-papa.svg",
   team_id: team.id
 )
 
 user3 = User.create!(
-  first_name: "Laura",
+  first_name: "Lola",
   last_name: "Cabos",
-  pseudo: "LaBoss",
-  email: "laura.cabos@gmail.com",
-  password: "lauraboss",
+  pseudo: "Lolita",
+  email: "lola@gmail.com",
+  password: "lolaboss",
   avatar: "avatar-enfant2.svg",
   team_id: team.id
 )
 
 user4 = User.create!(
-  first_name: "Zak",
-  last_name: "Djermani",
-  pseudo: "DjZak",
-  email: "zak.djermani@gmail.com",
-  password: "djermani",
+  first_name: "Zoé",
+  last_name: "Cabos",
+  pseudo: "Zozo",
+  email: "zoé@gmail.com",
+  password: "zoelagirafe",
   avatar: "avatar-enfant1.svg",
   team_id: team.id
 )
 puts "Users created."
 
 puts "Creating tasks..."
-begin
-  ActiveRecord::Base.transaction do
-    project = Task.create!(
-      name: "Compléter le rapport de projet",
-      description: "Terminer le rapport final pour le soumettre à Laura.",
-      category: "Fais tes papiers avant que ce soit le oaï !",
-      reccurence: false,
-      points: 50,
-      deadline: "2024-06-19",
-      achieved: false,
-      priority: 1,
-      user: user2
-    )
-    TaskManager.create!(user: user2, task: project)
 
-    courses = Task.create!(
-      name: "Faire les courses",
-      description: "Acheter les provisions pour la semaine, y compris les fruits, légumes et produits laitiers.",
-      category: "La maison elle va pas se gérer seule, figure de poulpe !",
-      reccurence: true,
-      points: 10,
-      deadline: "2024-06-19",
-      achieved: true,
-      priority: 2,
-      user: user2
-    )
-    TaskManager.create!(user: user2, task: courses)
+demoday = Task.create!(
+  name: "demoday 1",
+  description: "Préparer la présentation pour le demoday",
+  category: "Fais tes papiers avant que ce soit le oaï !",
+  reccurence: false,
+  points: 20,
+  deadline: "2024-06-21",
+  achieved: true,
+  priority: 2,
+  user: user1
+)
+TaskManager.create!(user: user1, task: demoday)
 
-    medecin = Task.create!(
-      name: "Rendez-vous chez le médecin",
-      description: "Bilan annuel avec le Dr. Zac à la clinique.",
-      category: "Tu crains dégun mais tu dois en prendre soin...",
-      reccurence: false,
-      points: 30,
-      deadline: "2024-06-21",
-      achieved: true,
-      priority: 1,
-      user: user2
-    )
-    TaskManager.create!(user: user2, task: medecin)
+courses = Task.create!(
+  name: "Faire les courses",
+  description: "",
+  category: "La maison elle va pas se gérer seule, figure de poulpe !",
+  reccurence: false,
+  points: 20,
+  deadline: "2024-06-21",
+  achieved: false,
+  priority: 1,
+  user: user1
+)
+TaskManager.create!(user: user1, task: courses)
 
-    factures = Task.create!(
-      name: "Payer les factures de services publics",
-      description: "Payer les factures d'électricité, d'eau et d'internet pour le mois.",
-      category: "Fais tes papiers avant que ce soit le oaï !",
-      reccurence: true,
-      points: 15,
-      deadline: "2024-06-21",
-      achieved: false,
-      priority: 2,
-      user: user1
-    )
-    TaskManager.create!(user: user1, task: factures)
+passeport = Task.create!(
+  name: "Renouveler le passeport",
+  description: "Rdv à la mairie à 15h30.",
+  category: "Fais tes papiers avant que ce soit le oaï !",
+  reccurence: false,
+  points: 10,
+  deadline: "2024-06-21",
+  achieved: true,
+  priority: 2,
+  user: user1
+)
+TaskManager.create!(user: user1, task: passeport)
 
-    carte = Task.create!(
-      name: "Renouveller la carte d'identité",
-      description: "",
-      category: "Fais tes papiers avant que ce soit le oaï !",
-      reccurence: false,
-      points: 25,
-      deadline: "2024-06-21",
-      achieved: false,
-      priority: 2,
-      user: user1
-    )
-    TaskManager.create!(user: user1, task: carte)
+gateau = Task.create!(
+  name: "Gateau Lola",
+  description: "Acheter un gateau pour l'anniversaire de Lola.",
+  category: "La maison elle va pas se gérer seule, figure de poulpe !",
+  reccurence: false,
+  points: 10,
+  deadline: "2024-06-22",
+  achieved: false,
+  priority: 1,
+  user: user1
+)
+TaskManager.create!(user: user1, task: gateau)
 
-    ophtalmo = Task.create!(
-      name: "Aller chez l'ophtalmologue",
-      description: "Aller chez l'ophtalmologue pour un bilan annuel.",
-      category: "Tu crains dégun mais tu dois en prendre soin...",
-      reccurence: false,
-      points: 25,
-      deadline: "2024-06-22",
-      achieved: false,
-      priority: 2,
-      user: user1
-    )
-    TaskManager.create!(user: user2, task: ophtalmo)
+factures = Task.create!(
+  name: "Payer les factures de services publics",
+  description: "Payer les factures d'électricité, d'eau et d'internet pour le mois.",
+  category: "Fais tes papiers avant que ce soit le oaï !",
+  reccurence: true,
+  points: 15,
+  deadline: "2024-06-22",
+  achieved: false,
+  priority: 2,
+  user: user1
+)
+TaskManager.create!(user: user1, task: factures)
 
-    demoday = Task.create!(
-      name: "Finir projet demoday",
-      description: "",
-      category: "Fais tes papiers avant que ce soit le oaï !",
-      reccurence: false,
-      points: 25,
-      deadline: "2024-06-23",
-      achieved: true,
-      priority: 2,
-      user: user1
-    )
-    TaskManager.create!(user: user1, task: demoday)
+carte = Task.create!(
+  name: "Renouveller la carte d'identité",
+  description: "",
+  category: "Fais tes papiers avant que ce soit le oaï !",
+  reccurence: false,
+  points: 15,
+  deadline: "2024-06-21",
+  achieved: false,
+  priority: 2,
+  user: user2
+)
+TaskManager.create!(user: user2, task: carte)
 
-    seed = Task.create!(
-      name: "Faire les seeds",
-      description: "",
-      category: "Fais tes papiers avant que ce soit le oaï !",
-      reccurence: false,
-      points: 25,
-      deadline: "2024-06-24",
-      achieved: false,
-      priority: 2,
-      user: user2
-    )
-    TaskManager.create!(user: user2, task: seed)
+ophtalmo = Task.create!(
+  name: "Aller chez l'ophtalmo",
+  description: "Rdv à 9h30",
+  category: "Tu crains dégun mais tu dois en prendre soin...",
+  reccurence: false,
+  points: 20,
+  deadline: "2024-06-20",
+  achieved: true,
+  priority: 2,
+  user: user1
+)
+TaskManager.create!(user: user1, task: ophtalmo)
 
-    puts "Tasks created."
-  end
-rescue ActiveRecord::RecordInvalid => e
-  puts "Error creating tasks: #{e.message}"
-  raise ActiveRecord::Rollback
-end
+seed = Task.create!(
+  name: "Faire les seeds",
+  description: "",
+  category: "Fais tes papiers avant que ce soit le oaï !",
+  reccurence: false,
+  points: 25,
+  deadline: "2024-06-24",
+  achieved: false,
+  priority: 2,
+  user: user2
+)
+TaskManager.create!(user: user2, task: seed)
+
+puts "Tasks created."
 
 puts "Creating rewards..."
 
