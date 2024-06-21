@@ -1,6 +1,6 @@
 <!-- app/views/tasks/_tasks_list.html.erb -->
 
-<% tasks.each do |task| %>
+<% tasks.order(:created_at).each do |task| %>
   <% if task.category == Task::CATEGORIES[0] %>  <!-- CATEGORIES[0] = "Santé" -->
     <%= link_to '#', class: "card card-task card-health mb-4", data: { aos: "flip-up", bs_toggle: "modal", bs_target: "#exampleModal#{task.id}" } do %>
       <div class="card-content">
@@ -44,31 +44,81 @@
       </div>
     <% end %>
   <% end %>
-
-  <!-- Modal pour chaque tâche -->
+<!-- Modal pour chaque tâche -->
   <div class="modal fade" id="exampleModal<%= task.id %>" tabindex="-1" aria-labelledby="exampleModalLabel<%= task.id %>" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel<%= task.id %>"><%= task.name %></h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <%= simple_form_for task do |f| %>
-            <%= f.input :name %>
-            <%= f.input :description %>
-            <%= f.input :category, collection: Task::CATEGORIES %>
-            <%= f.input :reccurence, as: :boolean %>
-            <%= f.input :points %>
-            <%= f.input :deadline %>
-            <%= f.input :achieved %>
-            <%= f.input :priority, collection: Task::PRIORITY %>
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-md-12">
+                <div class="form-container">
+                  <div class="container-header text-center">
+                    <h1>Modifier la tâche</h1>
+                  </div>
+                  <div class="card form-input">
+                    <%= simple_form_for task do |f| %>
+                      <div class="form-group">
+                        <%= f.input :name, label: "Nom", input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.input :description, label: "Détails", input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
+                      </div>
 
-            <div class="modal-footer">
-              <%= link_to 'Supprimer', task_path(task), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-delete" %>
-              <%= f.button :submit, 'Enregistrer', class: "btn btn-orange" %>
+                        <%= f.input :category,
+                          label: "Catégorie",
+                          as: :radio_buttons,
+                          collection_wrapper_tag: 'div',
+                          collection_wrapper_class: 'category-wrapper',
+                          item_wrapper_class: 'category-item',
+                          input_html: {class: 'category-selector'},
+                          collection: Task::CATEGORIES,
+                          label_html: { class: 'form-label' } %>
+
+                      <div class="form-group">
+                        <%= f.input :reccurence, label: "Réccurente", as: :boolean, input_html: { class: 'form-check-input' }, label_html: { class: 'form-check-label' } %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.input :points, label: "Points", input_html: { class: 'form-control' }, label_html: { class: 'form-label' } %>
+                      </div>
+
+                      <div class="form-group">
+                        <%= f.input :achieved, label: "Tache achevée", as: :boolean, input_html: { class: 'form-check-input toggle' }, label_html: { class: 'form-check-label' } %>
+                      </div>
+
+                      <div class="form-group">
+                        <%= f.input :deadline,
+                                    label: "Deadline",
+                                    as: :string,
+                                    input_html: { data: { controller: "datepicker" }, class: 'form-control' },
+                                    label_html: { class: 'form-label' } %>
+                      </div>
+                      <div class="form-group">
+                        <%= f.input :priority,
+                          label: "Priorité",
+                          as: :check_boxes,
+                          collection_wrapper_tag: 'div',
+                          collection_wrapper_class: 'd-flex flex-wrap',
+                          input_html: { class: "tag-selector" },
+                          item_wrapper_class: 'tag-item  mb-3',
+                          collection: Task::PRIORITY,
+                          label_html: { class: 'form-label' } %>
+                      </div>
+
+                      <div class="modal-footer">
+                        <%= link_to 'Supprimer', task_path(task), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-delete" %>
+                        <%= f.button :submit, 'Enregistrer', class: "btn btn-orange" %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
             </div>
-          <% end %>
+          </div>
         </div>
       </div>
     </div>
