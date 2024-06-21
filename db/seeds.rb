@@ -32,7 +32,7 @@ user1 = User.create!(
   pseudo: "Jojo",
   email: "johanna@gmail.com",
   password: "angryjojo",
-  avatar: "https://pictory.ai/wp-content/uploads/2022/03/pictory_500.png",
+  avatar: "avatar-mama.svg",
   team_id: team.id
 )
 
@@ -42,7 +42,27 @@ user2 = User.create!(
   pseudo: "Rara",
   email: "ragheed.sleimani@gmail.com",
   password: "zenragheed",
-  avatar: "https://pictory.ai/wp-content/uploads/2022/03/pictory_500.png",
+  avatar: "avatar-papa.svg",
+  team_id: team.id
+)
+
+user3 = User.create!(
+  first_name: "Laura",
+  last_name: "Cabos",
+  pseudo: "LaBoss",
+  email: "laura.cabos@gmail.com",
+  password: "lauraboss",
+  avatar: "avatar-enfant2.svg",
+  team_id: team.id
+)
+
+user4 = User.create!(
+  first_name: "Zak",
+  last_name: "Djermani",
+  pseudo: "DjZak",
+  email: "zak.djermani@gmail.com",
+  password: "djermani",
+  avatar: "avatar-enfant1.svg",
   team_id: team.id
 )
 puts "Users created."
