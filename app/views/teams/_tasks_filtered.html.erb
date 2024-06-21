@@ -1,0 +1,33 @@
+<% tasks.each do |task| %>
+    <% if task.category == Task::CATEGORIES[0] %>  <!-- CATEGORIES[0] = "Santé" -->
+      <%= link_to task_path(task), class: "card card-task card-health mb-4 ", data: { aos: "flip-up" } do %>
+        <div class="card-content">
+          <h3><%= task.name %></h3>
+          <p><%= task.description %></p>
+        </div>
+        <div class="card-checkboxe">
+          <%= image_tag "checkboxe" %>
+        </div>
+      <% end %>
+    <% elsif task.category == Task::CATEGORIES[1] %>  <!-- CATEGORIES[1] = "Gestion du foyer" -->
+      <%= link_to task_path(task), class: "card card-task card-home-duty mb-4", data: { aos: "flip-up" } do %>
+        <div class="card-content">
+          <h3><%= task.name %></h3>
+          <p><%= task.description %></p>
+        </div>
+        <div class="card-checkboxe">
+          <%= image_tag "checkboxe" %>
+        </div>
+      <% end %>
+    <% elsif task.category == Task::CATEGORIES[2] %>  <!-- CATEGORIES[2] = "Administratif" -->
+      <%= link_to task_path(task), class: "card card-task card-admin mb-4", data: { aos: "flip-up" } do %>
+        <div class="card-content">
+          <h3><%= task.name %></h3>
+          <p><%= task.description %></p>
+        </div>
+        <div class="card-checkboxe">
+          <%= image_tag "checkboxe" %>
+        </div>
+      <% end %>
+  <% end %>
+<% end %>
