@@ -59,6 +59,7 @@ begin
       deadline: "2024-06-19",
       achieved: false,
       priority: 1,
+      team_id: team.id,
       user: user1
     )
     TaskManager.create!(user: user1, task: project)
@@ -72,7 +73,8 @@ begin
       deadline: "2024-06-19",
       achieved: true,
       priority: 2,
-      user: user1
+      user: user1,
+      team_id: team.id
     )
     TaskManager.create!(user: user1, task: courses)
 
@@ -80,7 +82,7 @@ begin
       name: "Rendez-vous chez le médecin",
       description: "Bilan annuel avec le Dr. Zac à la clinique.",
       category: "Tu crains dégun mais tu dois en prendre soin",
-      reccurence: false,
+      reccurence: true,
       points: 30,
       deadline: "2024-06-20",
       achieved: true,

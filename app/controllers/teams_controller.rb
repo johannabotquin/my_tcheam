@@ -37,6 +37,10 @@ class TeamsController < ApplicationController
     end
   end
 
+  def run_wheel
+    @team = current_user.team
+  end
+
   private
 
   def team_params

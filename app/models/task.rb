@@ -10,6 +10,7 @@ class Task < ApplicationRecord
   belongs_to :user
   has_many :task_managers, dependent: :destroy
   has_many :users, through: :task_managers
+  belongs_to :team, optional: true
 
   # validates :name, :category, :points, :deadline, :reccurence, :achieved, presence: true
   # validates :points, numericality: { only_integer: true }
