@@ -37,7 +37,7 @@
                   <div class="form-check">
                     <%= check_box_tag 'task[members][]', member.id, false, id: "member_#{member.id}", class: 'form-check-input', style: 'display:none;', data: { member_selection_target: "checkbox" } %>
                     <div class="member-photo" data-member-selection-target="photo" data-member-id="<%= member.id %>" onclick="document.getElementById('member_<%= member.id %>').click()">
-                      <%= image_tag(member.avatar, alt: member.first_name, style: "width:100px; cursor: pointer;") %>
+                      <%= image_tag(member.avatar, alt: member.first_name, style: "width:50px; cursor: pointer;") %>
                     </div>
                   </div>
                 <% end %>
