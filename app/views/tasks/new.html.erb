@@ -32,7 +32,7 @@
               </div>
 
               <p class="form-label">Qui doit réaliser cette tâche ?</p>
-              <div class="d-flex" data-controller="member-selection">
+              <div class="d-flex flex-wrap" data-controller="member-selection">
                 <% @members.each do |member| %>
                   <div class="form-check">
                     <%= check_box_tag 'task[members][]', member.id, false, id: "member_#{member.id}", class: 'form-check-input', style: 'display:none;', data: { member_selection_target: "checkbox" } %>
@@ -53,7 +53,7 @@
                   label: "Priorité",
                   as: :check_boxes,
                   collection_wrapper_tag: 'div',
-                  collection_wrapper_class: 'd-flex flex-wrap',
+                  collection_wrapper_class: 'd-flex flex-wrap justify-content-center',
                   input_html: { class: "tag-selector" },
                   item_wrapper_class: 'tag-item  mb-3',
                   collection: Task::PRIORITY,
