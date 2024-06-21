@@ -118,7 +118,7 @@ begin
     ophtalmo = Task.create!(
       name: "Aller chez l'ophtalmologue",
       description: "Aller chez l'ophtalmologue pour un bilan annuel.",
-      category: "Tu crains dégun mais tu dois en prendre soin",
+      category: "Tu crains dégun mais tu dois en prendre soin...",
       reccurence: false,
       points: 25,
       deadline: "2024-06-22",
