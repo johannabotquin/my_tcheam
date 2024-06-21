@@ -39,6 +39,13 @@ class TeamsController < ApplicationController
 
   def run_wheel
     @team = current_user.team
+    @recurrent_tasks = @team.tasks.where(reccurence: true)
+    @recurrent_tasks.each do |task|
+      user = @team.users.sample
+      TaskManager.create(task:, user:)
+    end
+
+    raise
   end
 
   private

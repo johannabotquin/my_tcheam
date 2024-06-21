@@ -87,7 +87,8 @@ begin
       deadline: "2024-06-20",
       achieved: true,
       priority: 1,
-      user: user1
+      user: user1,
+      team_id: team.id
     )
     TaskManager.create!(user: user1, task: medecin)
 
