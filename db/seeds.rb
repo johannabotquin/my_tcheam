@@ -170,6 +170,39 @@ List.create!(
   content: "Fleurs, chocolats, carte",
   user_id: user1.id
 )
+
+Memorie.create!(
+  name: "Voyage à Paris",
+  content: "Un voyage incroyable à Paris, avec des visites à la Tour Eiffel et au Louvre.",
+  date: "2023-05-21",
+  photo: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/4b/59/86/caption.jpg?w=1400&h=1400&s=1",
+  team_id: team.id
+)
+
+Memorie.create!(
+  name: "Voyage en espagne",
+  content: "Un voyage magnifique",
+  date: "2023-08-10",
+  photo: "https://www.servigroup.com/assets/cache/uploads/gallery/proposals/excursiones/que-ver-alicante/1200x674/explanada-paseo-alicante.webp?from=jpg" "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/4b/59/86/caption.jpg?w=1400&h=1400&s=1",
+  team_id: team.id
+)
+
+Memorie.create!(
+  name: "soirée karaoké",
+  content: "Dans un bar tres select",
+  date: "2023-08-10",
+  photo: "https://img.20mn.fr/DtlNkbTkTwyBGvHyDltbJg/1444x920_clients-poussent-chansonnette-bam-karaoke-box-paris",
+  team_id: team.id
+)
+
+Memorie.create!(
+  name: "voyage en chine",
+  content: "un pays d'asie",
+  date: "2023-08-10",
+  photo: "https://images.ctfassets.net/rc3dlxapnu6k/4lie0LcrcmBgXd1DTs3BD8/ad8ccf24bff67369c5b9c5e8e8ac67d5/iStock-598959570.jpg?w=1923&h=1082&fl=progressive&q=50&fm=jpg",
+  team_id: team.id
+)
+
 puts "Lists created."
 
 puts "Seed data successfully created."

@@ -14,9 +14,11 @@ class MemoriesController < ApplicationController
 
   def create
     @memorie = Memorie.new(memorie_params)
+    @memorie.team_id = current_user.team_id
     if @memorie.save
       redirect_to memory_path(@memorie)
     else
+      puts @memorie.errors.full_messages
       render :new, status: :unprocessable_entity
     end
   end

@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background-color: $light-purple;
+  background-color: $deep-cream;
+  ;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -32,7 +33,7 @@
       font-family: 'Open sans', sans-serif;
 
       @media (max-width: 768px) {
-        background-color: $light-purple;
+        background-color: transparent;
         border: none;
         border-radius: 0;
         padding: 0;
@@ -48,11 +49,11 @@
 
       &:hover {
         background-color: transparent;
-        color: $dark-purple
+        color: $electric-purple;
       }
 
       @media (max-width: 768px) {
-        color: $gray;
+        color: $dark-purple;
         padding: 0;
       }
     }
@@ -69,9 +70,11 @@
   }
 }
 
-.navbar-nav li:last-child {
+.navbar-nav.menu-profile {
   @media (max-width: 768px) {
-    margin-top: 6rem;
+    border-top: 2px solid $dark-gray;
+    padding-top: 2rem;
+    margin-top: 4rem;
   }
 }
 
