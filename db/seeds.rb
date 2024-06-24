@@ -185,7 +185,7 @@ Reward.create!(
 )
 
 Reward.create!(
-  name: "Dîner romantique",
+  name: "Dîner en famille",
   goal: 50,
   user_id: user2.id,
   team_id: team.id,

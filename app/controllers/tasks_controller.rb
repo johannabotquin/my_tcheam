@@ -60,7 +60,21 @@ class TasksController < ApplicationController
 
   def update
     @task.update(task_params)
-    redirect_back fallback_location: root_path, notice: "Task updated"
+    @team = current_user.team
+    @reward = @team.rewards.find { |reward| reward.selected == true }
+    if @task.achieved == true
+      @team.update(score: @team.score += @task.points)
+      if @team.score >= @reward.goal
+        flash[:notice] = "Bravo ! #{@team.name} a remporté : #{@reward.name}. Sélectionne une nouvelle récompense
+        pour jouer avec ta Tcheam !"
+        redirect_to user_path(current_user)
+      else
+        redirect_to user_path(current_user)
+      end
+    else
+      redirect_to user_path(current_user)
+    end
+    # redirect_back fallback_location: root_path, notice: "Task updated"
   end
 
   def destroy
