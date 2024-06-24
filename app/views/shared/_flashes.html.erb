@@ -2,7 +2,7 @@
   <div class="notice-container d-flex">
     <div class="alert alert-info alert-dismissible win-notif fade show m-1" role="alert">
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      <audio src="app/assets/images/positive-notification-new-level-152480.mp3"></audio>
+      <audio src=".mp3"></audio>
       <div class="notif-img">
         <%= image_tag ("anxious-octopus.png"), width: 50 %>
       </div>
@@ -14,19 +14,5 @@
         <%= link_to "Les récompenses", team_rewards_path(@team)%>
       </div>
     </div>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        var alertElement = document.getElementById('notification-alert');
-        if (alertElement) {
-          var audioElement = document.getElementById('notification-sound');
-          if (audioElement) {
-            audioElement.play().catch(function(error) {
-              console.log("Audio playback failed: ", error);
-            });
-          }
-        }
-      });
-    </script>
   </div>
 <% end %>
