@@ -44,11 +44,37 @@ class TeamsController < ApplicationController
 
   def run_wheel
     @team = current_user.team
-    # @recurrent_tasks = @team.tasks.where(reccurence: true)
-    # @recurrent_tasks.each do |task|
-    #   user = @team.users.sample
-    #   TaskManager.create(task:, user:)
-    # end
+    @recurrent_tasks = @team.tasks.where(reccurence: true)
+    @available_users = @team.users
+    @recurrent_tasks_counter = @recurrent_tasks.count
+    @team_members_counter = 2
+
+    ## Dispatcher les taches en fonctions du nombre d'user et de taches
+    # si c'est pair, je distribue les taches de manière équitable
+
+
+    # si c'est impair, je distribue les taches de manière équitable et j'en laisse une de côté que j'attribue aléatoirement à un user
+
+    @user_sampled = @team.users.shuffle.pluck(:id)
+
+    @recurrent_tasks.each do |task|
+      if @user_sampled.empty?
+        @user_sampled = @team.users.shuffle.pluck(:id) # Assurez-vous de recharger les IDs si nécessaire
+      end
+      user_id = @user_sampled.shift # Cela retire et retourne le premier élément de @user_sampled
+      TaskManager.create(task: task, user_id: user_id)
+    end
+
+  end
+
+  def brouillon
+    if @recurrent_tasks_counter % @team_members_counter == 0
+      @available_users.each do |user|
+        @recurrent_tasks.each do |task|
+          user.task_managers << TaskManager.create(task: task, user: user)
+        end
+      end
+    end
   end
 
   private

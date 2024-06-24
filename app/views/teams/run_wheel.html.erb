@@ -1,5 +1,14 @@
 <h1>coucou t'es sur la roue</h1>
-<% @team.tasks.each do |task| %>
-  <%= task.name %>
-<% end %>
 
+<div class="">
+  <% @team.users.each do |member| %>
+    <%= member.first_name %>
+  <% end %>
+</div>
+
+<div class="">
+  <% @recurrent_tasks.each do |task| %>
+  
+  <p>la tache : <%= task.name %> est assignée a : <%= task.task_managers.last.user.first_name %></p>
+  <% end %>
+</div>
