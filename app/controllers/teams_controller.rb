@@ -52,7 +52,6 @@ class TeamsController < ApplicationController
     ## Dispatcher les taches en fonctions du nombre d'user et de taches
     # si c'est pair, je distribue les taches de manière équitable
 
-
     # si c'est impair, je distribue les taches de manière équitable et j'en laisse une de côté que j'attribue aléatoirement à un user
 
     @user_sampled = @team.users.shuffle.pluck(:id)

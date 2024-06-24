@@ -1,14 +1,109 @@
-<h1>coucou t'es sur la roue</h1>
+<div class="container">
+  <div class="row">
+    <div class="col">
 
-<div class="">
-  <% @team.users.each do |member| %>
-    <%= member.first_name %>
-  <% end %>
-</div>
+      <h1>coucou t'es sur la roue</h1>
 
-<div class="">
-  <% @recurrent_tasks.each do |task| %>
-  
-  <p>la tache : <%= task.name %> est assignée a : <%= task.task_managers.last.user.first_name %></p>
-  <% end %>
+      <p>Les tâches récuurentes</p>
+
+      <div class="tasks-list" data-controller="dispatch">
+
+        <div class="cards my-4 scene scene--card">
+          <% @recurrent_tasks.each do |task| %>
+            <% if task.category == Task::CATEGORIES[0] %>  <!-- CATEGORIES[0] = "Santé" -->
+              <%= link_to edit_task_path(task), class: "card card-task card-health mb-4", data: { dispatch_target:"card"} do %>
+                <div class="card__face card__face--front">
+                  <div class="card-content">
+                    <h3><%= task.name %></h3>
+                  </div>
+                </div>
+
+              <div class="card__face card__face--back">
+                <div class="card-content">
+                  <h3><%= task.name %></h3>
+                </div>
+                <div class="">
+                  <p> <%= image_tag(task.task_managers.last.user.avatar, style: "width: 50px; height: 50px") %></p>
+                </div>
+              </div>
+
+              <% end %>
+            <% elsif task.category == Task::CATEGORIES[1] %>  <!-- CATEGORIES[1] = "Gestion du foyer" -->
+              <%= link_to edit_task_path(task), class: "card card-task card-home-duty mb-4", data: { dispatch_target:"card"} do %>
+                <div class="card__face card__face--front">
+                  <div class="card-content">
+                    <h3><%= task.name %></h3>
+                  </div>
+                </div>
+
+              <div class="card__face card__face--back">
+                <div class="card-content">
+                  <h3><%= task.name %></h3>
+                </div>
+                <div class="">
+                  <p> <%= image_tag(task.task_managers.last.user.avatar, style: "width: 50px; height: 50px") %></p>
+                </div>
+              </div>
+              <% end %>
+            <% elsif task.category == Task::CATEGORIES[2] %>  <!-- CATEGORIES[2] = "Administratif" -->
+              <%= link_to edit_task_path(task), class: "card card-task card-admin mb-4", data: { dispatch_target:"card"} do %>
+                <div class="card__face card__face--front">
+                  <div class="card-content">
+                    <h3><%= task.name %></h3>
+                  </div>
+                </div>
+
+              <div class="card__face card__face--back">
+                <div class="card-content">
+                  <h3><%= task.name %></h3>
+                </div>
+                <div class="">
+                  <p> <%= image_tag(task.task_managers.last.user.avatar, style: "width: 50px; height: 50px") %></p>
+                </div>
+              </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class= "d-flex justify-content-center">
+          <button class="btn btn-orange my-4" data-action="click->dispatch#dispatch">Dispatch !</button>
+        </div>
+
+        <div class="cards my-4">
+          <% @recurrent_tasks.each do |task| %>
+            <% if task.category == Task::CATEGORIES[0] %>  <!-- CATEGORIES[0] = "Santé" -->
+              <%= link_to edit_task_path(task), class: "card card-task card-health mb-4 d-flex justify-content-between", data: { aos: "flip-up" } do %>
+                <div class="card-content">
+                  <h3><%= task.name %></h3>
+                </div>
+                <div class="d-none">
+                  <p> <%= image_tag(task.task_managers.last.user.avatar, style: "width: 50px; height: 50px") %></p>
+                </div>
+              <% end %>
+            <% elsif task.category == Task::CATEGORIES[1] %>  <!-- CATEGORIES[1] = "Gestion du foyer" -->
+              <%= link_to edit_task_path(task), class: "card card-task card-home-duty mb-4", data: { aos: "flip-up" } do %>
+                <div class="card-content">
+                  <h3><%= task.name %></h3>
+                </div>
+                <div class="d-none">
+                  <p> <%= image_tag(task.task_managers.last.user.avatar, style: "width: 50px; height: 50px") %></p>
+                </div>
+              <% end %>
+            <% elsif task.category == Task::CATEGORIES[2] %>  <!-- CATEGORIES[2] = "Administratif" -->
+              <%= link_to edit_task_path(task), class: "card card-task card-admin mb-4", data: { aos: "flip-up" } do %>
+                <div class="card-content">
+                  <h3><%= task.name %></h3>
+                </div>
+                <div class="d-none">
+                  <p> <%= image_tag(task.task_managers.last.user.avatar, style: "width: 50px; height: 50px") %></p>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </div>
