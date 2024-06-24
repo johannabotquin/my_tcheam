@@ -121,3 +121,9 @@
   width: 85%;
   margin: 0 auto;
 }
+
+.card-empty {
+  border: 1px solid $dark-black;
+  border-radius: 5px;
+  padding: 1rem;
+}

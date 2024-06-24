@@ -1,9 +1,15 @@
 <div class="back-container pt-5">
   <div data-controller="team" data-team-id="<%= @team.id %>">
     <div class="container">
-      <div>
-        <p>Team</p>
-        <h2 class= mb-3><%= @team.name.upcase %></h2>
+      <div class="d-flex justify-content-between">
+        <div>
+          <p>Team</p>
+          <h2 class= "mb-3"><%= @team.name.upcase %></h2>
+        </div>
+        <div class="d-flex flex-column">
+          <p>Score:</p>
+          <h2 class= "mb-3 align-self-end"><%= @team.score %></h2>
+        </div>
       </div>
 
       <%= simple_form_for :filter, url: tasks_path, method: :get do |f| %>
