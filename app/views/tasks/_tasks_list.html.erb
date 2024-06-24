@@ -1,50 +1,52 @@
 <!-- app/views/tasks/_tasks_list.html.erb -->
 
-<% tasks.each do |task| %>
-  <% if tasks.empty? %>
-    <h3 class="card-empty mb-4">Tié en détente aujourd'hui !</h3>
-  <% else %>
-  <% if task.category == Task::CATEGORIES[0] %>  <!-- CATEGORIES[0] = "Santé" -->
-    <%= link_to edit_task_path(task), class: "card card-task card-health mb-4", data: { aos: "flip-up" } do %>
-      <div class="card-content">
-        <h3><%= task.name %></h3>
-        <p><%= task.description %></p>
-      </div>
-      <div class="card-checkboxe">
-        <% if task.achieved %>
-          <%= image_tag "checkboxe-checked.svg" %>
-        <% else %>
-          <%= image_tag "checkboxe.svg" %>
-        <% end %>
-      </div>
-    <% end %>
-  <% elsif task.category == Task::CATEGORIES[1] %>  <!-- CATEGORIES[1] = "Gestion du foyer" -->
-    <%= link_to edit_task_path(task), class: "card card-task card-home-duty mb-4", data: { aos: "flip-up" } do %>
-      <div class="card-content">
-        <h3><%= task.name %></h3>
-        <p><%= task.description %></p>
-      </div>
-      <div class="card-checkboxe">
-        <% if task.achieved %>
-          <%= image_tag "checkboxe-checked.svg" %>
-        <% else %>
-          <%= image_tag "checkboxe.svg" %>
-        <% end %>
-      </div>
-    <% end %>
-  <% elsif task.category == Task::CATEGORIES[2] %>  <!-- CATEGORIES[2] = "Administratif" -->
-    <%= link_to edit_task_path(task), class: "card card-task card-admin mb-4", data: { aos: "flip-up" } do %>
-      <div class="card-content">
-        <h3><%= task.name %></h3>
-        <p><%= task.description %></p>
-      </div>
-      <div class="card-checkboxe">
-        <% if task.achieved %>
-          <%= image_tag "checkboxe-checked.svg" %>
-        <% else %>
-          <%= image_tag "checkboxe.svg" %>
-        <% end %>
-      </div>
+
+<% if tasks.empty? %>
+  <h3 class="card-empty mb-4">Tié en détente aujourd'hui !</h3>
+<% else %>
+  <% tasks.each do |task| %>
+    <% if task.category == Task::CATEGORIES[0] %>  <!-- CATEGORIES[0] = "Santé" -->
+      <%= link_to edit_task_path(task), class: "card card-task card-health mb-4", data: { aos: "flip-up" } do %>
+        <div class="card-content">
+          <h3><%= task.name %></h3>
+          <p><%= task.description %></p>
+        </div>
+        <div class="card-checkboxe">
+          <% if task.achieved %>
+            <%= image_tag "checkboxe-checked.svg" %>
+          <% else %>
+            <%= image_tag "checkboxe.svg" %>
+          <% end %>
+        </div>
+      <% end %>
+    <% elsif task.category == Task::CATEGORIES[1] %>  <!-- CATEGORIES[1] = "Gestion du foyer" -->
+      <%= link_to edit_task_path(task), class: "card card-task card-home-duty mb-4", data: { aos: "flip-up" } do %>
+        <div class="card-content">
+          <h3><%= task.name %></h3>
+          <p><%= task.description %></p>
+        </div>
+        <div class="card-checkboxe">
+          <% if task.achieved %>
+            <%= image_tag "checkboxe-checked.svg" %>
+          <% else %>
+            <%= image_tag "checkboxe.svg" %>
+          <% end %>
+        </div>
+      <% end %>
+    <% elsif task.category == Task::CATEGORIES[2] %>  <!-- CATEGORIES[2] = "Administratif" -->
+      <%= link_to edit_task_path(task), class: "card card-task card-admin mb-4", data: { aos: "flip-up" } do %>
+        <div class="card-content">
+          <h3><%= task.name %></h3>
+          <p><%= task.description %></p>
+        </div>
+        <div class="card-checkboxe">
+          <% if task.achieved %>
+            <%= image_tag "checkboxe-checked.svg" %>
+          <% else %>
+            <%= image_tag "checkboxe.svg" %>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
