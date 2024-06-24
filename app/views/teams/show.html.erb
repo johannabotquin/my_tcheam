@@ -15,10 +15,10 @@
         <div class="d-flex justify-content-between">
           <div>
             <p>Prochaine récompense</p>
-            <% if !@reward.nil? %>
-              <h2 class= "mb-3"><%= @reward.name %></h2>
+            <% if @reward && @reward.name.present? %>
+              <h2 class="mb-3"><%= @reward.name %></h2>
             <% else %>
-              <h2 class= "mb-3">Pas de récompense sélectionnée</h2>
+              <h2 class="mb-3">Aucune récompense sélectionnée</h2>
             <% end %>
             <%= link_to team_rewards_path(@team), class: "arrow-link" do %>
               Toutes les récompenses
@@ -27,13 +27,14 @@
           </div>
           <div class="d-flex flex-column">
             <p>Objectif:</p>
-            <% if !@reward.nil? %>
-              <h2 class= "mb-3 align-self-end"><%= @reward.goal %></h2>
+            <% if @reward && @reward.goal.present? %>
+              <h2 class="mb-3 align-self-end"><%= @reward.goal %></h2>
+            <% else %>
+              <h2 class="mb-3 align-self-end">0</h2>
             <% end %>
           </div>
         </div>
       </div>
-
 
       <%= simple_form_for :filter, url: tasks_path, method: :get do |f| %>
         <% todays_date_index = Date.today.yday - 1 %>
