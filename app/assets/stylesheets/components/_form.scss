@@ -132,3 +132,8 @@
   background-color: $dark-purple;
   color: white;
 }
+
+
+.was-validated .form-check-input:valid ~ .form-check-label, .form-check-input.is-valid ~ .form-check-label {
+  color: $dark-black;
+}
