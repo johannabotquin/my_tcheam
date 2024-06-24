@@ -2,8 +2,12 @@ class TeamsController < ApplicationController
 
   def show
     @team = current_user.team
-    @team.score = @team.users.sum do |user|
+    if @reward.nil?
+      @team.update(score: 0)
+    else
+      @team.score = @team.users.sum do |user|
       user.tasks.where(achieved: true).sum(:points)
+      end
     end
     @reward = @team.rewards.find { |reward| reward.selected == true }
     @tasks_by_user = @team.users.each_with_object({}) do |user, hash|
