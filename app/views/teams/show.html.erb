@@ -1,4 +1,4 @@
-<div class="purple-container pt-5">
+<div class="back-container pt-5">
   <div data-controller="team" data-team-id="<%= @team.id %>">
     <div class="container">
       <div>
@@ -26,7 +26,7 @@
         <%= f.submit "Filter Tasks", class: "btn btn-primary", style: "display:none;" %>
       <% end %>
     </div>
-    <div class="round-container">
+    <div class="tasks-container">
       <% @team.users.each do |user| %>
         <div class="d-flex align-items-center my-2">
           <%= image_tag(user.avatar, alt: user.first_name, style: "width:45px; cursor: pointer;") %>
