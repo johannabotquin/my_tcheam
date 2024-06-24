@@ -49,13 +49,16 @@
       <% end %>
     </div>
     <div class="container">
-      <div class="tasks-container">
+      <div class="tasks-container" data-controller="toggle-tasks">
         <% @team.users.each do |user| %>
-          <div class="d-flex align-items-center my-2">
-            <%= image_tag(user.avatar, alt: user.first_name, style: "width:45px; cursor: pointer;") %>
-            <p class="name mx-2"><%= user.first_name %></p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center my-2">
+              <%= image_tag(user.avatar, alt: user.first_name, style: "width:45px; cursor: pointer;") %>
+              <p class="name mx-2"><%= user.first_name %></p>
+            </div>
+            <i class="fa-solid fa-chevron-down" data-action="click->toggle-tasks#toggle" data-user-id="<%= user.id %>"></i>
           </div>
-          <div data-team-target="usertasks-<%= user.id %>">
+          <div data-team-target="usertasks-<%= user.id %>" data-target="toggle-tasks.taskList" data-user-id="<%= user.id %>" class="tasks-list">
             <%= render partial: "tasks/tasks_list", locals: { tasks: user.tasks }, layout: false %>
           </div>
         <% end %>
