@@ -1,8 +1,7 @@
-<% if notice %>
+ <% if notice %>
   <div class="notice-container d-flex">
     <div class="alert alert-info alert-dismissible win-notif fade show m-1" role="alert">
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      <audio src=".mp3"></audio>
       <div class="notif-img">
         <%= image_tag ("anxious-octopus.png"), width: 50 %>
       </div>
@@ -11,7 +10,9 @@
       </div>
       <br>
       <div class="link">
-        <%= link_to "Les récompenses", team_rewards_path(@team)%>
+        <% if user_signed_in? %>
+          <%= link_to "Les récompenses", team_rewards_path(@team)%>
+        <% end %>
       </div>
     </div>
   </div>
