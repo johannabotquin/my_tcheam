@@ -1,8 +1,5 @@
 <div class="container mmy-1">
     <h1 class="text-center">Les Souvenirs</h1>
-    <div class="d-flex justify-content-center my-3">
-    <%= link_to "ajouter un souvenir", new_memory_path, class: "btn btn-purple" %>
-    </div>
     <br>
     <div class="form-container">
     <div class="row">
@@ -16,12 +13,15 @@
                   <p class="card-title text-center">"<%= link_to memorie.content, memory_path(memorie), class: 'text-decoration-none' %>..."</p>
               </div>
                   <div class="mt-auto d-flex justify-content-center" style="margin-bottom: 10px">
-                    <%= link_to "Détails", memory_path(memorie), class: "btn btn-pink" %>
+
                   </div>
             </div>
 
         </div>
       <% end %>
+    <div class="d-flex justify-content-center my-3">
+    <%= link_to "ajouter un souvenir", new_memory_path, class: "btn btn-purple" %>
+    </div>
     </div>
     </div>
   </div>

@@ -19,18 +19,19 @@
               </div>
                 <div class="row justify-content-center">
                   <div class="col text-center">
-                    <%= link_to 'Modifier', edit_team_reward_path(@team, reward), class: 'btn btn-yellow' %>
+                    <%= link_to 'Modifier', edit_team_reward_path(@team, reward), class: 'btn btn-orange' %>
                     <%= link_to 'Supprimer', team_reward_path(@team, reward), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-delete' %>
-                  </div>
+                    <%= link_to 'Selectionner la recompense', select_team_reward_path(@team, reward), class: 'btn btn-success', data: { turbo_confirm: "Mettre en avant cette récompense?" } %>
+                 </div>
                 </div>
+              </div>
             </div>
-          </div>
         <% end %>
       </div>
     <% end %>
 
-  <div>
-    <%= link_to 'Nouvelle Récompense', new_team_reward_path(@team), class: 'btn btn-orange' %>
+    <div>
+      <%= link_to 'Nouvelle Récompense', new_team_reward_path(@team), class: 'btn btn-orange' %>
+    </div>
   </div>
   </div>
-</div>
