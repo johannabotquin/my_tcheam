@@ -122,3 +122,9 @@
   margin: 0 auto;
   min-height: 15rem;
 }
+
+.card-empty {
+  border: 1px solid $dark-black;
+  border-radius: 5px;
+  padding: 1rem;
+}
