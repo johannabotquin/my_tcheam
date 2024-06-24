@@ -2,24 +2,29 @@ class TeamsController < ApplicationController
 
   def show
     @team = current_user.team
-    @my_tasks_ids = current_user.task_managers.map { |tm| tm.task_id }
-    @tasks = Task.where(id: @my_tasks_ids)
-
-    if params[:filter] && params[:filter][:date].present?
-      selected_date = Date.parse(params[:filter][:date])
-      @tasks = @tasks.where(deadline: selected_date)
+    @team.score = @team.users.sum do |user|
+      user.tasks.where(achieved: true).sum(:points)
+    end
+    @tasks_by_user = @team.users.each_with_object({}) do |user, hash|
+      user_tasks = user.tasks
+      if params[:filter] && params[:filter][:date].present?
+        selected_date = Date.parse(params[:filter][:date])
+        user_tasks = user_tasks.where(deadline: selected_date)
+      end
+      hash[user.id] = user_tasks
     end
 
     respond_to do |format|
-      format.html do
-        if request.xhr?
-          render partial: "tasks/tasks_list", locals: { tasks: @tasks }, layout: false
-        end
-      end
-      format.text do
-        if request.xhr?
-          render partial: "tasks/tasks_list", locals: { tasks: @tasks }, layout: false
-        end
+      format.html
+      format.json do
+        render json: {
+          tasks: @tasks_by_user.map do |user_id, tasks|
+            {
+              user_id: user_id,
+              html: render_to_string(partial: "tasks/tasks_list", locals: { tasks: tasks }, layout: false, formats: [:html])
+            }
+          end
+        }
       end
     end
   end

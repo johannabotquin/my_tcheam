@@ -40,7 +40,6 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.user = current_user
-
     if @task.save
       member_ids = params[:task][:members]
       if params[:task][:reccurence] == "0"
@@ -52,7 +51,7 @@ class TasksController < ApplicationController
       else
         @task.save
       end
-      redirect_to task_path(@task)
+      redirect_to root_path
     end
   end
 
