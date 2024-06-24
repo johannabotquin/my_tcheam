@@ -30,6 +30,13 @@
   }
 }
 
+.btn-purple2 {
+  background-color: $electric-purple;
+  &:hover {
+    background-color:$dark-purple;
+  }
+}
+
 .btn-blue {
   background-color: $deep-blue;
   &:hover {
@@ -60,7 +67,7 @@
 
 
 .btn-delete {
-  background-color: $red;
+  background-color: $light-red;
   &:hover {
     background-color: $light-red;
   }
