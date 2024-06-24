@@ -46,3 +46,25 @@ h1,h2,h3,p,.col {
 .row {
   margin: 2rem 0 2rem;
 }
+
+.arrow-link {
+  display: flex;
+  background-color: transparent;
+  color: $white;
+  transition: all .3s ease;
+  font-weight: bold;
+  cursor: pointer;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.arrow-link > .arrow {
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid $white;
+  border-bottom: 2px solid $white;
+  position: relative;
+  transform: rotate(-45deg);
+  margin-left: 3px;
+  transition: all .3s ease;
+}

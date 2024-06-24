@@ -5,6 +5,7 @@ class TeamsController < ApplicationController
     @team.score = @team.users.sum do |user|
       user.tasks.where(achieved: true).sum(:points)
     end
+    @reward = @team.rewards.find { |reward| reward.selected == true }
     @tasks_by_user = @team.users.each_with_object({}) do |user, hash|
       user_tasks = user.tasks
       if params[:filter] && params[:filter][:date].present?
