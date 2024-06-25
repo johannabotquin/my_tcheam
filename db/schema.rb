@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.1].define(version: 2024_06_21_095643) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -113,7 +114,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_21_095643) do
     t.string "category"
     t.boolean "reccurence"
     t.date "deadline"
-    t.boolean "achieved"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -121,6 +121,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_21_095643) do
     t.string "priority"
     t.bigint "team_id"
     t.index ["team_id"], name: "index_tasks_on_team_id"
+    t.boolean "achieved", default: false
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 

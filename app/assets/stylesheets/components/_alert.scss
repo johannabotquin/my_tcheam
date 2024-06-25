@@ -1,6 +1,30 @@
 .alert {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
   z-index: 1000;
+  margin: 15px;
+  align-items: center;
+  left: 20px;
+  right: 20px;
+  bottom: 300px;
+}
+
+.alert {
+  .win-notif {
+    background-color: $light-yellow;
+    border: 3px solid $deep-yellow;
+    width: 800px;
+    height: 300px;
+    color: $deep-orange;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.notif-img {
+  text-align: center;
+}
+
+.link {
+  text-align: center;
+  font-weight: 700;
 }

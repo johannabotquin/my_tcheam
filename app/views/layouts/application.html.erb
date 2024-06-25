@@ -14,6 +14,7 @@
   </head>
 
   <body>
+    <%= render 'shared/flashes' %>
     <%= render 'layouts/navbar' %>
     <%= yield %>
     <%= render 'layouts/footer' %>
@@ -21,7 +22,6 @@
 
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-  <%= javascript_include_tag 'splide_initializer' %>
   <script>
     AOS.init();
   </script>
