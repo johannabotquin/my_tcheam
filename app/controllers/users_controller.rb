@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @user = current_user
     @team = @user.team
     @tasks = @user.tasks
+    @lists = @user.lists
     @reward = @team.rewards.find { |reward| reward.selected == true }
     @tasks_completed = 0
     @tasks_remaining = current_user.tasks.where(achieved: false).count

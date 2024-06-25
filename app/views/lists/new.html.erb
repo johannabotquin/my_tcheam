@@ -2,29 +2,34 @@
   <div class="row justify-content-center">
     <div class="col">
       <div class="form-container">
+
         <div class="container-header text-center">
           <h1>Nouvelle liste</h1>
         </div>
+
         <div class="card form-input">
+
           <%= simple_form_for [current_user, @list] do |f| %>
               <%= f.input :name, label: "Nom" %>
               <%= f.input :content, label: "Détails", as: :text %>
               <p class="form-label">Qui peut voir cette liste ?</p>
-              <div data-controller="member-selection">
-                <% @members.each do |member| %>
-                  <div class="member-photo" data-member-selection-target="photo" data-member-id="<%= member.id %>">
-                    <%= image_tag(member.avatar, alt: member.first_name, style: "width:50px") %>
-                    <%= f.simple_fields_for :task_managers, @list.list_managers.build do |tm| %>
-                      <%= tm.hidden_field :user_id, value: member.id, data: { member_selection_target: "checkbox" } %>
-                    <% end %>
-                  </div>
-                <% end %>
-              </div>
+                <div class="d-flex flex-wrap" data-controller="member-selection">
+                  <% @members.each do |member| %>
+                    <div class="form-check">
+                      <%= check_box_tag 'task[members][]', member.id, false, id: "member_#{member.id}", class: 'form-check-input', style: 'display:none;', data: { member_selection_target: "checkbox" } %>
+                      <div class="member-photo" data-member-selection-target="photo" data-member-id="<%= member.id %>" onclick="document.getElementById('member_<%= member.id %>').click()">
+                        <%= image_tag(member.avatar, alt: member.first_name, style: "width:50px; cursor: pointer;") %>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
             <div class="form-actions text-center my-4">
               <%= f.submit 'Ajoute la', class: 'btn btn-orange' %>
             </div>
           <% end %>
+
         </div>
+
       </div>
     </div>
   </div>

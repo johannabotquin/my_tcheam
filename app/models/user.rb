@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :tasks, through: :task_managers
   has_many :messages
   has_many :chatrooms, through: :messages
+  has_many :list_managers
   has_many :lists, through: :list_managers
   has_many :rewards
   belongs_to :team
