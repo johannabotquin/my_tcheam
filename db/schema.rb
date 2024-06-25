@@ -118,8 +118,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_24_083626) do
     t.datetime "updated_at", null: false
     t.integer "points"
     t.string "priority"
-    t.boolean "achieved", default: false
     t.bigint "team_id"
+    t.boolean "achieved", default: false
     t.index ["team_id"], name: "index_tasks_on_team_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
