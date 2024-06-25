@@ -74,7 +74,7 @@ demoday = Task.create!(
   category: "Fais tes papiers avant que ce soit le oaï !",
   reccurence: false,
   points: 20,
-  deadline: "2024-06-24",
+  deadline: "2024-06-23",
   achieved: true,
   priority: 2,
   user: user1
@@ -87,7 +87,7 @@ courses = Task.create!(
   category: "La maison elle va pas se gérer seule, figure de poulpe !",
   reccurence: false,
   points: 20,
-  deadline: "2024-06-25",
+  deadline: "2024-06-23",
   achieved: false,
   priority: 1,
   user: user1
@@ -185,7 +185,7 @@ Reward.create!(
 )
 
 Reward.create!(
-  name: "Dîner en famille",
+  name: "Plateau télé en famille",
   goal: 50,
   user_id: user2.id,
   team_id: team.id,
@@ -193,16 +193,16 @@ Reward.create!(
 )
 
 Reward.create(
-  name: "voyage a disney land",
-  goal: 100,
+  name: "Séjour à DisneyLand Paris",
+  goal: 1000,
   team_id: team.id,
   user_id: User.first.id,
   selected: false
 )
 
 Reward.create(
-  name: "voyage au parc Asterix",
-  goal: 80,
+  name: "Week-end au Parc Asterix",
+  goal: 500,
   team_id: team.id,
   user_id: User.first.id,
   selected: false
