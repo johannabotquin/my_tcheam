@@ -6,7 +6,7 @@
       <% @memories.each do |memorie| %>
         <div class="col-md-4 mb-4">
 
-            <div class="card w-100 h-100">
+            <div class="card w-100 h-100 card-memorie">
               <div class="card-body">
                   <h4 class="card-title text-center"><%= link_to memorie.name, memory_path(memorie), class: 'text-decoration-none' %></h4>
                   <h5 class="card-title text-center"><%= link_to memorie.date, memory_path(memorie), class: 'text-decoration-none' %></h5>
@@ -20,7 +20,7 @@
         </div>
       <% end %>
     <div class="d-flex justify-content-center my-3">
-    <%= link_to "ajouter un souvenir", new_memory_path, class: "btn btn-purple" %>
+    <%= link_to "ajouter un souvenir", new_memory_path, class: "btn btn-yellow" %>
     </div>
     </div>
     </div>
