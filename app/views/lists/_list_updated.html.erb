@@ -1,0 +1,10 @@
+
+<div class="card card-list" data-list-update-target="lists">
+          <h3><%= list.name %></h3>
+          <span
+            class="input"
+            role="textbox"
+            contenteditable data-list-update-target="content" data-user-id="<%= current_user.id %>" data-list-id="<%= list.id %>" data-action="blur->list-update#updateList">
+              <%= list.content %>
+          </span>
+        </div>

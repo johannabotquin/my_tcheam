@@ -4,7 +4,8 @@ class ListsController < ApplicationController
   before_action :set_user, only: %i[show]
 
   def index
-    @lists = List.where(user: current_user)
+    @my_lists_ids = current_user.list_managers.map { |lm| lm.list_id }
+    @lists = List.where(id: @my_lists_ids)
   end
 
   def show
@@ -20,7 +21,13 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
     @list.user = current_user
     if @list.save
-      redirect_to user_list_path(current_user, @list)
+      member_ids = params[:task][:members]
+      ids = member_ids.map { |member| member[:user_id] }
+      ids.each do |id|
+        user = User.find(id)
+        user.list_managers << ListManager.create(list: @list, user: user)
+      end
+      redirect_to root_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -31,7 +38,10 @@ class ListsController < ApplicationController
 
   def update
     @list.update(list_params)
-    redirect_to user_list_path(current_user, @list)
+    respond_to do |format|
+      format.html { redirect_to user_list_path(current_user, @list)}
+      format.text { render partial: "lists/list_updated", locals: {list: @list}, formats: [:html] }
+    end
   end
 
   def destroy
