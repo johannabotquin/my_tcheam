@@ -1,13 +1,10 @@
 import { Controller } from "@hotwired/stimulus";
-import initializeSplideCarousel from '../splide_initializer';
-
 export default class extends Controller {
   static targets = ["date", "usertasks"];
 
   connect() {
     console.log("Tasks controller connected");
     this.filterDefaultDate();
-     initializeSplideCarousel();
   }
 
   filterDefaultDate() {
