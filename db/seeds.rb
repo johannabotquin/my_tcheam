@@ -77,20 +77,36 @@ demoday = Task.create!(
   deadline: "2024-06-23",
   achieved: true,
   priority: 2,
-  user: user1
+  user: user1,
+  team: team
 )
 TaskManager.create!(user: user1, task: demoday)
+
+tri = Task.create!(
+  name: "Faire le tri",
+  description: "",
+  category: "La maison elle va pas se gérer seule, figure de poulpe !",
+  reccurence: true,
+  points: 20,
+  deadline: "2024-06-21",
+  achieved: false,
+  priority: 1,
+  user: user1,
+  team: team
+)
+TaskManager.create!(user: user1, task: tri)
 
 courses = Task.create!(
   name: "Faire les courses",
   description: "",
   category: "La maison elle va pas se gérer seule, figure de poulpe !",
-  reccurence: false,
+  reccurence: true,
   points: 20,
   deadline: "2024-06-23",
   achieved: false,
   priority: 1,
-  user: user1
+  user: user1,
+  team: team
 )
 TaskManager.create!(user: user1, task: courses)
 
@@ -98,12 +114,13 @@ passeport = Task.create!(
   name: "Renouveler le passeport",
   description: "Rdv à la mairie à 15h30.",
   category: "Fais tes papiers avant que ce soit le oaï !",
-  reccurence: false,
+  reccurence: true,
   points: 10,
-  deadline: "2024-06-21",
+  deadline: "2024-06-25",
   achieved: true,
   priority: 2,
-  user: user1
+  user: user1,
+  team: team
 )
 TaskManager.create!(user: user1, task: passeport)
 
@@ -111,14 +128,15 @@ gateau = Task.create!(
   name: "Gateau Lola",
   description: "Acheter un gateau pour l'anniversaire de Lola.",
   category: "La maison elle va pas se gérer seule, figure de poulpe !",
-  reccurence: false,
+  reccurence: true,
   points: 10,
-  deadline: "2024-06-22",
+  deadline: "2024-06-25",
   achieved: false,
   priority: 1,
-  user: user1
+  user: user1,
+  team: team
 )
-TaskManager.create!(user: user1, task: gateau)
+TaskManager.create!(user: user2, task: gateau)
 
 factures = Task.create!(
   name: "Payer les factures de services publics",
@@ -126,25 +144,27 @@ factures = Task.create!(
   category: "Fais tes papiers avant que ce soit le oaï !",
   reccurence: true,
   points: 15,
-  deadline: "2024-06-22",
+  deadline: "2024-06-25",
   achieved: false,
   priority: 2,
-  user: user1
+  user: user1,
+  team: team
 )
-TaskManager.create!(user: user1, task: factures)
+TaskManager.create!(user: user3, task: factures)
 
 carte = Task.create!(
   name: "Renouveller la carte d'identité",
   description: "",
   category: "Fais tes papiers avant que ce soit le oaï !",
-  reccurence: false,
+  reccurence: true,
   points: 15,
-  deadline: "2024-06-21",
+  deadline: "2024-06-24",
   achieved: false,
   priority: 2,
-  user: user2
+  user: user2,
+  team: team
 )
-TaskManager.create!(user: user2, task: carte)
+TaskManager.create!(user: user4, task: carte)
 
 ophtalmo = Task.create!(
   name: "Aller chez l'ophtalmo",
@@ -152,12 +172,13 @@ ophtalmo = Task.create!(
   category: "Tu crains dégun mais tu dois en prendre soin...",
   reccurence: false,
   points: 20,
-  deadline: "2024-06-20",
+  deadline: "2024-06-24",
   achieved: true,
   priority: 2,
-  user: user1
+  user: user1,
+  team: team
 )
-TaskManager.create!(user: user1, task: ophtalmo)
+TaskManager.create!(user: user4, task: ophtalmo)
 
 seed = Task.create!(
   name: "Faire les seeds",
@@ -168,9 +189,10 @@ seed = Task.create!(
   deadline: "2024-06-24",
   achieved: false,
   priority: 2,
-  user: user2
+  user: user2,
+  team: team
 )
-TaskManager.create!(user: user2, task: seed)
+TaskManager.create!(user: user1, task: seed)
 
 puts "Tasks created."
 

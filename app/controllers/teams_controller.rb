@@ -2,9 +2,7 @@ class TeamsController < ApplicationController
 
   def show
     @team = current_user.team
-    @team.score = @team.users.sum do |user|
-      user.tasks.where(achieved: true).sum(:points)
-    end
+    @reward = @team.rewards.find { |reward| reward.selected == true }
     @tasks_by_user = @team.users.each_with_object({}) do |user, hash|
       user_tasks = user.tasks
       if params[:filter] && params[:filter][:date].present?
@@ -41,7 +39,36 @@ class TeamsController < ApplicationController
       render :new
     end
   end
-  
+
+  def run_wheel
+    @team = current_user.team
+    @recurrent_tasks = @team.tasks.where(reccurence: true)
+
+    # @recurrent_tasks.each do |task|
+    #   task.task_managers.destroy_all
+    # end
+
+    @available_users = @team.users
+    @recurrent_tasks_counter = @recurrent_tasks.count
+    @team_members_counter = 2
+
+    ## Dispatcher les taches en fonctions du nombre d'user et de taches
+    # si c'est pair, je distribue les taches de manière équitable
+
+    # si c'est impair, je distribue les taches de manière équitable et j'en laisse une de côté que j'attribue aléatoirement à un user
+
+    @user_sampled = @team.users.shuffle.pluck(:id)
+
+    @recurrent_tasks.each do |task|
+      task.task_managers.destroy_all
+      if @user_sampled.empty?
+        @user_sampled = @team.users.shuffle.pluck(:id) # Assurez-vous de recharger les IDs si nécessaire
+      end
+      user_id = @user_sampled.shift # Cela retire et retourne le premier élément de @user_sampled
+      TaskManager.create(task: task, user_id: user_id)
+    end
+  end
+
   private
 
   def team_params

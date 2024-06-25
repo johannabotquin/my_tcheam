@@ -1,0 +1,64 @@
+<div class="back-container pt-5">
+
+  <div class="container text-center" data-controller="dispatch">
+
+        <h1>Dispatche les tâches pour la semaine</h1>
+
+      <div class= "d-flex justify-content-center my-4">
+        <button class="btn btn-yellow" data-action="click->dispatch#dispatch">Dispatch</button>
+      </div>
+
+
+    <div class="tasks-container">
+
+      <div class="tasks-list">
+
+        <div class="cards my-4 scene scene--card">
+          <% @recurrent_tasks.each do |task| %>
+            <% if task.category == Task::CATEGORIES[0] %>  <!-- CATEGORIES[0] = "Santé" -->
+              <%= link_to edit_task_path(task), class: "card card-task card-health mb-4", data: { dispatch_target:"card", action: "transitionend->dispatch#transition"} do %>
+                <div class="card__face card__face--front">
+                  <div class="card-content">
+                    <h3><%= task.name %></h3>
+                  </div>
+                </div>
+
+
+                <div class="card__face card__face--back d-none" data-dispatch-target="avatar">
+                    <%= image_tag(task.reload.task_managers.last.user.avatar, style: "width: 50px; height: 50px") %>
+                </div>
+
+              <% end %>
+            <% elsif task.category == Task::CATEGORIES[1] %>  <!-- CATEGORIES[1] = "Gestion du foyer" -->
+              <%= link_to edit_task_path(task), class: "card card-task card-home-duty mb-4", data: { dispatch_target:"card", action: "transitionend->dispatch#transition"} do %>
+                <div class="card__face card__face--front">
+                  <div class="card-content">
+                    <h3><%= task.name %></h3>
+                  </div>
+                </div>
+
+                <div class="card__face card__face--back d-none" data-dispatch-target="avatar">
+                    <%= image_tag(task.reload.task_managers.last.user.avatar, style: "width: 50px; height: 50px") %>
+                </div>
+              <% end %>
+
+            <% elsif task.category == Task::CATEGORIES[2] %>  <!-- CATEGORIES[2] = "Administratif" -->
+                <%= link_to edit_task_path(task), class: "card card-task card-admin mb-4", data: { dispatch_target:"card", action: "transitionend->dispatch#transition"} do %>
+                  <div class="card__face card__face--front">
+                    <div class="card-content">
+                      <h3><%= task.name %></h3>
+                    </div>
+                  </div>
+
+                  <div class="card__face card__face--back d-none" data-dispatch-target="avatar">
+                      <%= image_tag(task.reload.task_managers.last.user.avatar, style: "width: 50px; height: 50px") %>
+                  </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

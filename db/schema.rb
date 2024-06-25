@@ -118,7 +118,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_24_083626) do
     t.datetime "updated_at", null: false
     t.integer "points"
     t.string "priority"
+    t.bigint "team_id"
     t.boolean "achieved", default: false
+    t.index ["team_id"], name: "index_tasks_on_team_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
@@ -160,6 +162,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_24_083626) do
   add_foreign_key "rewards", "users"
   add_foreign_key "task_managers", "tasks"
   add_foreign_key "task_managers", "users"
+  add_foreign_key "tasks", "teams"
   add_foreign_key "tasks", "users"
   add_foreign_key "users", "teams"
 end
