@@ -74,7 +74,7 @@ demoday = Task.create!(
   category: "Fais tes papiers avant que ce soit le oaï !",
   reccurence: false,
   points: 20,
-  deadline: "2024-06-21",
+  deadline: "2024-06-23",
   achieved: true,
   priority: 2,
   user: user1
@@ -87,7 +87,7 @@ courses = Task.create!(
   category: "La maison elle va pas se gérer seule, figure de poulpe !",
   reccurence: false,
   points: 20,
-  deadline: "2024-06-21",
+  deadline: "2024-06-23",
   achieved: false,
   priority: 1,
   user: user1
