@@ -2,7 +2,10 @@
   cursor: pointer;
   border: 2px solid transparent;
   display: inline-block;
-  margin: 5px;
+  margin: 0 auto;
+  display: block;
+  width: 50px;
+  cursor: pointer;
 }
 
 .member-photo img {
@@ -16,4 +19,10 @@
 
 .member-photo.selected img {
   filter: none;
+}
+
+.member-photo-container {
+  padding: 0 10px; // Adjust the value as needed for proper centering
+  display: flex;
+  flex-wrap: wrap;
 }
