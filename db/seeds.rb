@@ -185,7 +185,7 @@ Reward.create!(
 )
 
 Reward.create!(
-  name: "Dîner en famille",
+  name: "Plateau télé en famille",
   goal: 50,
   user_id: user2.id,
   team_id: team.id,
@@ -193,16 +193,16 @@ Reward.create!(
 )
 
 Reward.create(
-  name: "voyage a disney land",
-  goal: 100,
+  name: "Séjour à DisneyLand Paris",
+  goal: 1000,
   team_id: team.id,
   user_id: User.first.id,
   selected: false
 )
 
 Reward.create(
-  name: "voyage au parc Asterix",
-  goal: 80,
+  name: "Week-end au Parc Asterix",
+  goal: 500,
   team_id: team.id,
   user_id: User.first.id,
   selected: false
