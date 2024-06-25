@@ -32,16 +32,18 @@
               </div>
 
               <p class="form-label">Qui doit réaliser cette tâche ?</p>
-              <div class="d-flex flex-wrap" data-controller="member-selection">
-                <% @members.each do |member| %>
-                  <div>
-                    <%= check_box_tag 'task[members][]', member.id, false, id: "member_#{member.id}", class: 'form-check-input', style: 'display:none;', data: { member_selection_target: "checkbox" } %>
-                    <div class="member-photo" data-member-selection-target="photo" data-member-id="<%= member.id %>" onclick="document.getElementById('member_<%= member.id %>').click()">
-                      <%= image_tag(member.avatar, alt: member.first_name, style: "width:50px; cursor: pointer;") %>
+                <div class="d-flex flex-wrap" data-controller="member-selection">
+                  <% @members.each do |member| %>
+                    <div>
+                      <%= check_box_tag 'task[members][]', member.id, false, id: "member_#{member.id}", class: 'form-check-input', style: 'display:none;', data: { member_selection_target: "checkbox" } %>
+                      <div class="member-photo-container">
+                        <div class="member-photo" data-member-selection-target="photo" data-member-id="<%= member.id %>" onclick="document.getElementById('member_<%= member.id %>').click()">
+                          <%= image_tag(member.avatar, alt: member.first_name, style: "width:50px; cursor: pointer;") %>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                <% end %>
-              </div>
+                  <% end %>
+                </div>
                 <%= f.input :deadline,
                             :label => "Deadline",
                             as: :string,
