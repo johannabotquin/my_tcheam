@@ -7,19 +7,19 @@
         </div>
         <div class="card form-input">
           <%= simple_form_for [current_user, @list] do |f| %>
-              <%= f.input :name, label: "Nom" %>
-              <%= f.input :content, label: "Détails", as: :text %>
-              <p class="form-label">Qui peut voir cette liste ?</p>
-              <div data-controller="member-selection">
-                <% @members.each do |member| %>
-                  <div class="member-photo" data-member-selection-target="photo" data-member-id="<%= member.id %>">
-                    <%= image_tag(member.avatar, alt: member.first_name, style: "width:50px") %>
-                    <%= f.simple_fields_for :task_managers, @list.list_managers.build do |tm| %>
-                      <%= tm.hidden_field :user_id, value: member.id, data: { member_selection_target: "checkbox" } %>
-                    <% end %>
-                  </div>
-                <% end %>
-              </div>
+            <%= f.input :name, label: "Nom" %>
+            <%= f.input :content, label: "Détails", as: :text %>
+            <p class="form-label">Qui peut voir cette liste ?</p>
+            <div class="member-photo-container" data-controller="member-selection">
+              <% @members.each do |member| %>
+                <div class="member-photo" data-member-selection-target="photo" data-member-id="<%= member.id %>">
+                  <%= image_tag(member.avatar, alt: member.first_name, style: "width:50px") %>
+                  <%= f.simple_fields_for :task_managers, @list.list_managers.build do |tm| %>
+                    <%= tm.hidden_field :user_id, value: member.id, data: { member_selection_target: "checkbox" } %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
             <div class="form-actions text-center my-4">
               <%= f.submit 'Ajoute la', class: 'btn btn-orange' %>
             </div>

@@ -23,4 +23,6 @@
 
 .member-photo-container {
   padding: 0 10px; // Adjust the value as needed for proper centering
+  display: flex;
+  flex-wrap: wrap;
 }
