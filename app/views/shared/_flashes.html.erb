@@ -1,32 +1,39 @@
-<% if notice %>
-  <div class="notice-container d-flex">
-    <div class="alert alert-info alert-dismissible win-notif fade show m-1" role="alert">
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      <audio src="app/assets/images/positive-notification-new-level-152480.mp3"></audio>
-      <div class="notif-img">
-        <%= image_tag ("anxious-octopus.png"), width: 50 %>
-      </div>
-      <div>
-        <%= notice %>
-      </div>
-      <br>
-      <div class="link">
-        <%= link_to "Les récompenses", team_rewards_path(@team)%>
-      </div>
-    </div>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        var alertElement = document.getElementById('notification-alert');
-        if (alertElement) {
-          var audioElement = document.getElementById('notification-sound');
-          if (audioElement) {
-            audioElement.play().catch(function(error) {
-              console.log("Audio playback failed: ", error);
-            });
-          }
-        }
-      });
-    </script>
+<% if notice %>
+  <div data-controller="cagagne" >
+      <div class="alert alert-info alert-dismissible win-notif fade show m-1" data-cagagne-target="alert" role="alert" data-action="click->cagagne#win" >
+        <%= audio_tag 'success.mp3', id: "win-audio", data: {cagagne_target: "audio"}%>
+        <button type="button" class="btn-close win-close d-none" data-bs-dismiss="alert" aria-label="Close"></button>
+        <div class="notif-img">
+          <%= image_tag ("anxious-octopus.png"), width: 50 %>
+        </div>
+        <div>
+          <%= notice %>
+        </div>
+          <br>
+          <p>Sélectionne une nouvelle <strong>récompense</strong> pour jouer avec ta Tcheam !</p>
+      </div>
   </div>
+    <%# <script>
+
+            let alertElementPerso = document.querySelector('.alert')
+              if (alertElementPerso) {
+                console.log(alertElementPerso.textContent.includes('Bravo'));
+              }
+
+            const closeElement = document.querySelector('.win-close')
+              console.log(alertElementPerso);
+              var audioElement = document.getElementById('win-audio');
+
+
+              closeElement.addEventListener('click', function() {
+                setTimeout(() => {
+                  audioElement.play().catch(function(error) {
+                  console.log("Audio playback failed: ", error);
+                });
+                }, 1000);
+
+                })
+    </script> %>
+
 <% end %>
