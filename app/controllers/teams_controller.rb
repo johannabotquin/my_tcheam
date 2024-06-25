@@ -41,7 +41,7 @@ class TeamsController < ApplicationController
       render :new
     end
   end
-
+  
   private
 
   def team_params
