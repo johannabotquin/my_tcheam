@@ -31,9 +31,9 @@
 }
 
 .btn-purple2 {
-  background-color: $electric-purple;
+  background-color: $dark-purple;
   &:hover {
-    background-color:$dark-purple;
+    background-color:$light-purple;
   }
 }
 
@@ -66,9 +66,9 @@
 }
 
 
-.btn-delete {
+.btn-reward{
   background-color: $light-red;
   &:hover {
-    background-color: $light-red;
+    background-color: $coral;
   }
 }

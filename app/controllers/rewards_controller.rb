@@ -16,7 +16,10 @@ class RewardsController < ApplicationController
     @reward = @team.rewards.find(params[:id])
     @team.rewards.update_all(selected: false)
     @reward.update(selected: true)
-    redirect_to team_rewards_path(@team), notice: 'La récompense a été mise en avant.'
+    respond_to do |format|
+      format.html { redirect_to team_rewards_path(@team), notice: 'La récompense a été choisie.' }
+      format.json { render json: { success: true, reward_id: @reward.id } }
+    end
   end
 
   def new
