@@ -1,76 +1,78 @@
-<div class="back-container pt-5">
-  <div data-controller="team" data-team-id="<%= @team.id %>">
-    <div class="container">
-      <div class="d-flex justify-content-between">
-        <div>
-          <p>Team</p>
-          <h2 class= "mb-3"><%= @team.name.upcase %></h2>
-        </div>
-        <div class="d-flex flex-column">
-          <p>Score:</p>
-          <h2 class= "mb-3 align-self-end"><%= @team.score %></h2>
-        </div>
-      </div>
-      <div class="card-reward mb-4">
-        <div class="d-flex justify-content-between">
-          <div>
-            <p>Prochaine récompense</p>
-            <% if @reward && @reward.name.present? %>
-              <h2 class="mb-3"><%= @reward.name %></h2>
-            <% else %>
-              <h2 class="mb-3">Aucune récompense sélectionnée</h2>
-            <% end %>
-            <%= link_to team_rewards_path(@team), class: "arrow-link" do %>
-              Toutes les récompenses
-              <span class="arrow"></span>
-            <% end %>
-          </div>
-          <div class="d-flex flex-column">
-            <p>Objectif:</p>
-            <% if @reward && @reward.goal.present? %>
-              <h2 class="mb-3 align-self-end"><%= @reward.goal %></h2>
-            <% else %>
-              <h2 class="mb-3 align-self-end">0</h2>
-            <% end %>
-          </div>
-        </div>
-      </div>
-
-      <%= simple_form_for :filter, url: tasks_path, method: :get do |f| %>
-        <% todays_date_index = Date.today.yday - 1 %>
-        <div id="date-carousel" class="splide mb-4" data-today-index="<%= todays_date_index %>">
-          <div class="splide__track">
-            <ul class="splide__list">
-              <% (Date.new(Date.today.year, 1, 1)..Date.new(Date.today.year, 12, 31)).each_with_index do |date, index| %>
-                <li class="splide__slide tag-item" data-date="<%= date.strftime('%Y-%m-%d') %>">
-                  <%= f.radio_button :date, date.strftime('%Y-%m-%d'), id: "date_#{date}", class: "tag-selector visually-hidden", data: { action: "team#filterTasks", team_target: "date" }, checked: date == Date.today %>
-                  <%= f.label :date, for: "date_#{date}", class: "tag-date text-center" do %>
-                    <%= content_tag :span, date.strftime('%a'), class: "d-block text-center" %>
-                    <%= content_tag :span, date.strftime('%e'), class: "d-block text-center tag-day" %>
-                  <% end %>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-        <%= f.submit "Filter Tasks", class: "btn btn-primary", style: "display:none;" %>
-      <% end %>
-    </div>
-    <div class="container">
-      <div class="tasks-container" data-controller="toggle-tasks">
-        <% @team.users.each do |user| %>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center my-2">
-              <%= image_tag(user.avatar, alt: user.first_name, style: "width:45px; cursor: pointer;") %>
-              <p class="name mx-2"><%= user.first_name %></p>
+<div class="main-container">
+    <div class="back-container pt-5">
+      <div data-controller="team" data-team-id="<%= @team.id %>">
+        <div class="container">
+          <div class="d-flex justify-content-between">
+            <div>
+              <p>Team</p>
+              <h2 class="mb-3"><%= @team.name.upcase %></h2>
             </div>
-            <i class="fa-solid fa-chevron-down" data-action="click->toggle-tasks#toggle" data-user-id="<%= user.id %>"></i>
+            <div class="d-flex flex-column">
+              <p>Score:</p>
+              <h2 class="mb-3 align-self-end"><%= @team.score %></h2>
+            </div>
           </div>
-          <div data-team-target="usertasks-<%= user.id %>" data-target="toggle-tasks.taskList" data-user-id="<%= user.id %>" class="tasks-list">
-            <%= render partial: "tasks/tasks_list", locals: { tasks: user.tasks }, layout: false %>
+          <div class="card-reward mb-4">
+            <div class="d-flex justify-content-between">
+              <div>
+                <p>Prochaine récompense</p>
+                <% if @reward && @reward.name.present? %>
+                  <h2 class="mb-3"><%= @reward.name %></h2>
+                <% else %>
+                  <h2 class="mb-3">Aucune récompense sélectionnée</h2>
+                <% end %>
+                <%= link_to team_rewards_path(@team), class: "arrow-link" do %>
+                  Toutes les récompenses
+                  <span class="arrow"></span>
+                <% end %>
+              </div>
+              <div class="d-flex flex-column">
+                <p>Objectif:</p>
+                <% if @reward && @reward.goal.present? %>
+                  <h2 class="mb-3 align-self-end"><%= @reward.goal %></h2>
+                <% else %>
+                  <h2 class="mb-3 align-self-end">0</h2>
+                <% end %>
+              </div>
+            </div>
           </div>
-        <% end %>
+
+          <%= simple_form_for :filter, url: tasks_path, method: :get do |f| %>
+            <% todays_date_index = Date.today.yday - 1 %>
+            <div id="date-carousel" class="splide mb-4" data-today-index="<%= todays_date_index %>">
+              <div class="splide__track">
+                <ul class="splide__list">
+                  <% (Date.new(Date.today.year, 1, 1)..Date.new(Date.today.year, 12, 31)).each_with_index do |date, index| %>
+                    <li class="splide__slide tag-item" data-date="<%= date.strftime('%Y-%m-%d') %>">
+                      <%= f.radio_button :date, date.strftime('%Y-%m-%d'), id: "date_#{date}", class: "tag-selector visually-hidden", data: { action: "team#filterTasks", team_target: "date" }, checked: date == Date.today %>
+                      <%= f.label :date, for: "date_#{date}", class: "tag-date text-center" do %>
+                        <%= content_tag :span, date.strftime('%a'), class: "d-block text-center" %>
+                        <%= content_tag :span, date.strftime('%e'), class: "d-block text-center tag-day" %>
+                      <% end %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+            <%= f.submit "Filter Tasks", class: "btn btn-primary", style: "display:none;" %>
+          <% end %>
+        </div>
+        <div class="container">
+          <div class="tasks-container" data-controller="toggle-tasks">
+            <% @team.users.each do |user| %>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex align-items-center my-2">
+                  <%= image_tag(user.avatar, alt: user.first_name, style: "width:45px; cursor: pointer;") %>
+                  <p class="name mx-2"><%= user.first_name %></p>
+                </div>
+                <i class="fa-solid fa-chevron-down" data-action="click->toggle-tasks#toggle" data-user-id="<%= user.id %>"></i>
+              </div>
+              <div data-team-target="usertasks-<%= user.id %>" data-target="toggle-tasks.taskList" data-user-id="<%= user.id %>" class="tasks-list">
+                <%= render partial: "tasks/tasks_list", locals: { tasks: user.tasks }, layout: false %>
+              </div>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
