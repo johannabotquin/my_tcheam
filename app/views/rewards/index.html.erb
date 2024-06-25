@@ -20,8 +20,7 @@
                 <div class="row justify-content-center">
                   <div class="col text-center">
                     <%= link_to 'Modifier', edit_team_reward_path(@team, reward), class: 'btn btn-orange' %>
-                    <%= link_to 'Supprimer', team_reward_path(@team, reward), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-delete' %>
-                    <%= link_to 'Selectionner la recompense', select_team_reward_path(@team, reward), class: 'btn btn-success', data: { turbo_confirm: "Mettre en avant cette récompense?" } %>
+                    <%= link_to 'Sélectionner', select_team_reward_path(@team, reward), class: 'btn btn-reward' %>
                  </div>
                 </div>
               </div>

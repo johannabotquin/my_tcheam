@@ -14,6 +14,7 @@
 
             <div class="form-actions text-center my-4">
               <%= f.button :submit, 'Modifier', class: 'btn btn-orange' %>
+              <%= link_to 'Supprimer', team_reward_path(@team, @reward), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-reward' %>
             </div>
           <% end %>
         </div>
