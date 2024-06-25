@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :tasks
 
   resources :teams, only: %i[new create show] do
+    resources :rewards, except: %i[show]
+    get "wheel", to: "teams#run_wheel"
+    
     resources :rewards, except: %i[show] do
       member do
         get :select
