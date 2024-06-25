@@ -72,7 +72,7 @@ demoday = Task.create!(
   name: "demoday 1",
   description: "Préparer la présentation pour le demoday",
   category: "Fais tes papiers avant que ce soit le oaï !",
-  reccurence: true,
+  reccurence: false,
   points: 20,
   deadline: "2024-06-23",
   achieved: true,

@@ -43,6 +43,11 @@ class TeamsController < ApplicationController
   def run_wheel
     @team = current_user.team
     @recurrent_tasks = @team.tasks.where(reccurence: true)
+
+    # @recurrent_tasks.each do |task|
+    #   task.task_managers.destroy_all
+    # end
+
     @available_users = @team.users
     @recurrent_tasks_counter = @recurrent_tasks.count
     @team_members_counter = 2
@@ -55,22 +60,12 @@ class TeamsController < ApplicationController
     @user_sampled = @team.users.shuffle.pluck(:id)
 
     @recurrent_tasks.each do |task|
+      task.task_managers.destroy_all
       if @user_sampled.empty?
         @user_sampled = @team.users.shuffle.pluck(:id) # Assurez-vous de recharger les IDs si nécessaire
       end
       user_id = @user_sampled.shift # Cela retire et retourne le premier élément de @user_sampled
       TaskManager.create(task: task, user_id: user_id)
-    end
-
-  end
-
-  def brouillon
-    if @recurrent_tasks_counter % @team_members_counter == 0
-      @available_users.each do |user|
-        @recurrent_tasks.each do |task|
-          user.task_managers << TaskManager.create(task: task, user: user)
-        end
-      end
     end
   end
 

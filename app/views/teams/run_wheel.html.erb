@@ -1,4 +1,4 @@
-<div class="container">
+<div class="back-container">
   <div class="row">
     <div class="col">
 
@@ -18,8 +18,9 @@
                   </div>
                 </div>
 
+
                 <div class="card__face card__face--back d-none" data-dispatch-target="avatar">
-                    <%= image_tag(task.task_managers.last.user.avatar, style: "width: 50px; height: 50px") %>
+                    <%= image_tag(task.reload.task_managers.last.user.avatar, style: "width: 50px; height: 50px") %>
                 </div>
 
               <% end %>
@@ -32,7 +33,7 @@
                 </div>
 
                 <div class="card__face card__face--back d-none" data-dispatch-target="avatar">
-                    <%= image_tag(task.task_managers.last.user.avatar, style: "width: 50px; height: 50px") %>
+                    <%= image_tag(task.reload.task_managers.last.user.avatar, style: "width: 50px; height: 50px") %>
                 </div>
               <% end %>
 
@@ -45,7 +46,7 @@
                   </div>
 
                   <div class="card__face card__face--back d-none" data-dispatch-target="avatar">
-                      <%= image_tag(task.task_managers.last.user.avatar, style: "width: 50px; height: 50px") %>
+                      <%= image_tag(task.reload.task_managers.last.user.avatar, style: "width: 50px; height: 50px") %>
                   </div>
               <% end %>
             <% end %>
