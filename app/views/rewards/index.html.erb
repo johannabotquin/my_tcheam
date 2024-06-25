@@ -1,11 +1,11 @@
 <div class="container text-center pt-4">
-  <h1>Pour quelle récompense souhaites-tu jouer ?</h1>
+  <h1>Pour quelle récompense tu veux jouer ?</h1>
 
   <div class="row">
     <% @rewards.each do |reward| %>
       <div class="col-md-4 mb-4">
         <%= link_to team_path(@team), class: 'text-decoration-none' do %>
-          <div class="card h-100">
+          <div class="card h-100 card-reward">
             <div class="card-body">
               <div class="row mb-3">
                 <div class="col">
@@ -30,7 +30,7 @@
     <% end %>
 
     <div>
-      <%= link_to 'Nouvelle Récompense', new_team_reward_path(@team), class: 'btn btn-orange' %>
+      <%= link_to 'Nouvelle Récompense', new_team_reward_path(@team), class: 'btn btn-yellow' %>
     </div>
   </div>
   </div>
