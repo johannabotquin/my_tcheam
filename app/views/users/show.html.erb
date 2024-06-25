@@ -111,52 +111,24 @@
   </div>
 
 
-  <div class="progress-container">
+  <div class="progress-container" >
     <div class="skill">
       <div class="outer">
         <div class="inner">
-          <div id="number" data-score="<%= @team.score %>" data-goal="<%= @reward.goal %>">
-            65%
+          <div id="number" data-controller="progress" data-progress-score-value="<%= @team.score %>" data-progress-goal-value="<%= @reward.goal %>">
+           <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                <defs>
+                  <linearGradient id="GradientColor">
+                    <stop offset = "0%" stop-color = "#DA22FF"/>
+                    <stop offset = "100%" stop-color = "#9733EE"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="80" cy="80" r="70" stroke-linecap="round" data-progress-target="circle"/>
+              </svg>
           </div>
         </div>
       </div>
     </div>
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
-      <defs>
-        <linearGradient id="GradientColor">
-          <stop offset = "0%" stop-color = "#DA22FF"/>
-          <stop offset = "100%" stop-color = "#9733EE"/>
-        </linearGradient>
-      </defs>
-      <circle cx="80" cy="80" r="70" stroke-linecap="round"/>
-    </svg>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const numberElement = document.getElementById('number');
-        const score = parseInt(numberElement.getAttribute('data-score'));
-        const goal = parseInt(numberElement.getAttribute('data-goal'));
-        const circle = document.querySelector('circle');
-        const radius = circle.r.baseVal.value;
-        const circumference = 2 * Math.PI * radius;
-
-        circle.style.strokeDasharray = `${circumference}`;
-
-        const progress = (score / goal) * 100;
-        const offset = circumference - (progress / 100) * circumference;
-
-        // Set initial animation state
-        circle.style.transition = 'stroke-dashoffset 1s ease-in-out';
-        circle.style.strokeDashoffset = circumference; // Start from full dash
-
-        // Start the animation
-        setTimeout(() => {
-          circle.style.strokeDashoffset = offset; // Animate to the desired percentage
-        }, 100); // Adjust this delay to match your needs
-
-        numberElement.textContent = `${Math.round(progress)}%`;
-      });
-    </script>
   </div>
-
 </div>

@@ -65,8 +65,8 @@ class TasksController < ApplicationController
     if @task.achieved == true
       @team.update(score: @team.score += @task.points)
       if @team.score >= @reward.goal
-        flash[:notice] = "Bravo ! #{@team.name} a remporté : #{@reward.name}"
         redirect_to user_path(current_user)
+        flash[:notice] = "Bravo ! #{@team.name} a remporté : #{@reward.name}"
       else
         redirect_to user_path(current_user)
       end
