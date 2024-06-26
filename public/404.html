@@ -3,6 +3,9 @@
 <head>
   <title>The page you were looking for doesn't exist (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Titan+One&display=swap" rel="stylesheet">
   <style>
   .rails-default-error-page {
     background-color: #EFEFEF;
@@ -19,22 +22,18 @@
   }
 
   .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+    border: 1px solid #030002;
+    border-radius: 5px;
+    background-color: #eed2f7;
+    padding: 1rem;
+    margin: 1rem 0;
   }
 
   .rails-default-error-page h1 {
     font-size: 100%;
-    color: #730E15;
+    color: #030002;
     line-height: 1.5em;
+    font-family: 'Titan One', sans-serif;
   }
 
   .rails-default-error-page div.dialog > p {
@@ -51,17 +50,18 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+
   </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/404.html -->
   <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+    <div class="col">
+      <h1>Y'a degun !</h1>
+      <img src="anxious-octopus.png" alt="">
+      <p>Peuchère, tié pas sur la bonne page.</p>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
 </body>
 </html>
