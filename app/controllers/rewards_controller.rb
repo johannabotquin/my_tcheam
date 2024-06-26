@@ -71,9 +71,4 @@ class RewardsController < ApplicationController
   def set_team
     @team = Team.find(params[:team_id])
   end
-
-  def reward_params
-    params.require(:reward).permit(:name, :goal, :selected)
-  end
-
 end

@@ -1,0 +1,27 @@
+<div class="chatroom form-container mx-4 d-flex flex-column" data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
+  <h1><%= current_user.team.name %></h1>
+
+  <div class="card form-input mb-3 flex-grow-1">
+    <div class="messages" data-chatroom-subscription-target="messages">
+      <% @chatroom.messages.each do |message| %>
+        <%= render "messages/message", message: message %>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Move the form here -->
+  <%= simple_form_for [@chatroom, @message], html: {data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex flex-column flex-grow-0"} do |f| %>
+    <div class="d-flex gap-3">
+      <%= f.input :content,
+        label: false,
+        placeholder: "Message ##{@chatroom.name}",
+        wrapper_html: {class: "flex-grow-1 mr-2"},
+        input_html: {style: "height: 100%"}
+      %>
+      <button type="submit" class="btn btn-yellow mb-3" style="height: 78%">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </div>
+  <% end %>
+
+</div>
