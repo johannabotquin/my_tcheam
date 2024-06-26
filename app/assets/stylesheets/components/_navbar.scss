@@ -74,10 +74,11 @@
     border-top: 2px solid $dark-gray;
     padding-top: 2rem;
     margin-top: 6rem;
+    margin-bottom: 6rem;
   }
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-lewagon.navbar-collapse {
   @media (max-width: 768px) {
     min-height: 100vh;
   }

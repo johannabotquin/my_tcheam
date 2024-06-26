@@ -129,17 +129,9 @@
   padding: 1rem;
 }
 
-.card-reward {
-  background-color: $light-purple;
-}
-
-.card-memorie {
+.card-memorie, .card-reward {
   background-color: $light-pink;
 }
-
-/* .card__face--back {
-  display: none;
-} */
 
 .flip-this-card {
   animation: flipIt 1s ease-in-out forwards;

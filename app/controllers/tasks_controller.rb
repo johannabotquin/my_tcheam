@@ -59,10 +59,12 @@ class TasksController < ApplicationController
   end
 
   def update
+    was_achieved = @task.achieved
     @task.update(task_params)
     @team = current_user.team
     @reward = @team.rewards.find { |reward| reward.selected == true }
-    if @task.achieved == true
+
+    if @task.achieved == true && was_achieved == false
       @team.update(score: @team.score += @task.points)
       if @team.score >= @reward.goal
         redirect_to user_path(current_user)
