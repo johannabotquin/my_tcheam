@@ -79,22 +79,22 @@
 
       <h1 class="mb-3">Mes listes</h1>
 
-        <div id="carouselExampleControls" class="carousel slide mb-5" data-interval="false">
+        <div id="carouselExample" class="carousel slide mb-5">
         <div class="carousel-inner">
-          <% @lists.each do |list| %>
-          <div class="carousel-item active">
+          <% @lists.each_with_index do |list, index| %>
+          <div class="carousel-item <%= 'active' if index.zero? %>">
             <div data-controller="list-update">
-                <%= render "lists/list_updated", list: list %>
+                <%= render "lists/list_updated", class:"d-block w-100", list: list %>
               </div>
           </div>
           <% end %>
 
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
           <span class="prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
           <span class="next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
