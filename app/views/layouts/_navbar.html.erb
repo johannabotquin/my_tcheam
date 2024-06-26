@@ -1,10 +1,11 @@
-  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-    <div class="container container-fluid">
+  <div class="navbar navbar-expand-md navbar-light navbar-lewagon">
+    <div class="container container-fluid" data-controller="navbar">
       <a class="navbar-brand" href="/">
         <%= image_tag ("ma-tcheam-logo-pink.svg") %>
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <%= image_tag ("burger-menu.svg") %>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" data-action="click->navbar#toggle">
+        <%= image_tag ("burger-menu.svg"), data: { navbar_target:"menu"} %>
+        <%= image_tag ("close-button.svg"), data: { navbar_target:"close"}, class:"d-none" %>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
