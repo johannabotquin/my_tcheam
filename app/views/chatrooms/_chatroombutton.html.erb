@@ -1,0 +1,7 @@
+<% if current_user && current_user.chatrooms.any? %>
+  <div class="sticky-button">
+    <%= link_to chatroom_path(current_user.chatrooms.first), class: "btn btn-chat btn-blue" do %>
+      <i class="fs-2 fa-regular fa-comments"></i>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,7 @@
+<div class="mb-2" id="message-<%= message.id %>">
+  <small>
+    <p class="pseudo-chat"><%= message.user.pseudo %></p>
+    <i class="date-chat"><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+  </small>
+  <p class="message-chat"><%= message.content %></p>
+</div>

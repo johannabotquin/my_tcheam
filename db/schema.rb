@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_24_083626) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_26_131748) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,9 +42,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_24_083626) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "chatroom_users", force: :cascade do |t|
+    t.bigint "chatroom_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id", "user_id"], name: "index_chatroom_users_on_chatroom_id_and_user_id", unique: true
+    t.index ["chatroom_id"], name: "index_chatroom_users_on_chatroom_id"
+    t.index ["user_id"], name: "index_chatroom_users_on_user_id"
+  end
+
   create_table "chatrooms", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "list_managers", force: :cascade do |t|
@@ -152,6 +163,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_24_083626) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "chatroom_users", "chatrooms"
+  add_foreign_key "chatroom_users", "users"
   add_foreign_key "list_managers", "lists"
   add_foreign_key "list_managers", "users"
   add_foreign_key "lists", "users"

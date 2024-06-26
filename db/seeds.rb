@@ -291,4 +291,15 @@ Memorie.create!(
 
 puts "Lists created."
 
+puts "creating chatrooms..."
+
+Chatroom.create(name: "Ma tcheam")
+
+ChatroomUser.create(chatroom: Chatroom.first, user: user1)
+ChatroomUser.create(chatroom: Chatroom.first, user: user2)
+ChatroomUser.create(chatroom: Chatroom.first, user: user3)
+ChatroomUser.create(chatroom: Chatroom.first, user: user4)
+
+puts "Chatrooms created."
+
 puts "Seed data successfully created."

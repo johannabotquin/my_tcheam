@@ -38,9 +38,9 @@
 }
 
 .btn-blue {
-  background-color: $deep-blue;
+  background-color: $light-blue;
   &:hover {
-    background-color:$light-blue;
+    background-color:$deep-blue;
   }
 }
 
@@ -66,9 +66,25 @@
 }
 
 
-.btn-reward{
+.btn-reward {
   background-color: $deep-pink;
   &:hover {
     background-color: $light-pink;
   }
+}
+
+.btn-chat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+}
+
+.sticky-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
 }
