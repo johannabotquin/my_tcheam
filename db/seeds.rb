@@ -25,6 +25,7 @@ team = Team.create!(
 )
 
 Chatroom.create(team: team, name: "Ma tcheam")
+
 puts "Teams created."
 
 puts "Creating users..."
