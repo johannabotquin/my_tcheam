@@ -20,7 +20,7 @@
                 <div class="row justify-content-center">
                   <div class="col text-center">
                     <%= link_to 'Modifier', edit_team_reward_path(@team, reward), class: 'btn btn-orange' %>
-                    <%= link_to 'Sélectionner', user_path(current_user), class: 'btn btn-reward' %>
+                    <%= link_to 'Sélectionner', select_team_reward_path(@team, reward), class: 'btn btn-reward' %>
                  </div>
                 </div>
               </div>

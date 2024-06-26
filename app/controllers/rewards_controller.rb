@@ -17,7 +17,7 @@ class RewardsController < ApplicationController
     @team.rewards.update_all(selected: false)
     @reward.update(selected: true)
     respond_to do |format|
-      format.html { redirect_to team_rewards_path(@team), notice: 'La récompense a été choisie.' }
+      format.html { redirect_to user_path(current_user), notice: 'La récompense a été choisie.' }
       format.json { render json: { success: true, reward_id: @reward.id } }
     end
   end
