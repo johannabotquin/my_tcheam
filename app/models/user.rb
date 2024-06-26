@@ -11,8 +11,7 @@ class User < ApplicationRecord
   has_many :list_managers
   has_many :lists, through: :list_managers
   has_many :rewards
-  has_many :chatroom_users
-  has_many :chatrooms, through: :chatroom_users
+
   belongs_to :team
 
   validates :first_name, :last_name, :avatar, presence: true

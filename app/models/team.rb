@@ -7,6 +7,8 @@ class Team < ApplicationRecord
 
   validates :name, presence: true
 
+  has_one :chatroom
+
   def run_wheel
   end
 end
