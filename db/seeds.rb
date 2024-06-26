@@ -323,6 +323,9 @@ cadeau_papa = List.create!(
 )
 
 ListManager.create!(user: user1, list: liste_repas_semaine)
+ListManager.create!(user: user2, list: liste_repas_semaine)
+ListManager.create!(user: user3, list: liste_repas_semaine)
+ListManager.create!(user: user4, list: liste_repas_semaine)
 ListManager.create!(user: user1, list: cadeau_lola)
 ListManager.create!(user: user2, list: cadeau_papa)
 
