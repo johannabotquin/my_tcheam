@@ -80,43 +80,15 @@
 
   <h1 class="mb-3">Mes listes</h1>
 
-  <div id="carouselExampleControls" class="carousel slide mb-5" data-interval="false" data-bs-ride="carousel">
+    <div id="carouselExampleControls" class="carousel slide mb-5" data-interval="false" data-bs-ride="carousel">
     <div class="carousel-inner">
+      <% @lists.each do |list| %>
       <div class="carousel-item active">
-        <div class="card card-list">
-          <h3>Idées cadeaux de noël enfants</h3>
-          <span
-            class="input"
-            role="textbox"
-            contenteditable>
-              Commence à taper tes idées ici...
-          </span>
-        </div>
+         <div data-controller="list-update">
+            <%= render "lists/list_updated", list: list %>
+          </div>
       </div>
-
-      <div class="carousel-item">
-        <div class="card card-list">
-          <h3>Idées camping vacances été</h3>
-          <span
-            class="input"
-            role="textbox"
-            contenteditable>
-              Commence à taper tes idées ici...
-          </span>
-        </div>
-      </div>
-
-      <div class="carousel-item">
-        <div class="card card-list">
-          <h3>Idées camping vacances été</h3>
-          <span
-            class="input"
-            role="textbox"
-            contenteditable>
-              Commence à taper tes idées ici...
-          </span>
-        </div>
-      </div>
+      <% end %>
 
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
