@@ -75,7 +75,7 @@ mairie = Task.create!(
   reccurence: false,
   points: 20,
   deadline: "2024-06-27",
-  achieved: true,
+  achieved: false,
   priority: 2,
   user: user1,
   team: team
