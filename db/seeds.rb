@@ -304,13 +304,13 @@ puts "Rewards created"
 
 puts "creating lists..."
 
-liste_courses = List.create(
+liste_repas_semaine = List.create(
   name: "Courses",
-  content: "Fruits, légumes, produits laitiers",
+  content: "Pizza, Pâtes au pesto, Saumon en papillote",
   user: user1
 )
 
-List.create!(
+cadeau_lola = List.create!(
   name: "Cadeau d'anniversaire Lola",
   content: "Robe, collier, livre",
   user_id: user1.id
@@ -322,8 +322,8 @@ cadeau_papa = List.create!(
   user: user1
 )
 
-ListManager.create!(user: user1, list: liste_courses)
-ListManager.create!(user: user1, list: cadeau_maman)
+ListManager.create!(user: user1, list: liste_repas_semaine)
+ListManager.create!(user: user1, list: cadeau_lola)
 ListManager.create!(user: user2, list: cadeau_papa)
 
 
