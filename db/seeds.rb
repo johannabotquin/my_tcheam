@@ -9,6 +9,7 @@
 #   end
 
 # Clear data
+Chatroom.destroy_all
 Memorie.destroy_all
 Reward.destroy_all
 TaskManager.destroy_all
@@ -22,6 +23,8 @@ team = Team.create!(
   name: "Mon olympique",
   score: 0
 )
+
+Chatroom.create(team: team, name: "Ma tcheam")
 puts "Teams created."
 
 puts "Creating users..."
@@ -365,13 +368,6 @@ Memorie.create!(
 puts "Lists created."
 
 puts "creating chatrooms..."
-
-Chatroom.create(name: "Ma tcheam")
-
-ChatroomUser.create(chatroom: Chatroom.first, user: user1)
-ChatroomUser.create(chatroom: Chatroom.first, user: user2)
-ChatroomUser.create(chatroom: Chatroom.first, user: user3)
-ChatroomUser.create(chatroom: Chatroom.first, user: user4)
 
 puts "Chatrooms created."
 
