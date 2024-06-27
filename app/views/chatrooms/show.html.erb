@@ -1,7 +1,7 @@
 <div class="chatroom form-container mx-4 d-flex flex-column" data-controller="chatroom-subscription" data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
-  <h1><%= current_user.team.name %></h1>
+  <h1 class="mb-3"><%= current_user.team.name %></h1>
 
-  <div class="card form-input mb-3 flex-grow-1">
+  <div class="card__chat mb-3 flex-grow-1">
     <div class="messages" data-chatroom-subscription-target="messages">
       <% @chatroom.messages.each do |message| %>
         <%= render "messages/message", message: message %>
