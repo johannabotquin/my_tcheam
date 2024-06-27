@@ -54,6 +54,15 @@
   }
 }
 
+.card__chat {
+  color: $dark-black;
+  box-shadow: 0 5px;
+  border: 1px solid $dark-black;
+  border-radius: 5px;
+  background-color: $white;
+  padding: 10px 10px 0 10px;
+}
+
 .card-octopus, .card-achieved-tasks, .card-pending-tasks {
   background-color: $light-pink;
 }
