@@ -41,9 +41,9 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.user = current_user
     if @task.save
-      member_ids = params[:task][:members]
+      members = params[:task][:members]
       if params[:task][:reccurence] == "0"
-        ids = member_ids.map { |member| member[:user_id] }
+        ids = members.map { |member| member[:user_id] }
         ids.each do |id|
           user = User.find(id)
           user.task_managers << TaskManager.create(task: @task, user: user)
@@ -75,7 +75,6 @@ class TasksController < ApplicationController
     else
       redirect_to user_path(current_user)
     end
-    # redirect_back fallback_location: root_path, notice: "Task updated"
   end
 
   def destroy

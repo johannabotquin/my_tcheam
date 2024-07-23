@@ -3,10 +3,9 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="cagagne"
 export default class extends Controller {
   static targets = ["alert", "audio"]
-  connect() {
 
+  connect() {
     console.log(this.alertTarget);
-    console.log(this.alertTarget.innerHTML);
   }
 
   win() {
